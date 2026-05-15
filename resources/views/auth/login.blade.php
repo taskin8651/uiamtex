@@ -1,138 +1,226 @@
-@extends('layouts.app')
+@extends('web_master')
+@section('main')
 
-@section('content')
-<div class="row justify-content-center w-100">
-    <div class="col-12 col-md-10 col-lg-8 col-xl-7">
-        <div class="amtex-auth-card">
-            <!-- Left Brand Panel -->
-            <div class="amtex-auth-brand">
-                <div class="amtex-auth-brand-inner">
-                    <div class="amtex-auth-logo-wrap">
-                        <img src="{{ asset('img/logo.png') }}" alt="{{ trans('panel.site_title') }}" class="amtex-auth-logo">
-                    </div>
+@php
+    use App\Models\SiteSetting;
 
-                    <h2 class="amtex-auth-title">{{ trans('panel.site_title') }}</h2>
-                    <p class="amtex-auth-subtitle">
-                        Safety with Quality — Admin Panel Login
-                    </p>
+    $siteSetting = SiteSetting::first();
+@endphp
 
-                    <div class="amtex-auth-badges">
-                        <span class="amtex-pill"><i class="fa fa-shield mr-2"></i>Trusted</span>
-                        <span class="amtex-pill"><i class="fa fa-lock mr-2"></i>Secure</span>
-                        <span class="amtex-pill"><i class="fa fa-bolt mr-2"></i>Fast</span>
-                    </div>
+<main>
 
-                    <div class="amtex-auth-footer-note">
-                        <i class="fa fa-info-circle mr-2"></i>
-                        Use your official email & password to continue.
-                    </div>
-                </div>
+  <!-- =================== LOGIN HERO =================== -->
+  <section id="login-hero">
+    <div class="container">
+      <div class="row align-items-center g-4 login-hero-row">
+
+        <!-- Left content: brand/story -->
+        <div class="col-lg-6">
+          <div class="login-hero-eyebrow-row d-flex flex-wrap align-items-center gap-2 mb-2">
+            <span class="login-hero-eyebrow">
+              <i class="bi bi-shield-lock me-1"></i>
+              Secure account access
+            </span>
+            <span class="login-hero-badge">
+              <i class="bi bi-check-circle me-1"></i>
+              For customers, partners &amp; dealers
+            </span>
+          </div>
+
+          <h1 class="login-hero-title">
+            Sign in to manage
+            <span>your fire safety with confidence.</span>
+          </h1>
+
+          <p class="login-hero-subtitle">
+            Track orders, manage AMC, raise support requests and stay updated on your fire safety
+            infrastructure – all from a single, secure dashboard.
+          </p>
+
+          <div class="login-hero-highlights">
+            <div class="login-hero-highlight-item">
+              <i class="bi bi-clipboard-check"></i>
+              <span>View product &amp; service history</span>
             </div>
-
-            <!-- Right Form Panel -->
-            <div class="amtex-auth-form">
-                <div class="amtex-auth-form-inner">
-                    <div class="d-flex align-items-center justify-content-between mb-2">
-                        <h3 class="amtex-form-title mb-0">{{ trans('global.login') }}</h3>
-                        <span class="amtex-form-chip">Admin</span>
-                    </div>
-                    <p class="text-muted mb-4">Welcome back! Please sign in to manage content and enquiries.</p>
-
-                    @if(session('message'))
-                        <div class="alert alert-info" role="alert">
-                            {{ session('message') }}
-                        </div>
-                    @endif
-
-                    <form method="POST" action="{{ route('login') }}" class="amtex-form">
-                        @csrf
-
-                        <div class="form-group mb-3">
-                            <label class="amtex-label" for="email">{{ trans('global.login_email') }}</label>
-                            <div class="amtex-input-wrap">
-                                <span class="amtex-input-icon"><i class="fa fa-envelope"></i></span>
-                                <input
-                                    id="email"
-                                    name="email"
-                                    type="text"
-                                    class="form-control amtex-input{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                    required
-                                    autocomplete="email"
-                                    autofocus
-                                    placeholder="name@company.com"
-                                    value="{{ old('email', null) }}"
-                                >
-                            </div>
-
-                            @if($errors->has('email'))
-                                <div class="invalid-feedback d-block">
-                                    {{ $errors->first('email') }}
-                                </div>
-                            @endif
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label class="amtex-label" for="password">{{ trans('global.login_password') }}</label>
-                            <div class="amtex-input-wrap">
-                                <span class="amtex-input-icon"><i class="fa fa-lock"></i></span>
-                                <input
-                                    id="password"
-                                    name="password"
-                                    type="password"
-                                    class="form-control amtex-input{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                                    required
-                                    placeholder="Enter your password"
-                                >
-                            </div>
-
-                            @if($errors->has('password'))
-                                <div class="invalid-feedback d-block">
-                                    {{ $errors->first('password') }}
-                                </div>
-                            @endif
-                        </div>
-
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                            <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" name="remember" type="checkbox" id="remember" />
-                                <label class="custom-control-label" for="remember">
-                                    {{ trans('global.remember_me') }}
-                                </label>
-                            </div>
-
-                            @if(Route::has('password.request'))
-                                <a class="amtex-link" href="{{ route('password.request') }}">
-                                    {{ trans('global.forgot_password') }}
-                                </a>
-                            @endif
-                        </div>
-
-                        <button type="submit" class="btn amtex-btn w-100 mb-3">
-                            <span>Sign In</span>
-                            <i class="fa fa-arrow-right ml-2"></i>
-                        </button>
-
-                        <div class="text-center">
-                            <span class="text-muted">New here?</span>
-                            <a class="amtex-link ml-1" href="{{ route('register') }}">
-                                {{ trans('global.register') }}
-                            </a>
-                        </div>
-
-                        <div class="amtex-mini-note mt-4">
-                            <i class="fa fa-shield mr-2"></i>
-                            Protected area — unauthorized access is prohibited.
-                        </div>
-                    </form>
-                </div>
+            <div class="login-hero-highlight-item">
+              <i class="bi bi-bell"></i>
+              <span>Get reminders for refilling &amp; AMC</span>
             </div>
+            <div class="login-hero-highlight-item">
+              <i class="bi bi-headset"></i>
+              <span>Priority support for registered users</span>
+            </div>
+          </div>
+
+          <div class="login-hero-meta-strip">
+            <span><i class="bi bi-lock-fill me-1"></i>Bank-grade security</span>
+            <span><i class="bi bi-clock-history me-1"></i>24×7 login access</span>
+          </div>
         </div>
 
-        <div class="amtex-auth-bottom text-center mt-3">
-            <small class="text-muted">
-                © {{ date('Y') }} Amtex Safety Systems. All rights reserved.
-            </small>
+        <!-- Right content: login card -->
+        <div class="col-lg-5 offset-lg-1">
+          <div class="login-card">
+            <div class="login-card-header d-flex justify-content-between align-items-center">
+              <div>
+                <div class="login-card-eyebrow">Welcome back</div>
+                <div class="login-card-title">Login to your account</div>
+              </div>
+              <span class="login-card-chip">
+                <i class="bi bi-shield-check me-1"></i>
+                Secured
+              </span>
+            </div>
+
+            @if(session('message'))
+              <div class="alert alert-info" role="alert">
+                {{ session('message') }}
+              </div>
+            @endif
+
+            <form method="POST" action="{{ route('login') }}" class="login-card-form">
+              @csrf
+
+              <!-- Email / Mobile -->
+              <div class="login-field-group">
+                <label class="login-field-label" for="email">
+                  {{ trans('global.login_email') }}
+                </label>
+                <div class="login-input-wrap">
+                  <i class="bi bi-person login-input-icon"></i>
+                  <input
+                    id="email"
+                    name="email"
+                    type="text"
+                    class="form-control login-input{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                    placeholder="Enter your registered email or mobile"
+                    value="{{ old('email', null) }}"
+                    required
+                    autocomplete="email"
+                    autofocus
+                  />
+                </div>
+
+                @if($errors->has('email'))
+                  <div class="invalid-feedback d-block">
+                    {{ $errors->first('email') }}
+                  </div>
+                @endif
+              </div>
+
+              <!-- Password -->
+              <div class="login-field-group">
+                <label class="login-field-label" for="password">
+                  {{ trans('global.login_password') }}
+                </label>
+                <div class="login-input-wrap">
+                  <i class="bi bi-lock login-input-icon"></i>
+                  <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    class="form-control login-input{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                    placeholder="Enter your password"
+                    required
+                  />
+                  <button type="button" class="login-input-visibility" id="togglePassword" aria-label="Toggle password visibility">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
+
+                @if($errors->has('password'))
+                  <div class="invalid-feedback d-block">
+                    {{ $errors->first('password') }}
+                  </div>
+                @endif
+              </div>
+
+              <!-- Remember + Forgot -->
+              <div class="login-options d-flex flex-wrap justify-content-between align-items-center">
+                <label class="login-remember" for="remember">
+                  <input name="remember" type="checkbox" id="remember" />
+                  <span>Keep me signed in</span>
+                </label>
+
+                @if(Route::has('password.request'))
+                  <a href="{{ route('password.request') }}" class="login-forgot-link">
+                    Forgot password?
+                  </a>
+                @endif
+              </div>
+
+              <!-- Login button -->
+              <button type="submit" class="btn btn-amtex login-submit-btn">
+                Login securely
+              </button>
+
+              <!-- Divider -->
+              <div class="login-divider">
+                <span>or</span>
+              </div>
+
+              <!-- Alternative login: maybe OTP -->
+              <button type="button" class="btn login-otp-btn">
+                <i class="bi bi-phone me-1"></i>
+                Login with OTP
+              </button>
+
+              <!-- Footer text -->
+              <p class="login-footer-text mb-0">
+                New to Amtex Safety?
+
+                @if(Route::has('register'))
+                  <a href="{{ route('register') }}" class="login-footer-link">
+                    Create an account
+                  </a>
+                @else
+                  <a href="register.html" class="login-footer-link">
+                    Create an account
+                  </a>
+                @endif
+              </p>
+            </form>
+          </div>
         </div>
+
+      </div>
     </div>
-</div>
+  </section>
+
+</main>
+
+@endsection
+
+@section('scripts')
+@parent
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+
+    if (togglePassword && passwordInput) {
+      togglePassword.addEventListener('click', function () {
+        const icon = this.querySelector('i');
+
+        if (passwordInput.type === 'password') {
+          passwordInput.type = 'text';
+
+          if (icon) {
+            icon.classList.remove('bi-eye');
+            icon.classList.add('bi-eye-slash');
+          }
+        } else {
+          passwordInput.type = 'password';
+
+          if (icon) {
+            icon.classList.remove('bi-eye-slash');
+            icon.classList.add('bi-eye');
+          }
+        }
+      });
+    }
+  });
+</script>
+
 @endsection

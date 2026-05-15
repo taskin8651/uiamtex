@@ -337,23 +337,47 @@
                 </div>
               </div>
 
-              <div class="pdp-buy-actions row g-2 mt-2">
-                <div class="col-12">
-                  <button class="btn btn-amtex w-100 pdp-btn-primary" type="button" id="pdpAddToCart">
-                    <i class="bi bi-cart-plus me-1"></i> Add to Cart
-                  </button>
-                </div>
-                <div class="col-12">
-                  <button class="btn btn-dark w-100 pdp-btn-buy" type="button" id="pdpBuyNow">
-                    <i class="bi bi-lightning-charge-fill me-1"></i> Buy Now
-                  </button>
-                </div>
-                <div class="col-12">
-                  <a href="#pdp-contact" class="btn btn-outline-dark w-100 pdp-btn-outline">
-                    <i class="bi bi-chat-dots me-1"></i> Get bulk / project quote
-                  </a>
-                </div>
-              </div>
+            
+
+  <div class="pdp-buy-actions row g-2 mt-2">
+    <div class="col-12">
+       <form method="POST" action="{{ route('cart.add') }}" id="pdpCartForm">
+  @csrf
+
+  <input type="hidden" name="product_id" value="{{ $product->id }}">
+
+  <input
+    type="hidden"
+    name="variant_id"
+    id="pdpVariantIdInput"
+    value="{{ $currentVariant->id ?? '' }}"
+  >
+
+  <input
+    type="hidden"
+    name="quantity"
+    id="pdpCartQtyInput"
+    value="1"
+  >
+      <button class="btn btn-amtex w-100 pdp-btn-primary" type="submit" id="pdpAddToCart">
+        <i class="bi bi-cart-plus me-1"></i> Add to Cart
+      </button>
+    </form>
+    </div>
+
+    <div class="col-12">
+      <button class="btn btn-dark w-100 pdp-btn-buy" type="submit" name="buy_now" value="1" id="pdpBuyNow">
+        <i class="bi bi-lightning-charge-fill me-1"></i> Buy Now
+      </button>
+    </div>
+
+    <div class="col-12">
+      <a href="#pdp-contact" class="btn btn-outline-dark w-100 pdp-btn-outline">
+        <i class="bi bi-chat-dots me-1"></i> Get bulk / project quote
+      </a>
+    </div>
+  </div>
+
 
               <div class="pdp-trust-row">
                 <div class="pdp-trust"><i class="bi bi-truck"></i><span>Pan-India shipping</span></div>
@@ -623,6 +647,52 @@
   </div>
 
 </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const qtyInput = document.getElementById('pdpQtyInput');
+    const cartQtyInput = document.getElementById('pdpCartQtyInput');
+    const minusBtn = document.getElementById('pdpQtyMinus');
+    const plusBtn = document.getElementById('pdpQtyPlus');
+
+    function syncQty() {
+        if (!qtyInput || !cartQtyInput) return;
+
+        let qty = parseInt(qtyInput.value || '1', 10);
+
+        if (isNaN(qty) || qty < 1) {
+            qty = 1;
+        }
+
+        qtyInput.value = qty;
+        cartQtyInput.value = qty;
+    }
+
+    if (minusBtn && qtyInput) {
+        minusBtn.addEventListener('click', function () {
+            let qty = parseInt(qtyInput.value || '1', 10);
+            qty = Math.max(1, qty - 1);
+            qtyInput.value = qty;
+            syncQty();
+        });
+    }
+
+    if (plusBtn && qtyInput) {
+        plusBtn.addEventListener('click', function () {
+            let qty = parseInt(qtyInput.value || '1', 10);
+            qtyInput.value = qty + 1;
+            syncQty();
+        });
+    }
+
+    if (qtyInput) {
+        qtyInput.addEventListener('input', syncQty);
+    }
+
+    syncQty();
+});
+</script>
+
 
 {{-- ✅ Gallery Script (ALWAYS) --}}
 <script>

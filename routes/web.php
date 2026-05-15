@@ -11,6 +11,8 @@ use App\Http\Controllers\Frontend\DealershipController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\FaqPageController;
 use App\Http\Controllers\Frontend\ProductsController;
+use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CheckoutController;
 
 Route::get('/home', function () {
     if (session('status')) {
@@ -294,3 +296,21 @@ Route::get('/faq', [FaqPageController::class, 'index'])->name('faq');
 Route::get('/products', [ProductsController::class, 'index'])->name('frontend.products.index');
 Route::get('/products/category/{categorySlug}', [ProductsController::class, 'index'])->name('frontend.products.category');
 Route::get('/product/{slug}', [ProductsController::class, 'show'])->name('frontend.products.show');
+
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+
+Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
+
+Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+
+Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
+
+
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+Route::post('/checkout/place-order', [CheckoutController::class, 'placeOrder'])->name('checkout.placeOrder');
+Route::get('/checkout/success/{order_no}', function ($order_no) {
+    return view('frontend.checkout_success', compact('order_no'));
+})->name('checkout.success');

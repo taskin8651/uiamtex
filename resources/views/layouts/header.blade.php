@@ -29,10 +29,10 @@
           <div class="d-flex justify-content-end align-items-center gap-2 header-actions">
 
             <!-- Desktop Login / Register -->
-            <a href="login.html" class="btn btn-sm btn-outline-light d-none d-md-inline-flex">
+            <a href="/login" class="btn btn-sm btn-outline-light d-none d-md-inline-flex">
               Login
             </a>
-            <a href="register.html" class="btn btn-sm btn-light text-dark fw-semibold d-none d-md-inline-flex">
+            <a href="/register" class="btn btn-sm btn-light text-dark fw-semibold d-none d-md-inline-flex">
               Register
             </a>
 
@@ -43,12 +43,12 @@
             </a>
 
             <!-- Mobile Login Icon -->
-            <a href="login.html" class="mobile-auth-icon d-inline-flex d-md-none">
+            <a href="/login" class="mobile-auth-icon d-inline-flex d-md-none">
               <i class="bi bi-person"></i>
             </a>
 
             <!-- Mobile Register Icon -->
-            <a href="register.html" class="mobile-auth-icon d-inline-flex d-md-none">
+            <a href="/register" class="mobile-auth-icon d-inline-flex d-md-none">
               <i class="bi bi-person-plus"></i>
             </a>
 

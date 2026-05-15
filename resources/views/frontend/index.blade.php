@@ -748,9 +748,17 @@
                                 </div>
 
                                 <div class="product-actions">
-                                    <button class="btn btn-sm btn-amtex w-100 mb-1" type="button">
-                                        Add to Cart
-                                    </button>
+                                    <form method="POST" action="{{ route('cart.add') }}">
+    @csrf
+
+    <input type="hidden" name="product_id" value="{{ $p->id }}">
+    <input type="hidden" name="variant_id" value="">
+    <input type="hidden" name="quantity" value="1">
+
+    <button class="btn btn-sm btn-amtex products-card-btn w-100" type="submit">
+        Add to Cart
+    </button>
+</form>
                                     <a href="{{ $detailUrl }}" class="btn btn-sm btn-outline-dark w-100">
                                         View Details
                                     </a>
