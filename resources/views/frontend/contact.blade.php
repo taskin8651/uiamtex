@@ -80,37 +80,106 @@
             </span>
           </div>
 
-          <form class="contact-hero-form row g-2 mt-2">
-            <div class="col-12">
-              <input type="text" class="form-control contact-input" placeholder="Full name *" />
-            </div>
-            <div class="col-12">
-              <input type="tel" class="form-control contact-input" placeholder="Mobile number *" />
-            </div>
-            <div class="col-12">
-              <input type="email" class="form-control contact-input" placeholder="Email (optional)" />
-            </div>
-            <div class="col-12">
-              <select class="form-select contact-input">
-                <option selected>What can we help you with?</option>
-                <option>Right product selection</option>
-                <option>Installation / Projects</option>
-                <option>AMC / Refilling</option>
-                <option>Upgrade (Powder → Mist)</option>
-                <option>Dealership enquiry</option>
-              </select>
-            </div>
+         @if(session('success'))
+  <div class="alert alert-success mb-3">
+    {{ session('success') }}
+  </div>
+@endif
 
-            <div class="col-12">
-              <button type="submit" class="contact-submit-btn w-100">
-                Send enquiry
-                <i class="bi bi-arrow-right-short ms-1"></i>
-              </button>
-              <p class="contact-form-note mb-0">
-                <i class="bi bi-lock-fill me-1"></i>Your details stay private. No spam.
-              </p>
-            </div>
-          </form>
+@if($errors->any())
+  <div class="alert alert-danger mb-3">
+    Please check the required fields and try again.
+  </div>
+@endif
+
+<form method="POST" action="{{ route('frontend.contact.store') }}" class="contact-hero-form row g-2 mt-2">
+  @csrf
+
+  <div class="col-12">
+    <input
+      type="text"
+      name="name"
+      class="form-control contact-input{{ $errors->has('name') ? ' is-invalid' : '' }}"
+      placeholder="Full name *"
+      value="{{ old('name') }}"
+      required
+    />
+
+    @if($errors->has('name'))
+      <div class="invalid-feedback d-block">
+        {{ $errors->first('name') }}
+      </div>
+    @endif
+  </div>
+
+  <div class="col-12">
+    <input
+      type="tel"
+      name="phone"
+      class="form-control contact-input{{ $errors->has('phone') ? ' is-invalid' : '' }}"
+      placeholder="Mobile number *"
+      value="{{ old('phone') }}"
+      required
+    />
+
+    @if($errors->has('phone'))
+      <div class="invalid-feedback d-block">
+        {{ $errors->first('phone') }}
+      </div>
+    @endif
+  </div>
+
+  <div class="col-12">
+    <input
+      type="email"
+      name="email"
+      class="form-control contact-input{{ $errors->has('email') ? ' is-invalid' : '' }}"
+      placeholder="Email (optional)"
+      value="{{ old('email') }}"
+    />
+
+    @if($errors->has('email'))
+      <div class="invalid-feedback d-block">
+        {{ $errors->first('email') }}
+      </div>
+    @endif
+  </div>
+
+  <div class="col-12">
+    <select
+      name="enquiry_type"
+      class="form-select contact-input{{ $errors->has('enquiry_type') ? ' is-invalid' : '' }}"
+    >
+      <option value="">What can we help you with?</option>
+      <option value="Right product selection" {{ old('enquiry_type') == 'Right product selection' ? 'selected' : '' }}>
+        Right product selection
+      </option>
+      <option value="Installation / Projects" {{ old('enquiry_type') == 'Installation / Projects' ? 'selected' : '' }}>
+        Installation / Projects
+      </option>
+      <option value="AMC / Refilling" {{ old('enquiry_type') == 'AMC / Refilling' ? 'selected' : '' }}>
+        AMC / Refilling
+      </option>
+      <option value="Upgrade (Powder → Mist)" {{ old('enquiry_type') == 'Upgrade (Powder → Mist)' ? 'selected' : '' }}>
+        Upgrade (Powder → Mist)
+      </option>
+      <option value="Dealership enquiry" {{ old('enquiry_type') == 'Dealership enquiry' ? 'selected' : '' }}>
+        Dealership enquiry
+      </option>
+    </select>
+  </div>
+
+  <div class="col-12">
+    <button type="submit" class="contact-submit-btn w-100">
+      Send enquiry
+      <i class="bi bi-arrow-right-short ms-1"></i>
+    </button>
+
+    <p class="contact-form-note mb-0">
+      <i class="bi bi-lock-fill me-1"></i>Your details stay private. No spam.
+    </p>
+  </div>
+</form>
         </div>
       </div>
 
@@ -196,47 +265,134 @@
             We’ll recommend the right extinguisher models, quantities and maintenance plan based on your site type.
           </p>
 
-          <form class="row g-2 g-md-3">
-            <div class="col-md-6">
-              <input type="text" class="form-control contact-input" placeholder="Full name *" />
-            </div>
-            <div class="col-md-6">
-              <input type="tel" class="form-control contact-input" placeholder="Mobile number *" />
-            </div>
-            <div class="col-md-6">
-              <input type="email" class="form-control contact-input" placeholder="Email" />
-            </div>
-            <div class="col-md-6">
-              <input type="text" class="form-control contact-input" placeholder="City / Location" />
-            </div>
+          @if(session('success'))
+  <div class="alert alert-success mb-3">
+    {{ session('success') }}
+  </div>
+@endif
 
-            <div class="col-12">
-              <select class="form-select contact-input">
-                <option selected>Type of premises</option>
-                <option>Apartment / Society</option>
-                <option>Office / IT park</option>
-                <option>Shop / Showroom</option>
-                <option>Restaurant / Kitchen</option>
-                <option>Factory / Warehouse</option>
-                <option>Institution / Hospital</option>
-              </select>
-            </div>
+@if($errors->any())
+  <div class="alert alert-danger mb-3">
+    Please check the required fields and try again.
+  </div>
+@endif
 
-            <div class="col-12">
-              <textarea rows="4" class="form-control contact-input contact-textarea" placeholder="Brief requirement (e.g. 10 extinguishers for office + AMC)…"></textarea>
-            </div>
+<form method="POST" action="{{ route('frontend.contact.store') }}" class="row g-2 g-md-3">
+  @csrf
 
-            <div class="col-12">
-              <button type="submit" class="contact-submit-btn w-100">
-                Request consultation
-                <i class="bi bi-arrow-right-short ms-1"></i>
-              </button>
-              <div class="contact-form-trust mt-2">
-                <span><i class="bi bi-shield-check me-1"></i>ISO-certified guidance</span>
-                <span><i class="bi bi-file-earmark-text me-1"></i>Audit-ready documentation</span>
-              </div>
-            </div>
-          </form>
+  <div class="col-md-6">
+    <input
+      type="text"
+      name="name"
+      class="form-control contact-input{{ $errors->has('name') ? ' is-invalid' : '' }}"
+      placeholder="Full name *"
+      value="{{ old('name') }}"
+      required
+    />
+
+    @if($errors->has('name'))
+      <div class="invalid-feedback d-block">
+        {{ $errors->first('name') }}
+      </div>
+    @endif
+  </div>
+
+  <div class="col-md-6">
+    <input
+      type="tel"
+      name="phone"
+      class="form-control contact-input{{ $errors->has('phone') ? ' is-invalid' : '' }}"
+      placeholder="Mobile number *"
+      value="{{ old('phone') }}"
+      required
+    />
+
+    @if($errors->has('phone'))
+      <div class="invalid-feedback d-block">
+        {{ $errors->first('phone') }}
+      </div>
+    @endif
+  </div>
+
+  <div class="col-md-6">
+    <input
+      type="email"
+      name="email"
+      class="form-control contact-input{{ $errors->has('email') ? ' is-invalid' : '' }}"
+      placeholder="Email"
+      value="{{ old('email') }}"
+    />
+
+    @if($errors->has('email'))
+      <div class="invalid-feedback d-block">
+        {{ $errors->first('email') }}
+      </div>
+    @endif
+  </div>
+
+  <div class="col-md-6">
+    <input
+      type="text"
+      name="city"
+      class="form-control contact-input"
+      placeholder="City / Location"
+      value="{{ old('city') }}"
+    />
+  </div>
+
+  <div class="col-12">
+    <select name="premises_type" class="form-select contact-input">
+      <option value="">Type of premises</option>
+      <option value="Apartment / Society" {{ old('premises_type') == 'Apartment / Society' ? 'selected' : '' }}>
+        Apartment / Society
+      </option>
+      <option value="Office / IT park" {{ old('premises_type') == 'Office / IT park' ? 'selected' : '' }}>
+        Office / IT park
+      </option>
+      <option value="Shop / Showroom" {{ old('premises_type') == 'Shop / Showroom' ? 'selected' : '' }}>
+        Shop / Showroom
+      </option>
+      <option value="Restaurant / Kitchen" {{ old('premises_type') == 'Restaurant / Kitchen' ? 'selected' : '' }}>
+        Restaurant / Kitchen
+      </option>
+      <option value="Factory / Warehouse" {{ old('premises_type') == 'Factory / Warehouse' ? 'selected' : '' }}>
+        Factory / Warehouse
+      </option>
+      <option value="Institution / Hospital" {{ old('premises_type') == 'Institution / Hospital' ? 'selected' : '' }}>
+        Institution / Hospital
+      </option>
+    </select>
+  </div>
+
+  <div class="col-12">
+    <textarea
+      rows="4"
+      name="message"
+      class="form-control contact-input contact-textarea{{ $errors->has('message') ? ' is-invalid' : '' }}"
+      placeholder="Brief requirement (e.g. 10 extinguishers for office + AMC)…"
+    >{{ old('message') }}</textarea>
+
+    @if($errors->has('message'))
+      <div class="invalid-feedback d-block">
+        {{ $errors->first('message') }}
+      </div>
+    @endif
+  </div>
+
+  <input type="hidden" name="enquiry_type" value="Consultation Request">
+
+  <div class="col-12">
+    <button type="submit" class="contact-submit-btn w-100">
+      Request consultation
+      <i class="bi bi-arrow-right-short ms-1"></i>
+    </button>
+
+    <div class="contact-form-trust mt-2">
+      <span><i class="bi bi-shield-check me-1"></i>ISO-certified guidance</span>
+      <span><i class="bi bi-file-earmark-text me-1"></i>Audit-ready documentation</span>
+    </div>
+  </div>
+</form>
 
         </div>
       </div>

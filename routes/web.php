@@ -282,6 +282,7 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
 */
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact-enquiry', [ContactController::class, 'store'])->name('frontend.contact.store');
 Route::get('/pages/{slug}', [PageController::class, 'show'])->name('frontend.pages.show');
 Route::get('/certificates-clients', [CertificatesClientsController::class, 'index'])->name('frontend.certificates-clients');
 Route::post('/downloads/unlock', [DownloadRequestController::class, 'unlock'])->name('frontend.downloads.unlock');
