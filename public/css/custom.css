@@ -1,0 +1,8932 @@
+/* =========================================================
+   AMTEX PREMIUM UI (Buttons + Tables + Forms + DataTables)
+   FIXED: DataTables full width / scrollX layout
+   Paste at END of custom.css
+   ========================================================= */
+
+/* ---------- Brand tokens (safe fallback if not already defined) ---------- */
+:root{
+  --amtex-cream: #FFE6A3;
+  --amtex-yellow: #FFD200;
+
+  --amtex-grad-a: #FF3700;
+  --amtex-grad-b: #FF4E00;
+  --amtex-grad-c: #FF7600;
+
+  --amtex-orange: #FF4E00;
+  --amtex-text-dark: #111827;
+
+  --amtex-border: rgba(17, 24, 39, 0.10);
+  --amtex-soft: rgba(255, 210, 0, 0.12);
+  --amtex-shadow: 0 18px 44px rgba(17,24,39,0.10);
+
+  --amtex-radius: 14px;
+  --amtex-radius-sm: 12px;
+}
+
+/* Global font polish */
+body, .c-app{
+  font-family: var(--font-primary, 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif);
+}
+
+/* =========================================================
+   BUTTONS (Bootstrap + DataTables)
+   ========================================================= */
+
+.btn{
+  border-radius: 12px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.2px;
+  padding: 0.55rem 0.95rem;
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease, border-color .12s ease;
+}
+
+.btn:focus{
+  outline: none !important;
+  box-shadow: 0 0 0 .2rem rgba(255, 78, 0, 0.18) !important;
+}
+
+/* Primary => Amtex gradient */
+.btn-primary,
+.dt-buttons .btn-primary{
+  border: none !important;
+  color: #fff !important;
+  background: linear-gradient(90deg, var(--amtex-grad-a), var(--amtex-grad-b), var(--amtex-grad-c)) !important;
+  box-shadow: 0 14px 26px rgba(255, 78, 0, 0.18) !important;
+}
+
+.btn-primary:hover,
+.dt-buttons .btn-primary:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 18px 34px rgba(255, 78, 0, 0.24) !important;
+}
+
+/* Default => premium white */
+.btn-default,
+.dt-buttons .btn-default{
+  color: rgba(17,24,39,0.88) !important;
+  background: rgba(255,255,255,0.96) !important;
+  border: 1px solid rgba(17,24,39,0.10) !important;
+  box-shadow: 0 10px 24px rgba(17,24,39,0.08);
+}
+
+.btn-default:hover,
+.dt-buttons .btn-default:hover{
+  transform: translateY(-1px);
+  border-color: rgba(255, 78, 0, 0.20) !important;
+  box-shadow: 0 16px 34px rgba(17,24,39,0.10);
+}
+
+/* Info => orange gradient */
+.btn-info{
+  border: none !important;
+  color: #fff !important;
+  background: linear-gradient(90deg, rgba(255, 78, 0, 0.95), rgba(255, 118, 0, 0.95)) !important;
+  box-shadow: 0 14px 26px rgba(255, 118, 0, 0.16);
+}
+.btn-info:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 18px 34px rgba(255, 118, 0, 0.22);
+}
+
+.btn-group-xs > .btn,
+.btn-xs{
+  padding: 0.30rem 0.55rem !important;
+  font-size: 12px !important;
+  border-radius: 10px !important;
+}
+
+/* DataTables button spacing */
+.dt-buttons .btn{
+  margin-left: 0.45em !important;
+}
+
+/* =========================================================
+   FORMS (inputs, selects, textarea)
+   ========================================================= */
+
+.form-control,
+.custom-select,
+select.form-control{
+  border-radius: 12px !important;
+  border: 1px solid rgba(17,24,39,0.12) !important;
+  background: rgba(255,255,255,0.98) !important;
+  color: rgba(17,24,39,0.88) !important;
+  min-height: 44px;
+  transition: border-color .12s ease, box-shadow .12s ease;
+}
+
+textarea.form-control{
+  min-height: 150px;
+}
+
+.form-control:focus,
+.custom-select:focus{
+  border-color: rgba(255, 78, 0, 0.45) !important;
+  box-shadow: 0 0 0 .2rem rgba(255, 78, 0, 0.14) !important;
+}
+
+.form-control:hover,
+.custom-select:hover{
+  border-color: rgba(255, 210, 0, 0.40) !important;
+}
+
+.form-group .required::after{
+  content: " *";
+  color: var(--amtex-orange);
+  font-weight: 900;
+}
+
+.is-invalid,
+.was-validated .form-control:invalid{
+  border-color: rgba(255, 55, 0, 0.55) !important;
+  box-shadow: 0 0 0 .2rem rgba(255, 55, 0, 0.10) !important;
+}
+
+.invalid-feedback{ font-weight: 700; }
+
+.form-check-input{
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  border: 1px solid rgba(17,24,39,0.20);
+}
+.form-check-input:checked{
+  background-color: var(--amtex-orange) !important;
+  border-color: var(--amtex-orange) !important;
+}
+
+/* =========================================================
+   SELECT2
+   ========================================================= */
+
+.select2{ max-width: 100%; width: 100% !important; }
+
+.select2-container .select2-selection--single,
+.select2-container .select2-selection--multiple{
+  border-radius: 12px !important;
+  min-height: 44px !important;
+  border: 1px solid rgba(17,24,39,0.12) !important;
+  background: rgba(255,255,255,0.98) !important;
+  box-shadow: none !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+  line-height: 42px !important;
+  padding-left: 12px !important;
+  color: rgba(17,24,39,0.88) !important;
+  font-weight: 700;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+  height: 44px !important;
+}
+
+.select2-container--default.select2-container--open .select2-selection--single,
+.select2-container--default.select2-container--focus .select2-selection--single,
+.select2-container--default.select2-container--open .select2-selection--multiple,
+.select2-container--default.select2-container--focus .select2-selection--multiple{
+  border-color: rgba(255, 78, 0, 0.45) !important;
+  box-shadow: 0 0 0 .2rem rgba(255, 78, 0, 0.12) !important;
+}
+
+.select2-dropdown{
+  border-radius: 12px !important;
+  border: 1px solid rgba(17,24,39,0.10) !important;
+  overflow: hidden;
+  box-shadow: 0 18px 44px rgba(17,24,39,0.12);
+}
+
+.select2-results__option{ padding: 10px 12px !important; }
+
+.select2-container--default .select2-results__option--highlighted[aria-selected]{
+  background: rgba(255, 210, 0, 0.18) !important;
+  color: rgba(17,24,39,0.92) !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice{
+  background: rgba(255, 210, 0, 0.18) !important;
+  border: 1px solid rgba(255, 210, 0, 0.22) !important;
+  color: rgba(17,24,39,0.86) !important;
+  border-radius: 999px !important;
+  padding: 4px 10px !important;
+  font-weight: 800;
+}
+
+/* =========================================================
+   DATATABLES (FIXED FULL WIDTH + PREMIUM)
+   ========================================================= */
+
+/* Important: let DataTables manage widths */
+.datatable{ width: 100% !important; }
+table.dataTable{ width: 100% !important; }
+table.dataTable.no-footer{ border-bottom: none !important; }
+
+/* Give premium look to the wrapper (NOT the table) */
+.dataTables_wrapper{
+  width: 100% !important;
+}
+
+/* Card-like container for table area */
+.dataTables_wrapper .dataTables_scroll,
+.dataTables_wrapper .dataTables_scrollHead,
+.dataTables_wrapper .dataTables_scrollBody,
+.dataTables_wrapper .dataTables_scrollFoot{
+  width: 100% !important;
+}
+
+/* Make scroll body actually scroll and not clip */
+.dataTables_wrapper .dataTables_scrollBody{
+  overflow: auto !important;   /* key fix */
+  border: 1px solid rgba(17,24,39,0.08) !important;
+  border-top: none !important;
+  border-radius: 0 0 14px 14px;
+  box-shadow: 0 18px 44px rgba(17,24,39,0.08);
+  background: #fff;
+}
+
+/* Scroll head styling */
+.dataTables_wrapper .dataTables_scrollHead{
+  border: 1px solid rgba(17,24,39,0.08) !important;
+  border-bottom: none !important;
+  border-radius: 14px 14px 0 0;
+  overflow: hidden;
+  background: rgba(255, 210, 0, 0.10);
+}
+
+/* Head table (remove border bottom that clips) */
+.dataTables_wrapper .dataTables_scrollHead table.dataTable{
+  margin-bottom: 0 !important;
+}
+
+/* Body table (keep default behaviour) */
+.dataTables_wrapper .dataTables_scrollBody table.dataTable{
+  margin-top: 0 !important;
+}
+
+/* Thead */
+table.dataTable thead th{
+  border-bottom: 1px solid rgba(17,24,39,0.10) !important;
+  background: transparent !important; /* wrapper already colored */
+  color: rgba(17,24,39,0.82);
+  font-weight: 900;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.35px;
+}
+
+/* Body cells */
+table.dataTable tbody td{
+  border-top: 1px solid rgba(17,24,39,0.06) !important;
+  color: rgba(17,24,39,0.82);
+  font-weight: 600;
+}
+
+/* Hover */
+table.dataTable tbody tr:hover{
+  background: rgba(255, 210, 0, 0.06) !important;
+}
+
+/* Sorting icons remove */
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc{
+  background-image: none !important;
+}
+
+/* Filters / length / buttons row */
+.dataTables_length,
+.dataTables_filter,
+.dt-buttons{
+  margin-bottom: .6em !important;
+  margin-top: .4rem !important;
+}
+
+.dataTables_filter{
+  margin-right: .2rem;
+}
+
+/* Search input */
+.dataTables_filter input{
+  border-radius: 12px !important;
+  border: 1px solid rgba(17,24,39,0.12) !important;
+  padding: 8px 10px !important;
+  outline: none !important;
+  background: rgba(255,255,255,0.98) !important;
+}
+
+.dataTables_filter input:focus{
+  border-color: rgba(255, 78, 0, 0.45) !important;
+  box-shadow: 0 0 0 .2rem rgba(255, 78, 0, 0.12) !important;
+}
+
+/* Pagination */
+.dataTables_wrapper .dataTables_paginate .paginate_button{
+  border-radius: 10px !important;
+  border: 1px solid rgba(17,24,39,0.10) !important;
+  background: rgba(255,255,255,0.98) !important;
+  color: rgba(17,24,39,0.80) !important;
+  margin: 0 3px !important;
+  padding: 6px 10px !important;
+  font-weight: 800;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+  border-color: rgba(255, 78, 0, 0.20) !important;
+  background: rgba(255, 210, 0, 0.12) !important;
+  color: rgba(17,24,39,0.88) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current{
+  border: none !important;
+  color: #fff !important;
+  background: linear-gradient(90deg, var(--amtex-grad-a), var(--amtex-grad-b), var(--amtex-grad-c)) !important;
+  box-shadow: 0 12px 24px rgba(255, 78, 0, 0.16);
+}
+
+/* Select checkbox alignment */
+table.dataTable tbody td.select-checkbox::before,
+table.dataTable tbody td.select-checkbox::after,
+table.dataTable tbody th.select-checkbox::before,
+table.dataTable tbody th.select-checkbox::after{
+  top: 50% !important;
+}
+
+/* =========================================================
+   GLOBAL SEARCH (Select2 markup items)
+   ========================================================= */
+.searchable-title{
+  font-weight: 900;
+  color: rgba(17,24,39,0.90);
+}
+.searchable-fields{
+  padding-left: 5px;
+  color: rgba(17,24,39,0.70);
+  font-weight: 600;
+}
+.searchable-link{
+  padding: 8px 10px;
+  border-radius: 12px;
+}
+.searchable-link:hover{
+  cursor: pointer;
+  background: rgba(255, 210, 0, 0.16);
+}
+
+/* =========================================================
+   CKEDITOR
+   ========================================================= */
+.ck-editor__editable,
+textarea{
+  min-height: 150px;
+}
+
+.ck.ck-editor__main>.ck-editor__editable{
+  border-radius: 12px !important;
+  border: 1px solid rgba(17,24,39,0.12) !important;
+  background: rgba(255,255,255,0.98) !important;
+}
+
+.ck.ck-toolbar{
+  border-radius: 12px 12px 0 0 !important;
+  border: 1px solid rgba(17,24,39,0.12) !important;
+  background: rgba(255, 210, 0, 0.08) !important;
+}
+
+/* Small bootstrap select size */
+.custom-select.form-control-sm{
+  padding: 0.35rem 1.6rem !important;
+}
+
+/* Keep nav items clickable */
+.sidebar .nav-item{
+  cursor: pointer;
+}
+
+
+/* =======================
+   AMTEX PREMIUM LOGIN
+   ======================= */
+
+/* Brand Variables (from frontend) */
+:root{
+  --amtex-cream: #FFE6A3;
+  --amtex-yellow: #FFD200;
+
+  --amtex-grad-a: #FF3700;
+  --amtex-grad-b: #FF4E00;
+  --amtex-grad-c: #FF7600;
+
+  --amtex-orange: #FF4E00;
+  --amtex-text-dark: #111827;
+
+  --amtex-bg-soft-1: #FFF1CC;
+  --amtex-bg-soft-2: #FFEFC2;
+
+  --font-primary: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+.amtex-login-page {
+  font-family: var(--font-primary);
+  min-height: 100vh;
+  background:
+    radial-gradient(900px 500px at 10% 10%, rgba(255, 210, 0, 0.18), transparent 60%),
+    radial-gradient(800px 450px at 90% 20%, rgba(255, 78, 0, 0.16), transparent 60%),
+    linear-gradient(180deg, #ffffff, #fff8e6);
+}
+
+.amtex-auth-card{
+  display: flex;
+  width: 100%;
+  min-height: 480px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow:
+    0 22px 60px rgba(17, 24, 39, 0.14),
+    0 6px 18px rgba(17, 24, 39, 0.08);
+  border: 1px solid rgba(17, 24, 39, 0.06);
+}
+
+/* Left panel */
+.amtex-auth-brand{
+  position: relative;
+  flex: 0 0 42%;
+  padding: 28px;
+  color: #fff;
+  background: linear-gradient(120deg, var(--amtex-grad-a), var(--amtex-grad-b), var(--amtex-grad-c));
+}
+
+.amtex-auth-brand::before{
+  content:"";
+  position:absolute;
+  inset: 0;
+  background:
+    radial-gradient(380px 260px at 30% 20%, rgba(255,255,255,0.20), transparent 60%),
+    radial-gradient(420px 300px at 70% 80%, rgba(0,0,0,0.12), transparent 60%);
+  pointer-events:none;
+}
+
+.amtex-auth-brand-inner{
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.amtex-auth-logo-wrap{
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.amtex-auth-logo{
+  max-width: 170px;
+  height: auto;
+  background: rgba(255,255,255,0.92);
+  padding: 10px 12px;
+  border-radius: 12px;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+}
+
+.amtex-auth-title{
+  font-size: 22px;
+  font-weight: 800;
+  margin: 10px 0 6px;
+  letter-spacing: 0.2px;
+}
+
+.amtex-auth-subtitle{
+  font-size: 14px;
+  opacity: 0.95;
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+
+.amtex-auth-badges{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.amtex-pill{
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.16);
+  border: 1px solid rgba(255,255,255,0.22);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.amtex-auth-footer-note{
+  margin-top: auto;
+  font-size: 12px;
+  opacity: 0.95;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.22);
+}
+
+/* Right panel */
+.amtex-auth-form{
+  flex: 1;
+  padding: 28px;
+  background: #ffffff;
+}
+
+.amtex-auth-form-inner{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.amtex-form-title{
+  font-weight: 800;
+  color: var(--amtex-text-dark);
+  letter-spacing: 0.2px;
+}
+
+.amtex-form-chip{
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--amtex-text-dark);
+  background: linear-gradient(180deg, rgba(255, 210, 0, 0.35), rgba(255, 230, 163, 0.35));
+  border: 1px solid rgba(17,24,39,0.08);
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.amtex-label{
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(17,24,39,0.72);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.amtex-input-wrap{
+  position: relative;
+}
+
+.amtex-input-icon{
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(17,24,39,0.55);
+  font-size: 14px;
+}
+
+.amtex-login-page .amtex-input{
+  height: 46px;
+  border-radius: 12px !important;
+  padding-left: 40px !important;
+  border: 1px solid rgba(17,24,39,0.12) !important;
+  background: #fff;
+  transition: all 0.18s ease;
+}
+
+.amtex-login-page .amtex-input:focus{
+  border-color: rgba(255, 78, 0, 0.55) !important;
+  box-shadow: 0 0 0 0.2rem rgba(255, 78, 0, 0.16) !important;
+}
+
+
+.amtex-link{
+  font-weight: 700;
+  color: var(--amtex-orange);
+  text-decoration: none;
+}
+
+.amtex-link:hover{
+  color: var(--amtex-grad-a);
+  text-decoration: underline;
+}
+
+.amtex-btn{
+  height: 46px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  color: #fff;
+  background: linear-gradient(90deg, var(--amtex-grad-a), var(--amtex-grad-b), var(--amtex-grad-c));
+  box-shadow: 0 14px 30px rgba(255, 78, 0, 0.22);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+
+.amtex-btn:hover{
+  filter: brightness(1.03);
+  box-shadow: 0 16px 36px rgba(255, 78, 0, 0.28);
+  transform: translateY(-1px);
+}
+
+.amtex-btn:active{
+  transform: translateY(0px);
+  box-shadow: 0 10px 22px rgba(255, 78, 0, 0.22);
+}
+
+.amtex-mini-note{
+  font-size: 12px;
+  color: rgba(17,24,39,0.60);
+  background: rgba(255, 210, 0, 0.12);
+  border: 1px solid rgba(255, 210, 0, 0.20);
+  padding: 10px 12px;
+  border-radius: 12px;
+}
+
+/* Bottom */
+.amtex-auth-bottom small{
+  font-family: var(--font-primary);
+}
+
+/* Responsive */
+@media (max-width: 991.98px){
+  .amtex-auth-card{
+    flex-direction: column;
+    min-height: auto;
+  }
+  .amtex-auth-brand{
+    flex: 0 0 auto;
+    padding: 22px;
+  }
+  .amtex-auth-form{
+    padding: 22px;
+  }
+  .amtex-auth-logo{
+    max-width: 150px;
+  }
+}
+
+
+
+
+/* =========================
+   AMTEX PREMIUM SIDEBAR (FINAL)
+   - Same Amtex colors
+   - Premium glass look
+   - NO blue hover/focus (CoreUI override)
+   Paste this at END of custom.css
+   ========================= */
+
+:root{
+  --amtex-cream: #FFE6A3;
+  --amtex-yellow: #FFD200;
+
+  --amtex-grad-a: #FF3700;
+  --amtex-grad-b: #FF4E00;
+  --amtex-grad-c: #FF7600;
+
+  --amtex-orange: #FF4E00;
+  --amtex-text-dark: #111827;
+
+  --amtex-bg-soft-1: #FFF1CC;
+  --amtex-bg-soft-2: #FFEFC2;
+
+  --font-primary: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+/* Sidebar base */
+.c-sidebar{
+  font-family: var(--font-primary);
+  position: relative;
+
+  background:
+    radial-gradient(520px 380px at 20% 10%, rgba(255, 210, 0, 0.14), transparent 60%),
+    radial-gradient(520px 380px at 80% 90%, rgba(255, 78, 0, 0.16), transparent 60%),
+    linear-gradient(180deg, #0b1220 0%, #0f172a 55%, #0b1220 100%);
+
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 10px 0 34px rgba(0,0,0,0.16);
+}
+
+/* subtle glossy overlay */
+.c-sidebar::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.06), transparent 18%),
+    radial-gradient(650px 420px at 50% 0%, rgba(255, 230, 163, 0.08), transparent 60%);
+}
+
+/* ----- IMPORTANT: remove default blue link color everywhere in sidebar ----- */
+.c-sidebar a,
+.c-sidebar a:hover,
+.c-sidebar a:focus,
+.c-sidebar a:active{
+  color: rgba(255,255,255,0.86) !important;
+  text-decoration: none !important;
+}
+
+/* Brand header (works even if you don't change blade) */
+.c-sidebar-brand{
+  position: relative;
+  padding: 18px 16px;
+
+  background: linear-gradient(90deg, rgba(255, 55, 0, 0.14), rgba(255, 210, 0, 0.10));
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* If you used the optional brand wrapper classes */
+.amtex-sidebar-brand .amtex-brand-link{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none !important;
+}
+
+.amtex-sidebar-brand .amtex-brand-logo{
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  background: rgba(255,255,255,0.92);
+  padding: 8px;
+  border-radius: 12px;
+  box-shadow: 0 12px 26px rgba(0,0,0,0.22);
+}
+
+.amtex-sidebar-brand .amtex-brand-title{
+  color: #fff;
+  font-weight: 900;
+  letter-spacing: 0.4px;
+  font-size: 15px;
+  line-height: 1.1;
+}
+
+/* If you DID NOT change blade: style default brand text link */
+.c-sidebar-brand .c-sidebar-brand-full{
+  color: #fff !important;
+  font-weight: 900;
+  letter-spacing: 0.4px;
+  font-size: 16px;
+  display: inline-block;
+}
+
+/* Navigation padding */
+.c-sidebar-nav{
+  position: relative;
+  padding: 10px 10px 14px;
+}
+
+/* Search dropdown */
+.c-sidebar .searchable-field{
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.10) !important;
+  background: rgba(255,255,255,0.06) !important;
+  color: rgba(255,255,255,0.92) !important;
+  height: 44px;
+  outline: none;
+}
+
+.c-sidebar .searchable-field:focus{
+  border-color: rgba(255, 78, 0, 0.55) !important;
+  box-shadow: 0 0 0 0.2rem rgba(255, 78, 0, 0.16) !important;
+}
+
+/* Main nav links */
+.c-sidebar-nav-link{
+  position: relative;
+  margin: 6px 6px;
+  border-radius: 12px;
+
+  padding: 12px 12px;
+  color: rgba(255,255,255,0.86) !important;
+
+  background: rgba(255,255,255,0.04) !important;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+
+  transition: transform 0.12s ease, background 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+}
+
+/* Hover (NO blue) */
+.c-sidebar .c-sidebar-nav-link:hover,
+.c-sidebar .c-sidebar-nav-link:focus{
+  background: rgba(255,255,255,0.07) !important;
+  border-color: rgba(255, 210, 0, 0.18) !important;
+  color: #fff !important;
+
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.16) !important;
+}
+
+/* Remove focus outline/blue ring (optional but usually needed for CoreUI look) */
+.c-sidebar .c-sidebar-nav-link:focus{
+  outline: none !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.16) !important;
+}
+
+/* Icons */
+.c-sidebar-nav-icon{
+  color: rgba(255, 230, 163, 0.92) !important;
+  margin-right: 10px;
+  font-size: 14px;
+  width: 18px;
+  text-align: center;
+  transition: color 0.12s ease;
+}
+
+.c-sidebar .c-sidebar-nav-link:hover .c-sidebar-nav-icon,
+.c-sidebar .c-sidebar-nav-link:focus .c-sidebar-nav-icon{
+  color: rgba(255, 210, 0, 1) !important;
+}
+
+/* Active item premium gradient (NO blue) */
+.c-sidebar .c-sidebar-nav-link.c-active,
+.c-sidebar .c-sidebar-nav-link.active{
+  color: #fff !important;
+  background: linear-gradient(90deg,
+      rgba(255, 55, 0, 0.92),
+      rgba(255, 78, 0, 0.92),
+      rgba(255, 118, 0, 0.92)
+  ) !important;
+
+  border-color: rgba(255, 230, 163, 0.22) !important;
+  box-shadow: 0 16px 34px rgba(255, 78, 0, 0.18) !important;
+}
+
+.c-sidebar .c-sidebar-nav-link.c-active:hover,
+.c-sidebar .c-sidebar-nav-link.active:hover{
+  background: linear-gradient(90deg,
+      rgba(255, 55, 0, 0.95),
+      rgba(255, 78, 0, 0.95),
+      rgba(255, 118, 0, 0.95)
+  ) !important;
+}
+
+.c-sidebar .c-sidebar-nav-link.c-active .c-sidebar-nav-icon,
+.c-sidebar .c-sidebar-nav-link.active .c-sidebar-nav-icon{
+  color: #fff !important;
+}
+
+/* Dropdown toggle hover (CoreUI sometimes paints it blue) */
+.c-sidebar .c-sidebar-nav-dropdown-toggle:hover,
+.c-sidebar .c-sidebar-nav-dropdown-toggle:focus{
+  background: rgba(255,255,255,0.07) !important;
+  color: #fff !important;
+}
+
+/* Dropdown opened state */
+.c-sidebar-nav-dropdown.c-show > .c-sidebar-nav-dropdown-toggle{
+  background: rgba(255,255,255,0.06) !important;
+  border-color: rgba(255, 210, 0, 0.16) !important;
+}
+
+/* Dropdown container */
+.c-sidebar-nav-dropdown-items{
+  padding: 6px 0 10px;
+  margin: 0 10px 8px;
+
+  border-radius: 14px;
+  background: rgba(0,0,0,0.18) !important;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+}
+
+/* Child links */
+.c-sidebar-nav-dropdown-items .c-sidebar-nav-link{
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  margin: 4px 8px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* Child hover */
+.c-sidebar .c-sidebar-nav-dropdown-items .c-sidebar-nav-link:hover,
+.c-sidebar .c-sidebar-nav-dropdown-items .c-sidebar-nav-link:focus{
+  background: rgba(255,255,255,0.06) !important;
+  border-color: rgba(255,255,255,0.08) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+  transform: translateY(-1px);
+}
+
+/* Child icons */
+.c-sidebar-nav-dropdown-items .c-sidebar-nav-icon{
+  color: rgba(255, 210, 0, 0.70) !important;
+}
+
+/* Messages unread badge */
+.c-sidebar-nav-item strong{
+  display: inline-block;
+  margin-left: 8px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(255, 210, 0, 0.18);
+  border: 1px solid rgba(255, 210, 0, 0.22);
+  color: rgba(255,255,255,0.96);
+  font-weight: 800;
+}
+
+/* Logout style hint */
+.c-sidebar-nav-item:last-child .c-sidebar-nav-link{
+  background: rgba(255, 55, 0, 0.06) !important;
+  border-color: rgba(255, 55, 0, 0.14) !important;
+}
+
+.c-sidebar-nav-item:last-child .c-sidebar-nav-link:hover{
+  background: rgba(255, 55, 0, 0.12) !important;
+  border-color: rgba(255, 55, 0, 0.22) !important;
+}
+
+/* Scrollbar */
+.c-sidebar::-webkit-scrollbar{ width: 10px; }
+.c-sidebar::-webkit-scrollbar-track{ background: rgba(255,255,255,0.04); }
+.c-sidebar::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,0.12);
+  border-radius: 999px;
+}
+.c-sidebar::-webkit-scrollbar-thumb:hover{ background: rgba(255,255,255,0.18); }
+
+/* Responsive */
+@media (max-width: 991.98px){
+  .c-sidebar-nav{ padding: 8px 6px 12px; }
+  .c-sidebar-nav-link{ margin: 5px 4px; padding: 11px 10px; }
+
+  .amtex-sidebar-brand .amtex-brand-title{ font-size: 14px; }
+  .c-sidebar-brand .c-sidebar-brand-full{ font-size: 15px; }
+}
+
+
+
+
+/* =========================
+   AMTEX PREMIUM DASHBOARD
+   ========================= */
+
+/* Dashboard wrapper */
+.amtex-dashboard{
+  font-family: var(--font-primary);
+}
+
+/* Page Header */
+.amtex-dash-header{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap: 14px;
+  padding: 18px 18px;
+  border-radius: 16px;
+  background:
+    radial-gradient(520px 280px at 12% 10%, rgba(255, 210, 0, 0.16), transparent 60%),
+    radial-gradient(520px 280px at 90% 70%, rgba(255, 78, 0, 0.14), transparent 60%),
+    linear-gradient(180deg, rgba(17,24,39,0.02), rgba(17,24,39,0.00));
+  border: 1px solid rgba(17,24,39,0.08);
+}
+
+.amtex-dash-title{
+  font-weight: 900;
+  letter-spacing: 0.2px;
+  color: var(--amtex-text-dark);
+}
+
+.amtex-dash-subtitle{
+  color: rgba(17,24,39,0.62);
+  font-weight: 500;
+}
+
+.amtex-dash-pill{
+  display:inline-flex;
+  align-items:center;
+  padding: 10px 12px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 12px;
+  color: var(--amtex-text-dark);
+  background: rgba(255, 210, 0, 0.16);
+  border: 1px solid rgba(255, 210, 0, 0.25);
+}
+
+/* Stat cards */
+.amtex-stat-card{
+  height: 100%;
+  border-radius: 16px;
+  padding: 16px 16px;
+  background:
+    radial-gradient(320px 160px at 18% 18%, rgba(255, 210, 0, 0.18), transparent 60%),
+    radial-gradient(320px 160px at 90% 90%, rgba(255, 78, 0, 0.10), transparent 60%),
+    #ffffff;
+  border: 1px solid rgba(17,24,39,0.08);
+  box-shadow: 0 14px 36px rgba(17,24,39,0.08);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+  margin-bottom: 16px;
+}
+
+.amtex-stat-card:hover{
+  transform: translateY(-2px);
+  border-color: rgba(255, 78, 0, 0.24);
+  box-shadow: 0 18px 44px rgba(17,24,39,0.12);
+}
+
+.amtex-stat-top{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+}
+
+.amtex-stat-icon{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color: #fff;
+  background: linear-gradient(120deg, var(--amtex-grad-a), var(--amtex-grad-b), var(--amtex-grad-c));
+  box-shadow: 0 14px 28px rgba(255, 78, 0, 0.18);
+}
+
+.amtex-stat-value{
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--amtex-text-dark);
+  line-height: 1.1;
+}
+
+.amtex-stat-label{
+  color: rgba(17,24,39,0.64);
+  font-weight: 700;
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.amtex-stat-foot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(17,24,39,0.06);
+}
+
+.amtex-stat-hint{
+  font-size: 12px;
+  color: rgba(17,24,39,0.55);
+  font-weight: 600;
+}
+
+.amtex-stat-dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 210, 0, 0.75);
+  box-shadow: 0 0 0 4px rgba(255, 210, 0, 0.16);
+}
+
+/* Panel (Latest entries) */
+.amtex-panel{
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(17,24,39,0.08);
+  box-shadow: 0 18px 44px rgba(17,24,39,0.08);
+}
+
+.amtex-panel-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  padding: 16px 16px;
+  background:
+    radial-gradient(420px 220px at 10% 20%, rgba(255, 210, 0, 0.18), transparent 60%),
+    radial-gradient(420px 220px at 90% 80%, rgba(255, 78, 0, 0.12), transparent 60%),
+    linear-gradient(180deg, rgba(17,24,39,0.02), rgba(17,24,39,0.00));
+  border-bottom: 1px solid rgba(17,24,39,0.06);
+}
+
+.amtex-panel-title{
+  font-weight: 900;
+  color: var(--amtex-text-dark);
+}
+
+.amtex-panel-sub{
+  color: rgba(17,24,39,0.60);
+  font-weight: 600;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.amtex-panel-chip{
+  display:inline-flex;
+  align-items:center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 12px;
+  color: #fff;
+  background: linear-gradient(90deg, var(--amtex-grad-a), var(--amtex-grad-b), var(--amtex-grad-c));
+  box-shadow: 0 14px 28px rgba(255, 78, 0, 0.14);
+}
+
+.amtex-panel-body{
+  padding: 12px 12px;
+}
+
+/* Premium table */
+.amtex-table{
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(17,24,39,0.06);
+}
+
+.amtex-table thead th{
+  border-bottom: 1px solid rgba(17,24,39,0.06) !important;
+  background: rgba(255, 210, 0, 0.10);
+  color: rgba(17,24,39,0.80);
+  font-weight: 900;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.35px;
+}
+
+.amtex-table td{
+  border-top: 1px solid rgba(17,24,39,0.06) !important;
+  color: rgba(17,24,39,0.78);
+  font-weight: 600;
+}
+
+.amtex-table tbody tr:hover{
+  background: rgba(255, 210, 0, 0.06);
+}
+
+/* Badge for relation items */
+.amtex-badge{
+  display:inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--amtex-text-dark);
+  background: rgba(255, 210, 0, 0.18);
+  border: 1px solid rgba(255, 210, 0, 0.24);
+  margin: 3px 6px 3px 0;
+}
+
+/* Responsive tweaks */
+@media (max-width: 767.98px){
+  .amtex-dash-header{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* =========================
+   AMTEX ADMIN HEADER + FOOTER (PREMIUM)
+   Put at END of custom.css
+   ========================= */
+
+.amtex-admin-shell{
+  font-family: var(--font-primary, 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif);
+}
+
+/* ---------- HEADER ---------- */
+.amtex-admin-header{
+  position: relative;
+  background: linear-gradient(90deg, var(--amtex-grad-a), var(--amtex-grad-b), var(--amtex-grad-c)) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.16) !important;
+  box-shadow: 0 18px 40px rgba(255, 78, 0, 0.16);
+}
+
+.amtex-admin-header::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(560px 260px at 12% 15%, rgba(255,255,255,0.18), transparent 60%),
+    radial-gradient(560px 260px at 88% 85%, rgba(0,0,0,0.14), transparent 60%);
+}
+
+.amtex-admin-header-inner{
+  position: relative;
+  width: 100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+}
+
+.amtex-header-left{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+
+.amtex-header-right{
+  display:flex;
+  align-items:center;
+}
+
+/* Header toggler buttons */
+.amtex-header-btn{
+  color: #fff !important;
+  border-radius: 12px;
+  padding: 8px 10px;
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.18);
+  transition: transform .12s ease, background .12s ease, box-shadow .12s ease;
+}
+
+.amtex-header-btn:hover{
+  background: rgba(255,255,255,0.20);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.16);
+}
+
+/* Brand */
+.amtex-header-brand{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  text-decoration:none !important;
+  color: #fff !important;
+}
+
+.amtex-header-logo-wrap{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.92);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow: 0 12px 26px rgba(0,0,0,0.20);
+}
+
+.amtex-header-logo{
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.amtex-header-brand-text{
+  display:flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.amtex-header-title{
+  font-weight: 900;
+  letter-spacing: 0.3px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.amtex-header-subtitle{
+  font-weight: 700;
+  font-size: 12px;
+  color: rgba(255,255,255,0.88);
+  margin-top: 2px;
+}
+
+.amtex-header-brand-mobile{
+  color: #fff !important;
+  font-weight: 900;
+  letter-spacing: 0.3px;
+}
+
+/* Header links (language/logout) */
+.amtex-header-link{
+  color: rgba(255,255,255,0.92) !important;
+  font-weight: 800;
+  border-radius: 999px;
+  padding: 8px 12px !important;
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.18);
+  transition: background .12s ease, transform .12s ease, box-shadow .12s ease;
+}
+
+.amtex-header-link:hover{
+  background: rgba(255,255,255,0.20);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.14);
+  text-decoration:none !important;
+}
+
+/* Small chip */
+.amtex-header-chip{
+  display:inline-flex;
+  align-items:center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.14);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: #fff;
+  font-weight: 900;
+  font-size: 12px;
+}
+
+/* ---------- FOOTER ---------- */
+.amtex-admin-footer{
+  padding: 12px 0;
+  background: rgba(17, 24, 39, 0.96);
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.amtex-admin-footer-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+}
+
+.amtex-admin-footer-left{
+  color: rgba(255,255,255,0.78);
+  font-weight: 650;
+  font-size: 12px;
+}
+
+.amtex-heart{
+  color: var(--amtex-yellow);
+  font-weight: 900;
+  margin: 0 2px;
+}
+
+.amtex-footer-link{
+  color: rgba(255,255,255,0.92);
+  font-weight: 900;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(255,255,255,0.35);
+  padding-bottom: 1px;
+}
+
+.amtex-footer-link:hover{
+  color: #fff;
+  text-decoration: none;
+  border-bottom-color: rgba(255, 210, 0, 0.85);
+}
+
+.amtex-version{
+  display:inline-flex;
+  align-items:center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 210, 0, 0.14);
+  border: 1px solid rgba(255, 210, 0, 0.18);
+  color: rgba(255,255,255,0.92);
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: 0.35px;
+}
+
+/* Responsive footer stacking */
+@media (max-width: 575.98px){
+  .amtex-admin-footer-inner{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+:root{
+  --amtex-cream: #FFE6A3;
+  --amtex-yellow: #FFD200;
+
+  --amtex-grad-a: #FF3700;
+  --amtex-grad-b: #FF4E00;
+  --amtex-grad-c: #FF7600;
+
+  --amtex-orange: #FF4E00;
+  --amtex-text-dark: #111827;
+}
+
+.amtex-page{
+  padding: 8px 4px;
+}
+
+.amtex-header{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+  padding: 16px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--amtex-cream), #fff);
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  box-shadow: 0 10px 25px rgba(17, 24, 39, 0.08);
+}
+
+.amtex-title{
+  margin: 0;
+  font-weight: 800;
+  color: var(--amtex-text-dark);
+  letter-spacing: -0.4px;
+}
+
+.amtex-subtitle{
+  margin: 6px 0 0;
+  color: rgba(17, 24, 39, 0.68);
+  font-size: 13px;
+}
+
+.amtex-actions{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.amtex-alert{
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255, 210, 0, 0.18);
+  border: 1px solid rgba(255, 210, 0, 0.5);
+  color: var(--amtex-text-dark);
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.amtex-btn{
+  background: linear-gradient(135deg, var(--amtex-grad-a), var(--amtex-grad-b), var(--amtex-grad-c));
+  border: none;
+  color: #fff !important;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-weight: 700;
+  box-shadow: 0 10px 22px rgba(255, 78, 0, 0.25);
+}
+
+.amtex-btn:hover{
+  filter: brightness(0.98);
+  transform: translateY(-1px);
+}
+
+.amtex-btn-outline{
+  background: #fff;
+  border: 1px solid rgba(17,24,39,0.12);
+  color: var(--amtex-text-dark) !important;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-weight: 700;
+}
+
+.amtex-card{
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
+  padding: 16px;
+}
+
+.amtex-card-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px dashed rgba(17,24,39,0.12);
+}
+
+.amtex-card-head h4{
+  margin: 0;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--amtex-text-dark);
+}
+
+.amtex-chip{
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 800;
+  border-radius: 999px;
+  background: rgba(255, 78, 0, 0.12);
+  border: 1px solid rgba(255, 78, 0, 0.28);
+  color: var(--amtex-orange);
+}
+
+.amtex-chip-alt{
+  background: rgba(255, 210, 0, 0.18);
+  border: 1px solid rgba(255, 210, 0, 0.5);
+  color: var(--amtex-text-dark);
+}
+
+.amtex-chip-warn{
+  background: rgba(255, 230, 163, 0.5);
+  border: 1px solid rgba(255, 230, 163, 0.9);
+  color: var(--amtex-text-dark);
+}
+
+.amtex-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.amtex-field{
+  background: linear-gradient(180deg, rgba(255, 230, 163, 0.28), rgba(255,255,255,1));
+  border: 1px solid rgba(17,24,39,0.07);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.amtex-field-full{
+  grid-column: span 2;
+}
+
+.amtex-label{
+  font-size: 11px;
+  font-weight: 800;
+  color: rgba(17,24,39,0.62);
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+.amtex-value{
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--amtex-text-dark);
+  word-break: break-word;
+}
+
+.amtex-prewrap{
+  white-space: pre-wrap;
+}
+
+.amtex-links{
+  display: grid;
+  gap: 10px;
+}
+
+.amtex-link-row{
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(17,24,39,0.08);
+  background: #fff;
+}
+
+.amtex-icon{
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  font-weight: 900;
+  color: #fff;
+  background: linear-gradient(135deg, var(--amtex-grad-a), var(--amtex-grad-b), var(--amtex-grad-c));
+  box-shadow: 0 10px 18px rgba(255, 78, 0, 0.18);
+  text-transform: lowercase;
+  font-size: 12px;
+}
+
+.amtex-map{
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(17,24,39,0.08);
+}
+
+.amtex-map iframe{
+  width: 100% !important;
+  height: 240px !important;
+  border: 0 !important;
+  display: block;
+}
+
+.amtex-muted{
+  color: rgba(17,24,39,0.6);
+  font-weight: 600;
+  font-size: 13px;
+  padding: 6px 0;
+}
+
+.amtex-empty{
+  display: grid;
+  place-items: center;
+  min-height: 320px;
+}
+
+.amtex-empty-card{
+  width: min(620px, 100%);
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid rgba(17,24,39,0.08);
+  box-shadow: 0 18px 40px rgba(17,24,39,0.10);
+  padding: 22px;
+  text-align: center;
+}
+
+.amtex-empty-card h3{
+  margin: 10px 0 6px;
+  font-weight: 900;
+  color: var(--amtex-text-dark);
+}
+
+.amtex-empty-card p{
+  margin: 0;
+  color: rgba(17,24,39,0.68);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.amtex-badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 210, 0, 0.18);
+  border: 1px solid rgba(255, 210, 0, 0.55);
+  font-weight: 900;
+  color: var(--amtex-text-dark);
+  font-size: 12px;
+}
+
+@media (max-width: 991px){
+  .amtex-header{
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .amtex-actions{
+    align-items: stretch;
+  }
+  .amtex-grid{
+    grid-template-columns: 1fr;
+  }
+  .amtex-field-full{
+    grid-column: auto;
+  }
+}
+
+.amtex-form{
+  margin-top: 6px;
+}
+
+.amtex-form-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.amtex-span-2{
+  grid-column: span 2;
+}
+
+.amtex-input label{
+  font-weight: 800;
+  font-size: 12px;
+  margin-bottom: 6px;
+  color: var(--amtex-text-dark);
+}
+
+.amtex-control{
+  border-radius: 12px !important;
+  border: 1px solid rgba(17,24,39,0.12) !important;
+  padding: 10px 12px !important;
+  font-weight: 700;
+  font-size: 13px;
+  background: linear-gradient(180deg, rgba(255, 230, 163, 0.12), #fff);
+  transition: all .15s ease;
+}
+
+.amtex-control:focus{
+  border-color: rgba(255, 78, 0, 0.55) !important;
+  box-shadow: 0 0 0 .2rem rgba(255, 78, 0, 0.12) !important;
+  background: #fff;
+}
+
+.amtex-textarea{
+  min-height: 110px;
+  resize: vertical;
+}
+
+.amtex-codearea{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-weight: 700;
+  min-height: 140px;
+}
+
+.amtex-help{
+  display: block;
+  margin-top: 6px;
+  color: rgba(17,24,39,0.62);
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.amtex-form-footer{
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 14px 0 0;
+}
+
+@media (max-width: 991px){
+  .amtex-form-grid{
+    grid-template-columns: 1fr;
+  }
+  .amtex-span-2{
+    grid-column: auto;
+  }
+  .amtex-form-footer{
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+.amtex-preview-block{
+  border: 1px solid rgba(17,24,39,0.08);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 10px;
+  background: linear-gradient(180deg, rgba(255, 230, 163, 0.12), #fff);
+}
+
+.amtex-preview-label{
+  font-size: 11px;
+  font-weight: 900;
+  color: rgba(17,24,39,0.62);
+  text-transform: uppercase;
+  letter-spacing: .7px;
+}
+
+.amtex-preview-value{
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--amtex-text-dark);
+  word-break: break-word;
+}
+
+/* ===== FIX: prevent overlap caused by theme + bootstrap row/col conflicts ===== */
+.amtex-split{
+  display: grid;
+  grid-template-columns: 1.25fr 0.85fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.amtex-left, .amtex-right{
+  min-width: 0;
+}
+
+.amtex-card{
+  position: relative;
+  overflow: hidden; /* keeps internal elements clean */
+}
+
+.amtex-input{
+  position: relative;
+}
+
+.amtex-input label{
+  display: block !important;
+  margin-bottom: 6px;
+}
+
+.amtex-input .form-control{
+  position: relative !important;
+  float: none !important;
+  width: 100% !important;
+  display: block !important;
+}
+
+.amtex-preview-code{
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(17,24,39,0.08);
+  background: #fff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-weight: 700;
+  font-size: 12px;
+  word-break: break-word;
+}
+
+@media (max-width: 991px){
+  .amtex-split{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* FIX: amtex-input class conflict (login vs admin forms) */
+.amtex-page .amtex-input{
+  height: auto !important;
+  padding-left: 0 !important;
+}
+
+
+
+
+/* ============================
+   AMTEX CATEGORY GRID UI
+   Prefix: amtex-cat-
+   ============================ */
+
+.amtex-cat-page{
+  padding: 10px 6px;
+}
+
+.amtex-cat-header{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap: 14px;
+  padding: 16px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(255,230,163,0.45), #fff);
+  border: 1px solid rgba(17,24,39,0.08);
+  box-shadow: 0 10px 25px rgba(17,24,39,0.08);
+  margin-bottom: 14px;
+}
+
+.amtex-cat-title{
+  margin: 0;
+  font-weight: 900;
+  color: #111827;
+}
+
+.amtex-cat-subtitle{
+  margin: 6px 0 0;
+  color: rgba(17,24,39,0.65);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.amtex-cat-header-right{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content:flex-end;
+}
+
+.amtex-cat-btn{
+  border-radius: 12px !important;
+  padding: 10px 14px;
+  font-weight: 800;
+  border: 1px solid rgba(17,24,39,0.10);
+}
+
+.amtex-cat-btn-primary{
+  border: none !important;
+  color: #fff !important;
+  background: linear-gradient(90deg, rgba(255,55,0,0.95), rgba(255,78,0,0.95), rgba(255,118,0,0.95)) !important;
+  box-shadow: 0 14px 28px rgba(255, 78, 0, 0.18);
+}
+
+.amtex-cat-btn-light{
+  background: #fff !important;
+  color: rgba(17,24,39,0.85) !important;
+}
+
+.amtex-cat-controls{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.amtex-cat-search{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(17,24,39,0.10);
+  box-shadow: 0 10px 22px rgba(17,24,39,0.06);
+  min-width: 280px;
+}
+
+.amtex-cat-search i{
+  color: rgba(17,24,39,0.55);
+}
+
+.amtex-cat-search-input{
+  border: none;
+  outline: none;
+  width: 100%;
+  font-weight: 700;
+  color: rgba(17,24,39,0.86);
+}
+
+.amtex-cat-filter{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.amtex-cat-select{
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-weight: 800;
+  background: #fff;
+  border: 1px solid rgba(17,24,39,0.10);
+  box-shadow: 0 10px 22px rgba(17,24,39,0.06);
+  min-width: 160px;
+}
+
+/* Grid */
+.amtex-cat-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.amtex-cat-card{
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(17,24,39,0.08);
+  box-shadow: 0 14px 34px rgba(17,24,39,0.08);
+  overflow: hidden;
+  display:flex;
+  flex-direction: column;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+
+.amtex-cat-card:hover{
+  transform: translateY(-2px);
+  border-color: rgba(255,78,0,0.22);
+  box-shadow: 0 18px 44px rgba(17,24,39,0.12);
+}
+
+.amtex-cat-card-top{
+  position: relative;
+  padding: 12px;
+  background: linear-gradient(180deg, rgba(255,230,163,0.22), #fff);
+  border-bottom: 1px dashed rgba(17,24,39,0.10);
+}
+
+.amtex-cat-img{
+  width: 100%;
+  height: 260px;              /* increase height for better visibility */
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(17,24,39,0.08);
+  background: #fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 10px;              /* creates space for contain images */
+}
+
+.amtex-cat-img img{
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;  /* ✅ IMPORTANT: full image visible */
+  display:block !important;
+}
+
+.amtex-cat-img-fallback{
+  font-weight: 900;
+  color: rgba(17,24,39,0.55);
+}
+
+.amtex-cat-badges{
+  display:flex;
+  gap: 8px;
+  position:absolute;
+  top: 14px;
+  left: 14px;
+}
+
+.amtex-cat-badge{
+  display:inline-flex;
+  align-items:center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 12px;
+  border: 1px solid rgba(17,24,39,0.08);
+}
+
+.amtex-cat-badge-active{
+  background: rgba(16,185,129,0.14);
+  border-color: rgba(16,185,129,0.22);
+  color: rgba(17,24,39,0.90);
+}
+
+.amtex-cat-badge-inactive{
+  background: rgba(239,68,68,0.14);
+  border-color: rgba(239,68,68,0.22);
+  color: rgba(17,24,39,0.90);
+}
+
+.amtex-cat-badge-soft{
+  background: rgba(255,210,0,0.16);
+  border-color: rgba(255,210,0,0.22);
+  color: rgba(17,24,39,0.90);
+}
+
+/* Body */
+.amtex-cat-card-body{
+  padding: 12px 14px;
+  flex: 1;
+}
+
+.amtex-cat-name{
+  font-weight: 950;
+  color: #111827;
+  font-size: 15px;
+}
+
+.amtex-cat-meta{
+  margin-top: 10px;
+  display:grid;
+  gap: 6px;
+}
+
+.amtex-cat-meta-row{
+  display:flex;
+  gap: 8px;
+  align-items:flex-start;
+}
+
+.amtex-cat-meta-label{
+  font-weight: 900;
+  font-size: 12px;
+  color: rgba(17,24,39,0.65);
+  min-width: 46px;
+}
+
+.amtex-cat-meta-value{
+  font-weight: 800;
+  font-size: 12px;
+  color: rgba(17,24,39,0.82);
+  word-break: break-word;
+}
+
+/* Actions */
+.amtex-cat-card-actions{
+  padding: 12px 14px;
+  border-top: 1px solid rgba(17,24,39,0.06);
+  background: rgba(17,24,39,0.01);
+}
+
+/* Make default action buttons look neat inside card */
+.amtex-cat-card-actions .btn{
+  border-radius: 10px !important;
+  font-weight: 800 !important;
+  padding: 0.35rem 0.55rem !important;
+}
+
+/* Pagination area */
+.amtex-cat-pager{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.amtex-cat-info{
+  font-weight: 800;
+  color: rgba(17,24,39,0.70);
+  font-size: 12px;
+}
+
+.amtex-cat-paginate .paginate_button{
+  border-radius: 10px !important;
+}
+
+/* Empty state */
+.amtex-cat-empty{
+  margin-top: 18px;
+}
+
+.amtex-cat-empty-card{
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(17,24,39,0.08);
+  box-shadow: 0 14px 34px rgba(17,24,39,0.08);
+  padding: 18px;
+  text-align:center;
+}
+
+.amtex-cat-empty-card h3{
+  margin: 0 0 6px;
+  font-weight: 950;
+  color: #111827;
+}
+
+.amtex-cat-empty-card p{
+  margin: 0;
+  font-weight: 700;
+  color: rgba(17,24,39,0.65);
+  font-size: 13px;
+}
+
+/* Hidden DT */
+.amtex-cat-hidden{
+  display:none !important;
+}
+
+/* Responsive */
+@media (max-width: 1199px){
+  .amtex-cat-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 767px){
+  .amtex-cat-grid{ grid-template-columns: 1fr; }
+  .amtex-cat-header{ flex-direction: column; align-items: flex-start; }
+  .amtex-cat-header-right{ justify-content:flex-start; }
+}
+
+
+
+/* =========================================
+   AMTEX CATEGORY FORM (CREATE)
+   Prefix: amtex-catf-
+   Safe & isolated styles
+   ========================================= */
+
+.amtex-catf-page{ padding: 10px 6px; }
+
+.amtex-catf-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(255,230,163,0.45), #fff);
+  border: 1px solid rgba(17,24,39,0.08);
+  box-shadow: 0 10px 25px rgba(17,24,39,0.08);
+  margin-bottom: 14px;
+}
+
+.amtex-catf-title{
+  margin: 0;
+  font-weight: 950;
+  color: #111827;
+}
+
+.amtex-catf-subtitle{
+  margin: 6px 0 0;
+  color: rgba(17,24,39,0.65);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.amtex-catf-actions{ display:flex; gap: 10px; flex-wrap: wrap; }
+
+.amtex-catf-btn{
+  border-radius: 12px !important;
+  padding: 10px 14px !important;
+  font-weight: 900 !important;
+  border: 1px solid rgba(17,24,39,0.10) !important;
+}
+
+.amtex-catf-btn-primary{
+  border: none !important;
+  color: #fff !important;
+  background: linear-gradient(90deg, rgba(255,55,0,0.95), rgba(255,78,0,0.95), rgba(255,118,0,0.95)) !important;
+  box-shadow: 0 14px 28px rgba(255, 78, 0, 0.18) !important;
+}
+
+.amtex-catf-btn-light{
+  background: #fff !important;
+  color: rgba(17,24,39,0.86) !important;
+}
+
+.amtex-catf-wrap{
+  display:grid;
+  grid-template-columns: 1.7fr .9fr;
+  gap: 14px;
+}
+
+.amtex-catf-card{
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(17,24,39,0.08);
+  box-shadow: 0 14px 34px rgba(17,24,39,0.08);
+  padding: 14px;
+}
+
+.amtex-catf-section{ margin-bottom: 14px; }
+
+.amtex-catf-section-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+  padding: 10px 10px 12px;
+  border-bottom: 1px dashed rgba(17,24,39,0.12);
+  margin-bottom: 12px;
+}
+
+.amtex-catf-section-head h4{
+  margin: 0;
+  font-weight: 950;
+  color: #111827;
+  font-size: 14px;
+}
+
+.amtex-catf-chip{
+  display:inline-flex;
+  align-items:center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 950;
+  font-size: 12px;
+  background: rgba(255,78,0,0.12);
+  border: 1px solid rgba(255,78,0,0.22);
+  color: rgba(17,24,39,0.92);
+}
+
+.amtex-catf-chip-alt{
+  background: rgba(255,210,0,0.16);
+  border-color: rgba(255,210,0,0.22);
+}
+
+.amtex-catf-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.amtex-catf-span2{ grid-column: span 2; }
+
+.amtex-catf-field{ display:flex; flex-direction: column; gap: 6px; }
+
+.amtex-catf-label{
+  font-weight: 900;
+  font-size: 12px;
+  color: rgba(17,24,39,0.80);
+}
+
+.amtex-catf-control{
+  border-radius: 12px !important;
+  border: 1px solid rgba(17,24,39,0.12) !important;
+  padding: 10px 12px !important;
+  font-weight: 800 !important;
+  color: rgba(17,24,39,0.88) !important;
+  box-shadow: 0 10px 22px rgba(17,24,39,0.04);
+}
+
+.amtex-catf-control:focus{
+  border-color: rgba(255,78,0,0.35) !important;
+  box-shadow: 0 0 0 3px rgba(255,78,0,0.12) !important;
+}
+
+.amtex-catf-help{
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(17,24,39,0.55);
+}
+
+.amtex-catf-inlinehint{
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(17,24,39,0.62);
+  display:flex;
+  align-items:center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(17,24,39,0.02);
+  border: 1px solid rgba(17,24,39,0.06);
+}
+
+.amtex-catf-inlinehint span{
+  font-weight: 950;
+  color: rgba(17,24,39,0.85);
+}
+
+.amtex-catf-dropwrap{
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(17,24,39,0.10);
+  background: linear-gradient(180deg, rgba(255,230,163,0.16), #fff);
+  box-shadow: 0 14px 34px rgba(17,24,39,0.06);
+}
+
+.amtex-catf-dropwrap-error{
+  border-color: rgba(239,68,68,0.35);
+}
+
+.amtex-catf-dropzone{
+  border: none !important;
+  background: transparent !important;
+  min-height: 190px !important;
+}
+
+.amtex-catf-dropnote{
+  position:absolute;
+  left: 14px;
+  bottom: 14px;
+  pointer-events:none;
+}
+
+.amtex-catf-dropnote-title{
+  font-weight: 950;
+  color: rgba(17,24,39,0.88);
+  display:flex;
+  align-items:center;
+  gap: 8px;
+}
+
+.amtex-catf-dropnote-sub{
+  font-weight: 800;
+  font-size: 12px;
+  color: rgba(17,24,39,0.55);
+}
+
+.amtex-catf-error{
+  margin-top: 6px;
+  font-weight: 900;
+  font-size: 12px;
+  color: #ef4444;
+}
+
+.amtex-catf-statushint{
+  display:flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.amtex-catf-badge{
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 950;
+  font-size: 12px;
+  border: 1px solid rgba(17,24,39,0.08);
+}
+
+.amtex-catf-badge-on{
+  background: rgba(16,185,129,0.14);
+  border-color: rgba(16,185,129,0.22);
+}
+
+.amtex-catf-badge-off{
+  background: rgba(239,68,68,0.14);
+  border-color: rgba(239,68,68,0.22);
+}
+
+.amtex-catf-footer{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(17,24,39,0.06);
+}
+
+.amtex-catf-side{ position: sticky; top: 90px; height: fit-content; }
+
+.amtex-catf-preview-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed rgba(17,24,39,0.12);
+  margin-bottom: 12px;
+}
+
+.amtex-catf-preview-head h4{
+  margin: 0;
+  font-weight: 950;
+  color: #111827;
+  font-size: 14px;
+}
+
+.amtex-catf-preview-box{
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(17,24,39,0.08);
+  background: rgba(17,24,39,0.01);
+  margin-bottom: 10px;
+}
+
+.amtex-catf-preview-label{
+  font-weight: 900;
+  font-size: 11px;
+  color: rgba(17,24,39,0.55);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.amtex-catf-preview-value{
+  font-weight: 950;
+  color: rgba(17,24,39,0.88);
+  margin-top: 4px;
+  word-break: break-word;
+}
+
+.amtex-catf-preview-img{
+  height: 170px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(17,24,39,0.08);
+  background: #fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-top: 8px;
+}
+
+.amtex-catf-preview-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.amtex-catf-preview-imgtext{
+  padding: 12px;
+  text-align:center;
+  font-weight: 900;
+  color: rgba(17,24,39,0.55);
+  font-size: 12px;
+}
+
+.amtex-catf-muted{
+  margin-top: 10px;
+  font-weight: 800;
+  font-size: 12px;
+  color: rgba(17,24,39,0.62);
+}
+
+/* Responsive */
+@media (max-width: 1199px){
+  .amtex-catf-wrap{ grid-template-columns: 1fr; }
+  .amtex-catf-side{ position: static; }
+}
+
+@media (max-width: 767px){
+  .amtex-catf-grid{ grid-template-columns: 1fr; }
+  .amtex-catf-span2{ grid-column: span 1; }
+}
+
+/* ============================
+   AMTEX PRODUCT GRID UI
+   Prefix: amtex-prod-
+   ============================ */
+
+.amtex-prod-page{
+  padding: 10px 6px;
+}
+
+.amtex-prod-header{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap: 14px;
+  padding: 16px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(255,230,163,0.45), #fff);
+  border: 1px solid rgba(17,24,39,0.08);
+  box-shadow: 0 10px 25px rgba(17,24,39,0.08);
+  margin-bottom: 14px;
+}
+
+.amtex-prod-title{
+  margin: 0;
+  font-weight: 900;
+  color: #111827;
+}
+
+.amtex-prod-subtitle{
+  margin: 6px 0 0;
+  color: rgba(17,24,39,0.65);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.amtex-prod-header-right{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content:flex-end;
+}
+
+.amtex-prod-btn{
+  border-radius: 12px !important;
+  padding: 10px 14px;
+  font-weight: 800;
+  border: 1px solid rgba(17,24,39,0.10);
+}
+
+.amtex-prod-btn-primary{
+  border: none !important;
+  color: #fff !important;
+  background: linear-gradient(90deg, rgba(255,55,0,0.95), rgba(255,78,0,0.95), rgba(255,118,0,0.95)) !important;
+  box-shadow: 0 14px 28px rgba(255, 78, 0, 0.18);
+}
+
+.amtex-prod-btn-light{
+  background: #fff !important;
+  color: rgba(17,24,39,0.85) !important;
+}
+
+.amtex-prod-controls{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.amtex-prod-search{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(17,24,39,0.10);
+  box-shadow: 0 10px 22px rgba(17,24,39,0.06);
+  min-width: 320px;
+}
+
+.amtex-prod-search i{
+  color: rgba(17,24,39,0.55);
+}
+
+.amtex-prod-search-input{
+  border: none;
+  outline: none;
+  width: 100%;
+  font-weight: 700;
+  color: rgba(17,24,39,0.86);
+}
+
+.amtex-prod-filter{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.amtex-prod-select{
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-weight: 800;
+  background: #fff;
+  border: 1px solid rgba(17,24,39,0.10);
+  box-shadow: 0 10px 22px rgba(17,24,39,0.06);
+  min-width: 170px;
+}
+
+/* Grid */
+.amtex-prod-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+/* Card */
+.amtex-prod-card{
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(17,24,39,0.08);
+  box-shadow: 0 14px 34px rgba(17,24,39,0.08);
+  overflow: hidden;
+  display:flex;
+  flex-direction: column;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+
+.amtex-prod-card:hover{
+  transform: translateY(-2px);
+  border-color: rgba(255,78,0,0.22);
+  box-shadow: 0 18px 44px rgba(17,24,39,0.12);
+}
+
+.amtex-prod-card-top{
+  position: relative;
+  padding: 12px;
+  background: linear-gradient(180deg, rgba(255,230,163,0.22), #fff);
+  border-bottom: 1px dashed rgba(17,24,39,0.10);
+}
+
+/* Image wrapper */
+.amtex-prod-img{
+  width: 100%;
+  height: 190px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(17,24,39,0.08);
+  background: #fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* ✅ FULL IMAGE (no thumbnail crop) */
+.amtex-prod-img img{
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important; /* IMPORTANT */
+  background: #fff;
+  display:block;
+}
+
+.amtex-prod-img-fallback{
+  font-weight: 900;
+  color: rgba(17,24,39,0.55);
+}
+
+/* Pills */
+.amtex-prod-pills{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  position:absolute;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+}
+
+.amtex-prod-pill{
+  display:inline-flex;
+  align-items:center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 12px;
+  border: 1px solid rgba(17,24,39,0.08);
+  background: rgba(255,255,255,0.92);
+  color: rgba(17,24,39,0.90);
+}
+
+.amtex-prod-pill-soft{
+  background: rgba(255,210,0,0.16);
+  border-color: rgba(255,210,0,0.22);
+}
+
+.amtex-prod-pill-active{
+  background: rgba(16,185,129,0.14);
+  border-color: rgba(16,185,129,0.22);
+}
+
+.amtex-prod-pill-inactive{
+  background: rgba(239,68,68,0.14);
+  border-color: rgba(239,68,68,0.22);
+}
+
+.amtex-prod-pill-featured{
+  background: rgba(59,130,246,0.14);
+  border-color: rgba(59,130,246,0.22);
+}
+
+.amtex-prod-pill-badge{
+  background: rgba(255,78,0,0.12);
+  border-color: rgba(255,78,0,0.22);
+}
+
+/* Body */
+.amtex-prod-card-body{
+  padding: 12px 14px;
+  flex: 1;
+}
+
+.amtex-prod-name{
+  font-weight: 950;
+  color: #111827;
+  font-size: 15px;
+}
+
+.amtex-prod-cat{
+  margin-top: 4px;
+  font-weight: 800;
+  font-size: 12px;
+  color: rgba(17,24,39,0.65);
+}
+
+/* Price */
+.amtex-prod-price{
+  display:flex;
+  gap: 10px;
+  align-items: baseline;
+  margin-top: 10px;
+}
+
+.amtex-prod-price-main{
+  font-weight: 950;
+  font-size: 16px;
+  color: #111827;
+}
+
+.amtex-prod-price-compare{
+  font-weight: 900;
+  font-size: 12px;
+  color: rgba(17,24,39,0.55);
+  text-decoration: line-through;
+}
+
+/* Meta */
+.amtex-prod-meta{
+  margin-top: 10px;
+  display:grid;
+  gap: 6px;
+}
+
+.amtex-prod-meta-row{
+  display:flex;
+  gap: 8px;
+  align-items:flex-start;
+}
+
+.amtex-prod-meta-label{
+  font-weight: 900;
+  font-size: 12px;
+  color: rgba(17,24,39,0.65);
+  min-width: 64px;
+}
+
+.amtex-prod-meta-value{
+  font-weight: 800;
+  font-size: 12px;
+  color: rgba(17,24,39,0.82);
+  word-break: break-word;
+}
+
+/* Brochure area */
+.amtex-prod-brochure{
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(17,24,39,0.08);
+  background: rgba(17,24,39,0.01);
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.amtex-prod-brochure a{
+  font-weight: 900;
+  text-decoration: none !important;
+}
+
+.amtex-prod-brochure-muted{
+  color: rgba(17,24,39,0.55);
+}
+
+/* Actions */
+.amtex-prod-card-actions{
+  padding: 12px 14px;
+  border-top: 1px solid rgba(17,24,39,0.06);
+  background: rgba(17,24,39,0.01);
+}
+
+/* Make default action buttons compact */
+.amtex-prod-card-actions .btn{
+  border-radius: 10px !important;
+  font-weight: 800 !important;
+  padding: 0.35rem 0.55rem !important;
+}
+
+/* Pager */
+.amtex-prod-pager{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.amtex-prod-info{
+  font-weight: 800;
+  color: rgba(17,24,39,0.70);
+  font-size: 12px;
+}
+
+.amtex-prod-empty{
+  margin-top: 18px;
+}
+
+.amtex-prod-empty-card{
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(17,24,39,0.08);
+  box-shadow: 0 14px 34px rgba(17,24,39,0.08);
+  padding: 18px;
+  text-align:center;
+}
+
+.amtex-prod-empty-card h3{
+  margin: 0 0 6px;
+  font-weight: 950;
+  color: #111827;
+}
+
+.amtex-prod-empty-card p{
+  margin: 0;
+  font-weight: 700;
+  color: rgba(17,24,39,0.65);
+  font-size: 13px;
+}
+
+/* Hide DT */
+.amtex-prod-hidden{
+  display:none !important;
+}
+
+/* Responsive */
+@media (max-width: 1199px){
+  .amtex-prod-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 767px){
+  .amtex-prod-grid{ grid-template-columns: 1fr; }
+  .amtex-prod-header{ flex-direction: column; align-items: flex-start; }
+  .amtex-prod-header-right{ justify-content:flex-start; }
+  .amtex-prod-search{ min-width: 100%; }
+}
+
+/* ============================================================
+   AMTEX PREMIUM BLOG CATEGORY (Admin) - Unique Namespace
+   Namespace: amtex-premium-bcat-*
+   ============================================================ */
+
+.amtex-premium-bcat-wrap{
+    padding: 14px 6px;
+}
+
+.amtex-premium-bcat-topbar{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    justify-content:space-between;
+    padding: 8px 6px 18px 6px;
+    border-bottom: 1px solid rgba(15, 23, 42, .08);
+    margin-bottom: 16px;
+}
+
+.amtex-premium-bcat-titlebox{
+    min-width: 220px;
+}
+
+.amtex-premium-bcat-title{
+    font-size: 18px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: .2px;
+}
+
+.amtex-premium-bcat-subtitle{
+    margin-top: 4px;
+    font-size: 13px;
+    color: rgba(15, 23, 42, .65);
+}
+
+.amtex-premium-bcat-controls{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+}
+
+.amtex-premium-bcat-search{
+    position:relative;
+    width: min(340px, 70vw);
+}
+
+.amtex-premium-bcat-search-ico{
+    position:absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(15, 23, 42, .45);
+    font-size: 14px;
+    pointer-events:none;
+}
+
+#amtexBcatSearch{
+    width:100%;
+    height: 42px;
+    border-radius: 12px;
+    border: 1px solid rgba(15, 23, 42, .10);
+    padding: 10px 12px 10px 38px;
+    background: #fff;
+    outline: none;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, .05);
+    transition: .18s ease;
+}
+
+#amtexBcatSearch:focus{
+    border-color: rgba(37, 99, 235, .35);
+    box-shadow: 0 10px 26px rgba(37, 99, 235, .10);
+}
+
+.amtex-premium-bcat-meta{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+}
+
+.amtex-premium-bcat-pill{
+    height: 36px;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 23, 42, .10);
+    background: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(15, 23, 42, .70);
+    box-shadow: 0 6px 16px rgba(15, 23, 42, .04);
+}
+
+.amtex-premium-bcat-pill-active{
+    border-color: rgba(16, 185, 129, .25);
+    color: rgba(16, 185, 129, .95);
+}
+
+.amtex-premium-bcat-pill-inactive{
+    border-color: rgba(239, 68, 68, .22);
+    color: rgba(239, 68, 68, .92);
+}
+
+/* Grid */
+.amtex-premium-bcat-grid{
+    display:grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+@media (max-width: 1200px){
+    .amtex-premium-bcat-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 768px){
+    .amtex-premium-bcat-topbar{ flex-direction:column; align-items:stretch; }
+    .amtex-premium-bcat-controls{ justify-content:space-between; }
+    .amtex-premium-bcat-grid{ grid-template-columns: 1fr; }
+}
+
+/* Card */
+.amtex-premium-bcat-card{
+    position:relative;
+    border-radius: 16px;
+    border: 1px solid rgba(15, 23, 42, .10);
+    background: linear-gradient(180deg, rgba(255,255,255,1), rgba(248,250,252,1));
+    box-shadow: 0 14px 34px rgba(15, 23, 42, .06);
+    padding: 14px 14px 12px 14px;
+    transition: .18s ease;
+    overflow:hidden;
+}
+
+.amtex-premium-bcat-card::before{
+    content:"";
+    position:absolute;
+    inset: 0;
+    background: radial-gradient(700px 220px at 30% 0%, rgba(37,99,235,.10), transparent 55%);
+    pointer-events:none;
+}
+
+.amtex-premium-bcat-card:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 18px 46px rgba(15, 23, 42, .10);
+    border-color: rgba(37, 99, 235, .18);
+}
+
+.amtex-premium-bcat-card-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    position:relative;
+    z-index:1;
+}
+
+.amtex-premium-bcat-id{
+    font-size: 12px;
+    font-weight: 800;
+    color: rgba(15, 23, 42, .55);
+    background: rgba(15, 23, 42, .04);
+    border: 1px solid rgba(15, 23, 42, .08);
+    padding: 6px 10px;
+    border-radius: 999px;
+}
+
+.amtex-premium-bcat-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 23, 42, .10);
+    background: #fff;
+    color: rgba(15, 23, 42, .70);
+}
+
+.amtex-premium-bcat-badge--active{
+    border-color: rgba(16, 185, 129, .25);
+    color: rgba(16, 185, 129, .95);
+}
+
+.amtex-premium-bcat-badge--inactive{
+    border-color: rgba(239, 68, 68, .22);
+    color: rgba(239, 68, 68, .92);
+}
+
+.amtex-premium-bcat-dot{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display:inline-block;
+}
+
+.amtex-premium-bcat-dot--active{ background: rgba(16, 185, 129, 1); }
+.amtex-premium-bcat-dot--inactive{ background: rgba(239, 68, 68, 1); }
+
+.amtex-premium-bcat-name{
+    margin-top: 12px;
+    font-size: 16px;
+    font-weight: 900;
+    color: #0f172a;
+    position:relative;
+    z-index:1;
+    line-height: 1.25;
+    word-break: break-word;
+}
+
+.amtex-premium-bcat-slug{
+    margin-top: 10px;
+    position:relative;
+    z-index:1;
+    display:flex;
+    gap:10px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.amtex-premium-bcat-slug-label{
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(15, 23, 42, .55);
+}
+
+.amtex-premium-bcat-slug-value{
+    font-size: 12px;
+    font-weight: 800;
+    color: rgba(15, 23, 42, .75);
+    padding: 6px 10px;
+    border-radius: 10px;
+    border: 1px dashed rgba(15, 23, 42, .15);
+    background: rgba(255,255,255,.75);
+}
+
+/* Actions (uses your existing datatablesActions partial) */
+.amtex-premium-bcat-actions{
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(15, 23, 42, .08);
+    position:relative;
+    z-index:1;
+}
+
+.amtex-premium-bcat-actions-inner{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    align-items:center;
+}
+
+/* Make default admin buttons look premium only inside this module */
+.amtex-premium-bcat-btnfix{
+    border-radius: 10px !important;
+    font-weight: 800 !important;
+    padding: 6px 10px !important;
+    box-shadow: 0 10px 20px rgba(15, 23, 42, .08) !important;
+}
+
+/* Hide the DataTable, but keep it functioning */
+.amtex-premium-bcat-hidden-table{
+    position:absolute;
+    left:-99999px;
+    top:-99999px;
+    width: 1px;
+    height: 1px;
+    overflow:hidden;
+}
+
+/* Empty state */
+.amtex-premium-bcat-empty{
+    border-radius: 16px;
+    border: 1px dashed rgba(15, 23, 42, .18);
+    background: rgba(248,250,252,1);
+    padding: 34px 18px;
+    text-align:center;
+    color: rgba(15, 23, 42, .72);
+}
+
+.amtex-premium-bcat-empty-icon{
+    font-size: 28px;
+    color: rgba(37, 99, 235, .65);
+    margin-bottom: 8px;
+}
+
+.amtex-premium-bcat-empty-title{
+    font-size: 16px;
+    font-weight: 900;
+    color: #0f172a;
+}
+
+.amtex-premium-bcat-empty-sub{
+    margin-top: 6px;
+    font-size: 13px;
+    color: rgba(15, 23, 42, .60);
+}
+
+
+
+/* ============================================================
+   AMTEX PREMIUM BLOG CATEGORY FORM (Admin) - Unique Namespace
+   Namespace: amtex-premium-bcat-*
+   ============================================================ */
+
+.amtex-premium-bcat-form-card{
+    border-radius: 16px;
+    border: 1px solid rgba(15, 23, 42, .10);
+    overflow: hidden;
+    box-shadow: 0 14px 34px rgba(15, 23, 42, .06);
+}
+
+.amtex-premium-bcat-form-header{
+    background: linear-gradient(180deg, rgba(255,255,255,1), rgba(248,250,252,1));
+    border-bottom: 1px solid rgba(15, 23, 42, .08);
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap: 14px;
+}
+
+.amtex-premium-bcat-form-head{
+    display:flex;
+    flex-direction:column;
+    gap: 4px;
+}
+
+.amtex-premium-bcat-form-title{
+    font-size: 18px;
+    font-weight: 900;
+    color: #0f172a;
+}
+
+.amtex-premium-bcat-form-subtitle{
+    font-size: 13px;
+    color: rgba(15, 23, 42, .62);
+}
+
+.amtex-premium-bcat-form-header-actions{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+}
+
+.amtex-premium-bcat-btn-soft{
+    border-radius: 12px !important;
+    font-weight: 800 !important;
+    border: 1px solid rgba(15, 23, 42, .10) !important;
+    background: #fff !important;
+    box-shadow: 0 10px 20px rgba(15, 23, 42, .06) !important;
+}
+
+.amtex-premium-bcat-form-body{
+    padding: 18px;
+    background: #fff;
+}
+
+.amtex-premium-bcat-form-grid{
+    display:grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+@media (max-width: 768px){
+    .amtex-premium-bcat-form-grid{
+        grid-template-columns: 1fr;
+    }
+}
+
+.amtex-premium-bcat-field{
+    margin-bottom: 0 !important;
+}
+
+.amtex-premium-bcat-label{
+    font-weight: 900;
+    color: rgba(15, 23, 42, .82);
+    margin-bottom: 6px;
+}
+
+.amtex-premium-bcat-input{
+    height: 44px;
+    border-radius: 12px !important;
+    border: 1px solid rgba(15, 23, 42, .10) !important;
+    box-shadow: 0 10px 22px rgba(15, 23, 42, .05);
+    transition: .18s ease;
+}
+
+.amtex-premium-bcat-input:focus{
+    border-color: rgba(37, 99, 235, .35) !important;
+    box-shadow: 0 12px 30px rgba(37, 99, 235, .10) !important;
+}
+
+.amtex-premium-bcat-help{
+    display:block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: rgba(15, 23, 42, .55);
+}
+
+.amtex-premium-bcat-slugwrap{
+    display:flex;
+    gap: 10px;
+    align-items:center;
+}
+
+.amtex-premium-bcat-slugbtn{
+    height: 44px;
+    width: 46px;
+    border-radius: 12px !important;
+    border: 1px solid rgba(15, 23, 42, .10) !important;
+    box-shadow: 0 10px 22px rgba(15, 23, 42, .06);
+    font-weight: 900;
+}
+
+.amtex-premium-bcat-form-actions{
+    display:flex;
+    gap: 10px;
+    align-items:center;
+    justify-content:flex-start;
+    padding-top: 14px;
+    margin-top: 14px;
+    border-top: 1px solid rgba(15, 23, 42, .08);
+}
+
+.amtex-premium-bcat-btn-primary{
+    border-radius: 12px !important;
+    font-weight: 900 !important;
+    padding: 10px 14px !important;
+    box-shadow: 0 14px 30px rgba(239, 68, 68, .16) !important;
+}
+
+.amtex-premium-bcat-btn-secondary{
+    border-radius: 12px !important;
+    font-weight: 900 !important;
+    padding: 10px 14px !important;
+    border: 1px solid rgba(15, 23, 42, .12) !important;
+    background: #fff !important;
+    color: rgba(15, 23, 42, .82) !important;
+}
+
+/* Optional hint line for edit/create */
+.amtex-premium-bcat-hint{
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(15, 23, 42, .55);
+}
+
+/* ============================================================
+   AMTEX PREMIUM BLOG CATEGORY SHOW (Admin) - Unique Namespace
+   Namespace: amtex-premium-bcat-*
+   ============================================================ */
+
+.amtex-premium-bcat-show-card{
+    border-radius: 16px;
+    border: 1px solid rgba(15, 23, 42, .10);
+    overflow: hidden;
+    box-shadow: 0 14px 34px rgba(15, 23, 42, .06);
+}
+
+.amtex-premium-bcat-show-header{
+    background: linear-gradient(180deg, rgba(255,255,255,1), rgba(248,250,252,1));
+    border-bottom: 1px solid rgba(15, 23, 42, .08);
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap: 14px;
+}
+
+.amtex-premium-bcat-show-head{
+    display:flex;
+    flex-direction:column;
+    gap: 4px;
+}
+
+.amtex-premium-bcat-show-title{
+    font-size: 18px;
+    font-weight: 900;
+    color: #0f172a;
+}
+
+.amtex-premium-bcat-show-subtitle{
+    font-size: 13px;
+    color: rgba(15, 23, 42, .62);
+}
+
+.amtex-premium-bcat-show-actions{
+    display:flex;
+    gap: 10px;
+    align-items:center;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+}
+
+.amtex-premium-bcat-show-body{
+    padding: 18px;
+    background: #fff;
+}
+
+.amtex-premium-bcat-show-grid{
+    display:grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+@media (max-width: 768px){
+    .amtex-premium-bcat-show-grid{ grid-template-columns: 1fr; }
+}
+
+.amtex-premium-bcat-info{
+    border-radius: 14px;
+    border: 1px solid rgba(15, 23, 42, .10);
+    background: linear-gradient(180deg, rgba(255,255,255,1), rgba(248,250,252,1));
+    box-shadow: 0 12px 26px rgba(15, 23, 42, .05);
+    padding: 14px;
+    position:relative;
+    overflow:hidden;
+}
+
+.amtex-premium-bcat-info::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: radial-gradient(700px 220px at 20% 0%, rgba(37,99,235,.08), transparent 55%);
+    pointer-events:none;
+}
+
+.amtex-premium-bcat-info-label{
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(15, 23, 42, .55);
+    position:relative;
+    z-index:1;
+}
+
+.amtex-premium-bcat-info-value{
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 800;
+    color: rgba(15, 23, 42, .84);
+    position:relative;
+    z-index:1;
+    word-break: break-word;
+}
+
+.amtex-premium-bcat-info-value--big{
+    font-size: 16px;
+    font-weight: 900;
+    color: #0f172a;
+}
+
+.amtex-premium-bcat-chip{
+    display:inline-flex;
+    align-items:center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 23, 42, .10);
+    background: #fff;
+    font-size: 12px;
+    font-weight: 900;
+    color: rgba(15, 23, 42, .72);
+}
+
+.amtex-premium-bcat-mono{
+    display:inline-block;
+    padding: 8px 10px;
+    border-radius: 12px;
+    border: 1px dashed rgba(15, 23, 42, .18);
+    background: rgba(255,255,255,.75);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 12px;
+    font-weight: 800;
+    color: rgba(15, 23, 42, .78);
+}
+
+.amtex-premium-bcat-status{
+    display:inline-flex;
+    align-items:center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 23, 42, .10);
+    background: #fff;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.amtex-premium-bcat-status--active{
+    border-color: rgba(16, 185, 129, .25);
+    color: rgba(16, 185, 129, .95);
+}
+
+.amtex-premium-bcat-status--inactive{
+    border-color: rgba(239, 68, 68, .22);
+    color: rgba(239, 68, 68, .92);
+}
+
+/* Reuse dot classes from previous CSS if already present */
+.amtex-premium-bcat-dot{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display:inline-block;
+}
+
+.amtex-premium-bcat-dot--active{ background: rgba(16, 185, 129, 1); }
+.amtex-premium-bcat-dot--inactive{ background: rgba(239, 68, 68, 1); }
+
+.amtex-premium-bcat-show-footer{
+    display:flex;
+    gap: 10px;
+    align-items:center;
+    justify-content:flex-end;
+    padding-top: 14px;
+    margin-top: 14px;
+    border-top: 1px solid rgba(15, 23, 42, .08);
+}
+
+/* If you used this earlier, keep same for consistency */
+.amtex-premium-bcat-btn-soft{
+    border-radius: 12px !important;
+    font-weight: 800 !important;
+    border: 1px solid rgba(15, 23, 42, .10) !important;
+    background: #fff !important;
+    box-shadow: 0 10px 20px rgba(15, 23, 42, .06) !important;
+}
+
+.amtex-premium-bcat-btn-primaryblue{
+    border-radius: 12px !important;
+    font-weight: 900 !important;
+    padding: 10px 14px !important;
+    box-shadow: 0 14px 30px rgba(37, 99, 235, .16) !important;
+}
+
+/* ============================================================
+   AMTEX PREMIUM BLOG POSTS (Admin) - Unique Namespace
+   Namespace: amtex-premium-bpost-*
+   ============================================================ */
+
+.amtex-premium-bpost-wrap{
+    padding: 14px 6px;
+}
+
+.amtex-premium-bpost-topbar{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    justify-content:space-between;
+    padding: 8px 6px 18px 6px;
+    border-bottom: 1px solid rgba(15, 23, 42, .08);
+    margin-bottom: 16px;
+}
+
+.amtex-premium-bpost-titlebox{ min-width: 240px; }
+
+.amtex-premium-bpost-title{
+    font-size: 18px;
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: .2px;
+}
+
+.amtex-premium-bpost-subtitle{
+    margin-top: 4px;
+    font-size: 13px;
+    color: rgba(15, 23, 42, .65);
+}
+
+.amtex-premium-bpost-controls{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+}
+
+.amtex-premium-bpost-search{
+    position:relative;
+    width: min(360px, 72vw);
+}
+
+.amtex-premium-bpost-search-ico{
+    position:absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(15, 23, 42, .45);
+    font-size: 14px;
+    pointer-events:none;
+}
+
+#amtexBpostSearch{
+    width:100%;
+    height: 42px;
+    border-radius: 12px;
+    border: 1px solid rgba(15, 23, 42, .10);
+    padding: 10px 12px 10px 38px;
+    background: #fff;
+    outline: none;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, .05);
+    transition: .18s ease;
+}
+
+#amtexBpostSearch:focus{
+    border-color: rgba(37, 99, 235, .35);
+    box-shadow: 0 10px 26px rgba(37, 99, 235, .10);
+}
+
+.amtex-premium-bpost-meta{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+}
+
+.amtex-premium-bpost-pill{
+    height: 36px;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 23, 42, .10);
+    background: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    color: rgba(15, 23, 42, .70);
+    box-shadow: 0 6px 16px rgba(15, 23, 42, .04);
+}
+
+.amtex-premium-bpost-pill-pub{
+    border-color: rgba(16, 185, 129, .25);
+    color: rgba(16, 185, 129, .95);
+}
+
+.amtex-premium-bpost-pill-draft{
+    border-color: rgba(239, 68, 68, .22);
+    color: rgba(239, 68, 68, .92);
+}
+
+/* Grid */
+.amtex-premium-bpost-grid{
+    display:grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+@media (max-width: 1200px){
+    .amtex-premium-bpost-grid{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px){
+    .amtex-premium-bpost-topbar{ flex-direction:column; align-items:stretch; }
+    .amtex-premium-bpost-controls{ justify-content:space-between; }
+}
+
+/* Card */
+.amtex-premium-bpost-card{
+    position:relative;
+    border-radius: 16px;
+    border: 1px solid rgba(15, 23, 42, .10);
+    background: linear-gradient(180deg, rgba(255,255,255,1), rgba(248,250,252,1));
+    box-shadow: 0 14px 34px rgba(15, 23, 42, .06);
+    padding: 14px;
+    transition: .18s ease;
+    overflow:hidden;
+}
+
+.amtex-premium-bpost-card::before{
+    content:"";
+    position:absolute;
+    inset: 0;
+    background: radial-gradient(760px 220px at 30% 0%, rgba(37,99,235,.10), transparent 55%);
+    pointer-events:none;
+}
+
+.amtex-premium-bpost-card:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 18px 46px rgba(15, 23, 42, .10);
+    border-color: rgba(37, 99, 235, .18);
+}
+
+.amtex-premium-bpost-card-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    position:relative;
+    z-index:1;
+}
+
+.amtex-premium-bpost-id{
+    font-size: 12px;
+    font-weight: 900;
+    color: rgba(15, 23, 42, .55);
+    background: rgba(15, 23, 42, .04);
+    border: 1px solid rgba(15, 23, 42, .08);
+    padding: 6px 10px;
+    border-radius: 999px;
+}
+
+.amtex-premium-bpost-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size: 12px;
+    font-weight: 900;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 23, 42, .10);
+    background: #fff;
+}
+
+.amtex-premium-bpost-badge--pub{
+    border-color: rgba(16, 185, 129, .25);
+    color: rgba(16, 185, 129, .95);
+}
+
+.amtex-premium-bpost-badge--draft{
+    border-color: rgba(239, 68, 68, .22);
+    color: rgba(239, 68, 68, .92);
+}
+
+.amtex-premium-bpost-dot{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display:inline-block;
+}
+
+.amtex-premium-bpost-dot--pub{ background: rgba(16, 185, 129, 1); }
+.amtex-premium-bpost-dot--draft{ background: rgba(239, 68, 68, 1); }
+
+.amtex-premium-bpost-main{
+    display:flex;
+    gap: 12px;
+    margin-top: 12px;
+    position:relative;
+    z-index:1;
+}
+
+.amtex-premium-bpost-thumb{
+    width: 84px;
+    height: 84px;
+    border-radius: 14px;
+    overflow:hidden;
+    border: 1px solid rgba(15, 23, 42, .10);
+    background: #fff;
+    box-shadow: 0 12px 26px rgba(15, 23, 42, .06);
+    flex: 0 0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.amtex-premium-bpost-thumb img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.amtex-premium-bpost-thumb--empty{
+    color: rgba(15, 23, 42, .35);
+    background: rgba(255,255,255,.75);
+}
+
+.amtex-premium-bpost-content{
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.amtex-premium-bpost-titleline{
+    font-size: 16px;
+    font-weight: 900;
+    color: #0f172a;
+    line-height: 1.25;
+    display:-webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow:hidden;
+}
+
+.amtex-premium-bpost-meta1{
+    margin-top: 10px;
+    display:flex;
+    gap: 8px;
+    flex-wrap:wrap;
+    align-items:center;
+}
+
+.amtex-premium-bpost-chip{
+    display:inline-flex;
+    align-items:center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 23, 42, .10);
+    background: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    color: rgba(15, 23, 42, .72);
+}
+
+.amtex-premium-bpost-slug{
+    margin-top: 10px;
+    display:flex;
+    gap: 10px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.amtex-premium-bpost-slug-label{
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(15, 23, 42, .55);
+}
+
+.amtex-premium-bpost-slug-val{
+    font-size: 12px;
+    font-weight: 900;
+    color: rgba(15, 23, 42, .78);
+    padding: 6px 10px;
+    border-radius: 10px;
+    border: 1px dashed rgba(15, 23, 42, .15);
+    background: rgba(255,255,255,.75);
+    word-break: break-word;
+}
+
+.amtex-premium-bpost-excerpt{
+    margin-top: 10px;
+    font-size: 13px;
+    color: rgba(15, 23, 42, .65);
+    line-height: 1.5;
+    display:-webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow:hidden;
+}
+
+.amtex-premium-bpost-meta2{
+    margin-top: 10px;
+    display:flex;
+    justify-content:flex-start;
+}
+
+.amtex-premium-bpost-date{
+    font-size: 12px;
+    font-weight: 800;
+    color: rgba(15, 23, 42, .65);
+    display:inline-flex;
+    gap:6px;
+    align-items:center;
+}
+
+/* Actions */
+.amtex-premium-bpost-actions{
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(15, 23, 42, .08);
+    position:relative;
+    z-index:1;
+}
+
+.amtex-premium-bpost-actions-inner{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    align-items:center;
+}
+
+.amtex-premium-bpost-btnfix{
+    border-radius: 10px !important;
+    font-weight: 900 !important;
+    padding: 6px 10px !important;
+    box-shadow: 0 10px 20px rgba(15, 23, 42, .08) !important;
+}
+
+/* Hide table */
+.amtex-premium-bpost-hidden-table{
+    position:absolute;
+    left:-99999px;
+    top:-99999px;
+    width: 1px;
+    height: 1px;
+    overflow:hidden;
+}
+
+/* Empty state */
+.amtex-premium-bpost-empty{
+    border-radius: 16px;
+    border: 1px dashed rgba(15, 23, 42, .18);
+    background: rgba(248,250,252,1);
+    padding: 34px 18px;
+    text-align:center;
+    color: rgba(15, 23, 42, .72);
+}
+
+.amtex-premium-bpost-empty-icon{
+    font-size: 28px;
+    color: rgba(37, 99, 235, .65);
+    margin-bottom: 8px;
+}
+
+.amtex-premium-bpost-empty-title{
+    font-size: 16px;
+    font-weight: 900;
+    color: #0f172a;
+}
+
+.amtex-premium-bpost-empty-sub{
+    margin-top: 6px;
+    font-size: 13px;
+    color: rgba(15, 23, 42, .60);
+}
+
+
+/* ============================================================
+   AMTEX PREMIUM BLOG POST FORM (Admin) - Unique Namespace
+   Namespace: amtex-premium-bpostform-*
+   ============================================================ */
+
+.amtex-premium-bpostform-card{
+    border-radius: 16px;
+    border: 1px solid rgba(15, 23, 42, .10);
+    overflow: hidden;
+    box-shadow: 0 14px 34px rgba(15, 23, 42, .06);
+}
+
+.amtex-premium-bpostform-header{
+    background: linear-gradient(180deg, rgba(255,255,255,1), rgba(248,250,252,1));
+    border-bottom: 1px solid rgba(15, 23, 42, .08);
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap: 14px;
+}
+
+.amtex-premium-bpostform-head{
+    display:flex;
+    flex-direction:column;
+    gap: 4px;
+}
+
+.amtex-premium-bpostform-title{
+    font-size: 18px;
+    font-weight: 900;
+    color: #0f172a;
+}
+
+.amtex-premium-bpostform-subtitle{
+    font-size: 13px;
+    color: rgba(15, 23, 42, .62);
+}
+
+.amtex-premium-bpostform-header-actions{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+}
+
+.amtex-premium-bpostform-btn-soft{
+    border-radius: 12px !important;
+    font-weight: 800 !important;
+    border: 1px solid rgba(15, 23, 42, .10) !important;
+    background: #fff !important;
+    box-shadow: 0 10px 20px rgba(15, 23, 42, .06) !important;
+}
+
+.amtex-premium-bpostform-body{
+    padding: 18px;
+    background: #fff;
+}
+
+.amtex-premium-bpostform-grid{
+    display:grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+@media (max-width: 768px){
+    .amtex-premium-bpostform-grid{ grid-template-columns: 1fr; }
+}
+
+.amtex-premium-bpostform-field{ margin-bottom: 0 !important; }
+.amtex-premium-bpostform-field--full{ grid-column: 1 / -1; }
+
+.amtex-premium-bpostform-label{
+    font-weight: 900;
+    color: rgba(15, 23, 42, .82);
+    margin-bottom: 6px;
+}
+
+.amtex-premium-bpostform-input{
+    height: 44px;
+    border-radius: 12px !important;
+    border: 1px solid rgba(15, 23, 42, .10) !important;
+    box-shadow: 0 10px 22px rgba(15, 23, 42, .05);
+    transition: .18s ease;
+}
+
+.amtex-premium-bpostform-input:focus{
+    border-color: rgba(37, 99, 235, .35) !important;
+    box-shadow: 0 12px 30px rgba(37, 99, 235, .10) !important;
+}
+
+.amtex-premium-bpostform-textarea{
+    min-height: 110px;
+    border-radius: 12px !important;
+    border: 1px solid rgba(15, 23, 42, .10) !important;
+    box-shadow: 0 10px 22px rgba(15, 23, 42, .05);
+}
+
+.amtex-premium-bpostform-help{
+    display:block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: rgba(15, 23, 42, .55);
+}
+
+.amtex-premium-bpostform-inlinehint{
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 800;
+    color: rgba(15, 23, 42, .55);
+}
+
+.amtex-premium-bpostform-slugwrap,
+.amtex-premium-bpostform-readwrap,
+.amtex-premium-bpostform-pubwrap{
+    display:flex;
+    gap: 10px;
+    align-items:center;
+}
+
+.amtex-premium-bpostform-slugbtn{
+    height: 44px;
+    width: 46px;
+    border-radius: 12px !important;
+    border: 1px solid rgba(15, 23, 42, .10) !important;
+    box-shadow: 0 10px 22px rgba(15, 23, 42, .06);
+    font-weight: 900;
+}
+
+.amtex-premium-bpostform-dropzone{
+    border-radius: 14px !important;
+    border: 1px dashed rgba(15, 23, 42, .18) !important;
+    background: rgba(248,250,252,1) !important;
+    box-shadow: 0 10px 22px rgba(15, 23, 42, .05);
+}
+
+.amtex-premium-bpostform-actions{
+    display:flex;
+    gap: 10px;
+    align-items:center;
+    justify-content:flex-start;
+    padding-top: 14px;
+    margin-top: 14px;
+    border-top: 1px solid rgba(15, 23, 42, .08);
+}
+
+.amtex-premium-bpostform-btn-primary{
+    border-radius: 12px !important;
+    font-weight: 900 !important;
+    padding: 10px 14px !important;
+    box-shadow: 0 14px 30px rgba(239, 68, 68, .16) !important;
+}
+
+.amtex-premium-bpostform-btn-secondary{
+    border-radius: 12px !important;
+    font-weight: 900 !important;
+    padding: 10px 14px !important;
+    border: 1px solid rgba(15, 23, 42, .12) !important;
+    background: #fff !important;
+    color: rgba(15, 23, 42, .82) !important;
+}
+
+/* CKEditor visual polish inside this module */
+.amtex-premium-bpostform-ckeditor + .ck-editor .ck-editor__main > .ck-editor__editable{
+    min-height: 240px;
+    border-radius: 12px;
+}
+
+
+/* ============================================================
+   AMTEX PREMIUM BLOG POST SHOW (Admin) - Unique Namespace
+   Namespace: amtex-premium-bpostshow-*
+   ============================================================ */
+
+.amtex-premium-bpostshow-card{
+    border-radius: 16px;
+    border: 1px solid rgba(15, 23, 42, .10);
+    overflow: hidden;
+    box-shadow: 0 14px 34px rgba(15, 23, 42, .06);
+}
+
+.amtex-premium-bpostshow-header{
+    background: linear-gradient(180deg, rgba(255,255,255,1), rgba(248,250,252,1));
+    border-bottom: 1px solid rgba(15, 23, 42, .08);
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap: 14px;
+}
+
+.amtex-premium-bpostshow-head{
+    display:flex;
+    flex-direction:column;
+    gap: 4px;
+}
+
+.amtex-premium-bpostshow-title{
+    font-size: 18px;
+    font-weight: 900;
+    color: #0f172a;
+}
+
+.amtex-premium-bpostshow-subtitle{
+    font-size: 13px;
+    color: rgba(15, 23, 42, .62);
+}
+
+.amtex-premium-bpostshow-actions{
+    display:flex;
+    gap: 10px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.amtex-premium-bpostshow-btnsoft{
+    border-radius: 12px !important;
+    font-weight: 800 !important;
+    border: 1px solid rgba(15, 23, 42, .10) !important;
+    background: #fff !important;
+    box-shadow: 0 10px 20px rgba(15, 23, 42, .06) !important;
+}
+
+.amtex-premium-bpostshow-btnprimary{
+    border-radius: 12px !important;
+    font-weight: 900 !important;
+    box-shadow: 0 12px 26px rgba(37, 99, 235, .14) !important;
+}
+
+.amtex-premium-bpostshow-body{
+    padding: 18px;
+    background: #fff;
+}
+
+/* Summary */
+.amtex-premium-bpostshow-summary{
+    border-radius: 16px;
+    border: 1px solid rgba(15, 23, 42, .10);
+    background: linear-gradient(180deg, rgba(255,255,255,1), rgba(248,250,252,1));
+    box-shadow: 0 14px 30px rgba(15, 23, 42, .06);
+    padding: 14px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.amtex-premium-bpostshow-summary::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: radial-gradient(760px 240px at 25% 0%, rgba(37,99,235,.10), transparent 55%);
+    pointer-events:none;
+}
+
+.amtex-premium-bpostshow-badgewrap{
+    display:flex;
+    gap: 10px;
+    flex-wrap:wrap;
+    align-items:center;
+    position:relative;
+    z-index:1;
+}
+
+.amtex-premium-bpostshow-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size: 12px;
+    font-weight: 900;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 23, 42, .10);
+    background: #fff;
+}
+
+.amtex-premium-bpostshow-badge--pub{
+    border-color: rgba(16, 185, 129, .25);
+    color: rgba(16, 185, 129, .95);
+}
+
+.amtex-premium-bpostshow-badge--draft{
+    border-color: rgba(239, 68, 68, .22);
+    color: rgba(239, 68, 68, .92);
+}
+
+.amtex-premium-bpostshow-dot{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display:inline-block;
+}
+
+.amtex-premium-bpostshow-dot--pub{ background: rgba(16,185,129,1); }
+.amtex-premium-bpostshow-dot--draft{ background: rgba(239,68,68,1); }
+
+.amtex-premium-bpostshow-chip{
+    display:inline-flex;
+    align-items:center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 23, 42, .10);
+    background: rgba(255,255,255,.9);
+    font-size: 12px;
+    font-weight: 800;
+    color: rgba(15, 23, 42, .72);
+}
+
+.amtex-premium-bpostshow-headline{
+    position:relative;
+    z-index:1;
+    margin-top: 12px;
+    font-size: 18px;
+    font-weight: 900;
+    color: #0f172a;
+    line-height: 1.25;
+}
+
+.amtex-premium-bpostshow-slug{
+    position:relative;
+    z-index:1;
+    margin-top: 10px;
+    display:flex;
+    gap: 10px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.amtex-premium-bpostshow-sluglabel{
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(15, 23, 42, .55);
+}
+
+.amtex-premium-bpostshow-slugval{
+    font-size: 12px;
+    font-weight: 900;
+    color: rgba(15, 23, 42, .78);
+    padding: 6px 10px;
+    border-radius: 10px;
+    border: 1px dashed rgba(15, 23, 42, .16);
+    background: rgba(255,255,255,.75);
+    word-break: break-word;
+}
+
+/* Grid layout */
+.amtex-premium-bpostshow-grid{
+    display:grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 14px;
+}
+
+@media (max-width: 1100px){
+    .amtex-premium-bpostshow-grid{ grid-template-columns: 1fr; }
+}
+
+/* Boxes */
+.amtex-premium-bpostshow-box{
+    border-radius: 16px;
+    border: 1px solid rgba(15, 23, 42, .10);
+    background: #fff;
+    box-shadow: 0 12px 26px rgba(15, 23, 42, .05);
+    overflow:hidden;
+    margin-bottom: 14px;
+}
+
+.amtex-premium-bpostshow-boxhead{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    padding: 12px 14px;
+    font-weight: 900;
+    color: rgba(15, 23, 42, .82);
+    border-bottom: 1px solid rgba(15, 23, 42, .08);
+    background: rgba(248,250,252,1);
+}
+
+.amtex-premium-bpostshow-boxbody{
+    padding: 12px 14px;
+    color: rgba(15, 23, 42, .72);
+    line-height: 1.65;
+    font-size: 13px;
+}
+
+.amtex-premium-bpostshow-content{
+    font-size: 14px;
+}
+
+/* image */
+.amtex-premium-bpostshow-imagewrap{
+    display:block;
+    position:relative;
+    border-radius: 14px;
+    overflow:hidden;
+    border: 1px solid rgba(15, 23, 42, .10);
+    box-shadow: 0 14px 30px rgba(15, 23, 42, .08);
+}
+
+.amtex-premium-bpostshow-imagewrap img{
+    width:100%;
+    height:auto;
+    display:block;
+}
+
+.amtex-premium-bpostshow-imagetag{
+    position:absolute;
+    right: 10px;
+    bottom: 10px;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, .78);
+    color:#fff;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.amtex-premium-bpostshow-emptyimg{
+    border-radius: 14px;
+    border: 1px dashed rgba(15, 23, 42, .18);
+    background: rgba(248,250,252,1);
+    padding: 26px 12px;
+    text-align:center;
+    color: rgba(15, 23, 42, .55);
+    font-weight: 800;
+}
+
+.amtex-premium-bpostshow-emptyimg i{
+    font-size: 22px;
+    margin-bottom: 8px;
+    color: rgba(37, 99, 235, .65);
+    display:block;
+}
+
+/* key-value */
+.amtex-premium-bpostshow-kv{
+    display:flex;
+    justify-content:space-between;
+    gap: 10px;
+    padding: 10px 14px;
+    border-top: 1px solid rgba(15, 23, 42, .06);
+}
+
+.amtex-premium-bpostshow-kv:first-of-type{
+    border-top: none;
+}
+
+.amtex-premium-bpostshow-k{
+    font-size: 12px;
+    font-weight: 900;
+    color: rgba(15, 23, 42, .62);
+}
+
+.amtex-premium-bpostshow-v{
+    font-size: 12px;
+    font-weight: 900;
+    color: rgba(15, 23, 42, .78);
+    text-align:right;
+    max-width: 60%;
+    word-break: break-word;
+}
+
+.amtex-premium-bpostshow-muted{
+    color: rgba(15, 23, 42, .55);
+    font-weight: 800;
+}
+
+/* footer */
+.amtex-premium-bpostshow-footer{
+    margin-top: 10px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(15, 23, 42, .08);
+}
+
+
+/* =========================================================
+   AMTEX | FAQ Category Index (Premium Cards)
+   Namespace: .amtex-faqcat
+   Paste into: custom.css
+   ========================================================= */
+
+.amtex-faqcat .fc-toolbar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.75rem;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:1rem;
+}
+
+.amtex-faqcat .fc-toolbar .left,
+.amtex-faqcat .fc-toolbar .right{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+  align-items:center;
+}
+
+.amtex-faqcat .fc-filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+  align-items:center;
+}
+
+.amtex-faqcat .fc-card{
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:14px;
+  overflow:hidden;
+  transition: all .18s ease;
+  background:#fff;
+}
+
+.amtex-faqcat .fc-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+.amtex-faqcat .fc-card-top{
+  padding:.9rem 1rem;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:.75rem;
+  border-bottom:1px solid rgba(0,0,0,.06);
+  background: linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,0));
+}
+
+.amtex-faqcat .fc-title{
+  font-weight:700;
+  font-size:1rem;
+  margin:0;
+  line-height:1.25rem;
+  color:#111827;
+}
+
+.amtex-faqcat .fc-meta{
+  font-size:.85rem;
+  color:#6b7280;
+  margin-top:.25rem;
+  display:flex;
+  gap:.6rem;
+  flex-wrap:wrap;
+}
+
+.amtex-faqcat .fc-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:.35rem;
+  padding:.25rem .55rem;
+  font-size:.75rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.08);
+  background:#fff;
+  color:#111827;
+}
+
+.amtex-faqcat .fc-badge.active{
+  border-color: rgba(16,185,129,.35);
+  background: rgba(16,185,129,.08);
+  color:#065f46;
+}
+
+.amtex-faqcat .fc-badge.inactive{
+  border-color: rgba(239,68,68,.35);
+  background: rgba(239,68,68,.08);
+  color:#7f1d1d;
+}
+
+.amtex-faqcat .fc-card-body{
+  padding:.9rem 1rem 1rem;
+}
+
+.amtex-faqcat .fc-actions .dropdown-toggle{
+  border:1px solid rgba(0,0,0,.10);
+  background:#fff;
+  border-radius:10px;
+}
+
+.amtex-faqcat .bulkbar{
+  display:none;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding:.75rem 1rem;
+  border-radius:12px;
+  background:#111827;
+  color:#fff;
+  margin-bottom:1rem;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+}
+
+.amtex-faqcat .bulkbar .bulk-left{
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+  flex-wrap:wrap;
+}
+
+.amtex-faqcat .bulkbar .bulk-right{
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  flex-wrap:wrap;
+}
+
+.amtex-faqcat .bulkbar .btn{
+  border-radius:10px;
+}
+
+.amtex-faqcat .fc-pagination-wrap{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:1rem;
+  flex-wrap:wrap;
+  margin-top:1rem;
+}
+
+/* =========================================================
+   AMTEX | FAQ Category Form (Create/Edit) - Premium UI
+   Namespace: .amtex-faqcat-form
+   ========================================================= */
+
+.amtex-faqcat-form .af-header{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:.75rem;
+  margin-bottom: 1rem;
+}
+
+.amtex-faqcat-form .af-title{
+  margin:0;
+  font-weight:800;
+  color:#111827;
+  font-size:1.15rem;
+}
+
+.amtex-faqcat-form .af-subtitle{
+  margin:.2rem 0 0 0;
+  color:#6b7280;
+  font-size:.9rem;
+}
+
+.amtex-faqcat-form .af-card{
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:14px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,.04);
+}
+
+.amtex-faqcat-form .af-card .card-header{
+  background: linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,0));
+  border-bottom:1px solid rgba(0,0,0,.06);
+  font-weight:700;
+}
+
+.amtex-faqcat-form .af-section-title{
+  font-weight:800;
+  color:#111827;
+  font-size:1rem;
+  margin:0;
+}
+
+.amtex-faqcat-form .af-section-hint{
+  color:#6b7280;
+  font-size:.9rem;
+  margin:.25rem 0 0 0;
+}
+
+.amtex-faqcat-form .af-field{
+  margin-bottom: 1rem;
+}
+
+.amtex-faqcat-form .af-label{
+  font-weight:700;
+  color:#111827;
+  margin-bottom: .45rem;
+}
+
+.amtex-faqcat-form .af-help{
+  color:#6b7280;
+  font-size:.85rem;
+  margin-top:.35rem;
+}
+
+.amtex-faqcat-form .form-control{
+  border-radius: 12px;
+}
+
+.amtex-faqcat-form .btn{
+  border-radius: 12px;
+}
+
+.amtex-faqcat-form .af-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:.6rem;
+  flex-wrap:wrap;
+  margin-top: .5rem;
+}
+
+.amtex-faqcat-form .af-note{
+  border:1px solid rgba(59,130,246,.18);
+  background: rgba(59,130,246,.06);
+  border-radius: 14px;
+  padding: .9rem 1rem;
+  color:#0f172a;
+}
+
+.amtex-faqcat-form .af-note strong{
+  display:block;
+  margin-bottom:.25rem;
+}
+
+/* =========================================================
+   AMTEX | FAQ Index (Premium Cards)
+   Namespace: .amtex-faq
+   ========================================================= */
+
+.amtex-faq .faq-toolbar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.75rem;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:1rem;
+}
+
+.amtex-faq .faq-toolbar .left,
+.amtex-faq .faq-toolbar .right{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+  align-items:center;
+}
+
+.amtex-faq .faq-filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+  align-items:center;
+}
+
+.amtex-faq .faq-card{
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:14px;
+  overflow:hidden;
+  transition: all .18s ease;
+  background:#fff;
+}
+
+.amtex-faq .faq-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+.amtex-faq .faq-card-top{
+  padding:.9rem 1rem;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:.75rem;
+  border-bottom:1px solid rgba(0,0,0,.06);
+  background: linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,0));
+}
+
+.amtex-faq .faq-title{
+  font-weight:800;
+  font-size:1rem;
+  margin:0;
+  line-height:1.3rem;
+  color:#111827;
+}
+
+.amtex-faq .faq-meta{
+  font-size:.85rem;
+  color:#6b7280;
+  margin-top:.35rem;
+  display:flex;
+  gap:.6rem;
+  flex-wrap:wrap;
+}
+
+.amtex-faq .faq-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:.35rem;
+  padding:.25rem .55rem;
+  font-size:.75rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.08);
+  background:#fff;
+  color:#111827;
+}
+
+.amtex-faq .faq-badge.active{
+  border-color: rgba(16,185,129,.35);
+  background: rgba(16,185,129,.08);
+  color:#065f46;
+}
+
+.amtex-faq .faq-badge.inactive{
+  border-color: rgba(239,68,68,.35);
+  background: rgba(239,68,68,.08);
+  color:#7f1d1d;
+}
+
+.amtex-faq .faq-card-body{
+  padding:.9rem 1rem 1rem;
+}
+
+.amtex-faq .faq-actions .dropdown-toggle{
+  border:1px solid rgba(0,0,0,.10);
+  background:#fff;
+  border-radius:10px;
+}
+
+.amtex-faq .faq-snippet{
+  color:#6b7280;
+  font-size:.9rem;
+  margin-top:.25rem;
+}
+
+.amtex-faq .bulkbar{
+  display:none;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding:.75rem 1rem;
+  border-radius:12px;
+  background:#111827;
+  color:#fff;
+  margin-bottom:1rem;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+}
+
+.amtex-faq .bulkbar .bulk-left{
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+  flex-wrap:wrap;
+}
+
+.amtex-faq .bulkbar .bulk-right{
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  flex-wrap:wrap;
+}
+
+.amtex-faq .bulkbar .btn{
+  border-radius:10px;
+}
+
+.amtex-faq .faq-pagination-wrap{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:1rem;
+  flex-wrap:wrap;
+  margin-top:1rem;
+}
+
+/* =========================================================
+   AMTEX | FAQ Form (Create/Edit) - Premium UI
+   Namespace: .amtex-faq-form
+   ========================================================= */
+
+.amtex-faq-form .af-header{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:.75rem;
+  margin-bottom: 1rem;
+}
+
+.amtex-faq-form .af-title{
+  margin:0;
+  font-weight:800;
+  color:#111827;
+  font-size:1.15rem;
+}
+
+.amtex-faq-form .af-subtitle{
+  margin:.2rem 0 0 0;
+  color:#6b7280;
+  font-size:.9rem;
+}
+
+.amtex-faq-form .af-card{
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:14px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,.04);
+}
+
+.amtex-faq-form .af-card .card-header{
+  background: linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,0));
+  border-bottom:1px solid rgba(0,0,0,.06);
+  font-weight:700;
+}
+
+.amtex-faq-form .af-section-title{
+  font-weight:800;
+  color:#111827;
+  font-size:1rem;
+  margin:0;
+}
+
+.amtex-faq-form .af-section-hint{
+  color:#6b7280;
+  font-size:.9rem;
+  margin:.25rem 0 0 0;
+}
+
+.amtex-faq-form .af-field{
+  margin-bottom: 1rem;
+}
+
+.amtex-faq-form .af-label{
+  font-weight:700;
+  color:#111827;
+  margin-bottom: .45rem;
+}
+
+.amtex-faq-form .af-help{
+  color:#6b7280;
+  font-size:.85rem;
+  margin-top:.35rem;
+}
+
+.amtex-faq-form .form-control{
+  border-radius: 12px;
+}
+
+.amtex-faq-form .btn{
+  border-radius: 12px;
+}
+
+.amtex-faq-form .af-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:.6rem;
+  flex-wrap:wrap;
+  margin-top: .5rem;
+}
+
+.amtex-faq-form .af-note{
+  border:1px solid rgba(59,130,246,.18);
+  background: rgba(59,130,246,.06);
+  border-radius: 14px;
+  padding: .9rem 1rem;
+  color:#0f172a;
+}
+
+.amtex-faq-form .af-note strong{
+  display:block;
+  margin-bottom:.25rem;
+}
+
+/* Optional: Make CKEditor container blend better */
+.amtex-faq-form .ck.ck-editor__main > .ck-editor__editable{
+  border-radius: 12px;
+  min-height: 180px;
+}
+
+/* ==============================
+   AMTEX CATEGORY PAGE (ISOLATED)
+   ============================== */
+
+.amtex-cat-page{
+  padding: 18px 18px 8px;
+}
+
+.amtex-cat-top{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:16px;
+  padding:16px;
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, .08);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, .05);
+  margin-bottom: 14px;
+}
+
+.amtex-cat-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size: .78rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#64748b;
+}
+
+.amtex-cat-title{
+  margin: 2px 0 4px;
+  font-weight: 800;
+  color:#0f172a;
+  font-size: 1.5rem;
+}
+
+.amtex-cat-subtitle{
+  margin:0;
+  color:#64748b;
+  font-size:.95rem;
+}
+
+.amtex-cat-top-right{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.amtex-cat-btn{
+  border-radius: 12px !important;
+  padding: 10px 14px !important;
+  font-weight: 700 !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:8px;
+}
+
+.amtex-cat-btn-primary{
+  background:#0f172a !important;
+  border:1px solid #0f172a !important;
+  color:#fff !important;
+}
+
+.amtex-cat-btn-primary:hover{
+  background:#111c35 !important;
+  border-color:#111c35 !important;
+}
+
+.amtex-cat-btn-ghost{
+  background:#fff !important;
+  border:1px solid rgba(15,23,42,.12) !important;
+  color:#0f172a !important;
+}
+
+.amtex-cat-btn-ghost:hover{
+  background:#f8fafc !important;
+}
+
+/* Toolbar */
+.amtex-cat-toolbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px;
+  border-radius: 16px;
+  background:#fff;
+  border: 1px solid rgba(15, 23, 42, .08);
+  margin-bottom: 12px;
+}
+
+.amtex-cat-searchbox{
+  flex: 1;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid rgba(15,23,42,.10);
+  border-radius: 14px;
+  padding: 10px 12px;
+  background: #fbfdff;
+  min-width: 260px;
+}
+
+.amtex-cat-searchicon{
+  color:#64748b;
+}
+
+.amtex-cat-searchinput{
+  width:100%;
+  border:none !important;
+  outline:none !important;
+  background:transparent !important;
+  color:#0f172a;
+  font-weight:600;
+}
+
+.amtex-cat-searchinput::placeholder{
+  color:#94a3b8;
+  font-weight:600;
+}
+
+.amtex-cat-filters{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.amtex-cat-select{
+  border:1px solid rgba(15,23,42,.10);
+  border-radius: 14px;
+  padding: 10px 12px;
+  background:#fff;
+  color:#0f172a;
+  font-weight:700;
+  min-width: 160px;
+}
+
+/* KPI bar */
+.amtex-cat-kpis{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.amtex-cat-kpi{
+  background:#fff;
+  border: 1px solid rgba(15,23,42,.08);
+  border-radius: 16px;
+  padding: 12px 14px;
+  box-shadow: 0 10px 24px rgba(15,23,42,.04);
+}
+
+.amtex-cat-kpi-label{
+  font-size:.78rem;
+  color:#64748b;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+
+.amtex-cat-kpi-value{
+  font-size:1.1rem;
+  font-weight:900;
+  color:#0f172a;
+  margin-top: 2px;
+}
+
+/* Grid & Cards */
+.amtex-cat-grid{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 1400px){
+  .amtex-cat-grid{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+}
+@media (max-width: 992px){
+  .amtex-cat-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .amtex-cat-toolbar{ flex-direction: column; align-items: stretch; }
+}
+@media (max-width: 576px){
+  .amtex-cat-grid{ grid-template-columns: 1fr; }
+  .amtex-cat-kpis{ grid-template-columns: 1fr; }
+}
+
+.amtex-cat-card{
+  background:#fff;
+  border: 1px solid rgba(15,23,42,.08);
+  border-radius: 18px;
+  overflow:hidden;
+  box-shadow: 0 16px 38px rgba(15,23,42,.06);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+.amtex-cat-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 22px 54px rgba(15,23,42,.10);
+  border-color: rgba(15,23,42,.14);
+}
+
+.amtex-cat-card-top{
+  position:relative;
+  padding: 12px;
+}
+
+.amtex-cat-img{
+  height: 140px;
+  border-radius: 14px;
+  overflow:hidden;
+  background: linear-gradient(135deg, #f1f5f9, #ffffff);
+  border: 1px solid rgba(15,23,42,.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.amtex-cat-img img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  display:block;
+}
+
+.amtex-cat-img-fallback{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#64748b;
+  font-weight:800;
+  font-size:.9rem;
+}
+
+.amtex-cat-badges{
+  position:absolute;
+  top: 18px;
+  left: 18px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.amtex-cat-badge{
+  font-size:.75rem;
+  font-weight:900;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(15,23,42,.10);
+  background: rgba(255,255,255,.85);
+  backdrop-filter: blur(6px);
+}
+
+.amtex-cat-badge-soft{
+  color:#0f172a;
+}
+
+.amtex-cat-badge-active{
+  color:#065f46;
+  border-color: rgba(6,95,70,.25);
+  background: rgba(209, 250, 229, .85);
+}
+
+.amtex-cat-badge-inactive{
+  color:#9a3412;
+  border-color: rgba(154,52,18,.25);
+  background: rgba(255, 237, 213, .85);
+}
+
+.amtex-cat-card-body{
+  padding: 2px 14px 14px;
+}
+
+.amtex-cat-name{
+  font-size: 1.05rem;
+  font-weight: 900;
+  color:#0f172a;
+  margin-bottom: 10px;
+  line-height: 1.2;
+  display:-webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow:hidden;
+}
+
+.amtex-cat-meta{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.amtex-cat-meta-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.amtex-cat-meta-label{
+  font-size:.78rem;
+  color:#64748b;
+  font-weight:800;
+}
+
+.amtex-cat-meta-value{
+  font-size:.85rem;
+  color:#0f172a;
+  font-weight:900;
+  max-width: 65%;
+  text-align:right;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+/* Actions */
+.amtex-cat-card-actions{
+  padding: 12px 14px 14px;
+  border-top: 1px solid rgba(15,23,42,.06);
+  background: #fbfdff;
+}
+
+.amtex-cat-actions-inner{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+/* normalize buttons coming from datatablesActions partial */
+.amtex-cat-actionbtn{
+  border-radius: 12px !important;
+  padding: 8px 10px !important;
+  font-weight: 800 !important;
+}
+
+.amtex-cat-actionbtn.btn-info{
+  background:#0ea5e9 !important;
+  border-color:#0ea5e9 !important;
+  color:#fff !important;
+}
+.amtex-cat-actionbtn.btn-primary{
+  background:#0f172a !important;
+  border-color:#0f172a !important;
+}
+.amtex-cat-actionbtn.btn-danger{
+  background:#ef4444 !important;
+  border-color:#ef4444 !important;
+}
+
+/* Empty state */
+.amtex-cat-empty{
+  padding: 18px 0;
+}
+
+.amtex-cat-empty-card{
+  background:#fff;
+  border: 1px dashed rgba(15,23,42,.18);
+  border-radius: 18px;
+  padding: 22px;
+  text-align:center;
+  color:#0f172a;
+}
+
+.amtex-cat-empty-ico{
+  width:52px;
+  height:52px;
+  margin: 0 auto 10px;
+  border-radius: 16px;
+  background: rgba(15,23,42,.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#0f172a;
+  font-size: 18px;
+}
+
+/* Pager */
+.amtex-cat-pager{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding: 10px 6px 6px;
+}
+
+.amtex-cat-info{
+  color:#64748b;
+  font-weight:700;
+}
+
+.amtex-cat-paginate .pagination{
+  margin:0 !important;
+}
+
+.amtex-cat-paginate .page-link{
+  border-radius: 10px !important;
+  margin-left: 6px;
+  border:1px solid rgba(15,23,42,.10) !important;
+  color:#0f172a !important;
+  font-weight:800;
+}
+
+.amtex-cat-paginate .page-item.active .page-link{
+  background:#0f172a !important;
+  border-color:#0f172a !important;
+  color:#fff !important;
+}
+
+/* Hidden table container */
+.amtex-cat-hidden{
+  position:absolute;
+  left:-99999px;
+  top:-99999px;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+
+/* ==============================
+   AMTEX CATEGORY FORM (ISOLATED)
+   ============================== */
+
+.amtex-catf-page{ padding: 18px 18px 8px; }
+
+.amtex-catf-header{
+  display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
+  padding:16px;
+  background:#fff;
+  border:1px solid rgba(15,23,42,.08);
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(15,23,42,.05);
+  margin-bottom:14px;
+}
+
+.amtex-catf-header-left{ min-width: 240px; }
+
+.amtex-catf-kicker{
+  display:inline-flex; align-items:center; gap:10px;
+  font-size:.78rem; letter-spacing:.12em; text-transform:uppercase;
+  color:#64748b;
+}
+
+.amtex-catf-kdot{
+  width:10px; height:10px; border-radius:999px;
+  background:#0f172a;
+  box-shadow: 0 0 0 5px rgba(15,23,42,.08);
+}
+
+.amtex-catf-title{
+  margin: 6px 0 4px;
+  font-weight: 900;
+  color:#0f172a;
+  font-size: 1.45rem;
+}
+
+.amtex-catf-subtitle{ margin:0; color:#64748b; font-size:.95rem; }
+
+.amtex-catf-actions{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+
+.amtex-catf-btn{
+  border-radius: 12px !important;
+  padding: 10px 14px !important;
+  font-weight: 800 !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:8px;
+}
+
+.amtex-catf-btn-primary{
+  background:#0f172a !important;
+  border:1px solid #0f172a !important;
+  color:#fff !important;
+}
+
+.amtex-catf-btn-primary:hover{ background:#111c35 !important; border-color:#111c35 !important; }
+
+.amtex-catf-btn-light{
+  background:#fff !important;
+  border:1px solid rgba(15,23,42,.12) !important;
+  color:#0f172a !important;
+}
+
+.amtex-catf-btn-light:hover{ background:#f8fafc !important; }
+
+/* Layout */
+.amtex-catf-wrap{
+  display:grid;
+  grid-template-columns: 1.6fr .9fr;
+  gap: 14px;
+  align-items:start;
+}
+
+@media (max-width: 992px){
+  .amtex-catf-wrap{ grid-template-columns: 1fr; }
+}
+
+.amtex-catf-card{
+  background:#fff;
+  border:1px solid rgba(15,23,42,.08);
+  border-radius:18px;
+  box-shadow:0 16px 38px rgba(15,23,42,.06);
+  overflow:hidden;
+}
+
+.amtex-catf-form{ padding: 14px; }
+
+/* Sections */
+.amtex-catf-section{
+  border:1px solid rgba(15,23,42,.06);
+  border-radius:16px;
+  padding: 14px;
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+  margin-bottom: 12px;
+}
+
+.amtex-catf-section-head{
+  display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+  margin-bottom: 12px;
+}
+
+.amtex-catf-section-title{
+  display:flex; align-items:flex-start; gap:12px;
+}
+
+.amtex-catf-ico{
+  width:40px; height:40px; border-radius:14px;
+  background: rgba(15,23,42,.06);
+  color:#0f172a;
+  display:flex; align-items:center; justify-content:center;
+  flex: 0 0 auto;
+}
+
+.amtex-catf-ico-mini{
+  width:34px; height:34px; border-radius:12px;
+}
+
+.amtex-catf-h4{
+  margin:0;
+  font-size:1.05rem;
+  font-weight: 900;
+  color:#0f172a;
+}
+
+.amtex-catf-hint{
+  margin-top: 2px;
+  font-size:.85rem;
+  color:#64748b;
+  font-weight:700;
+}
+
+.amtex-catf-chip{
+  font-size:.75rem;
+  font-weight:900;
+  padding: 6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(15,23,42,.12);
+  background: rgba(255,255,255,.85);
+}
+
+.amtex-catf-chip-alt{
+  color:#0f172a;
+  background: rgba(241,245,249,.9);
+}
+
+/* Grid */
+.amtex-catf-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+@media (max-width: 768px){
+  .amtex-catf-grid{ grid-template-columns: 1fr; }
+}
+
+.amtex-catf-span2{ grid-column: span 2; }
+@media (max-width: 768px){ .amtex-catf-span2{ grid-column: span 1; } }
+
+/* Fields */
+.amtex-catf-field{ display:flex; flex-direction:column; gap:6px; }
+
+.amtex-catf-label{
+  font-size:.85rem;
+  font-weight:900;
+  color:#0f172a;
+}
+
+.amtex-catf-help{
+  color:#64748b;
+  font-weight:700;
+  font-size:.78rem;
+}
+
+/* Input group */
+.amtex-catf-input{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid rgba(15,23,42,.10);
+  border-radius: 14px;
+  padding: 10px 10px;
+  background:#fff;
+}
+
+.amtex-catf-input:focus-within{
+  border-color: rgba(15,23,42,.28);
+  box-shadow: 0 0 0 4px rgba(15,23,42,.08);
+}
+
+.amtex-catf-input-ico{
+  width:34px; height:34px;
+  border-radius:12px;
+  background: rgba(15,23,42,.06);
+  display:flex; align-items:center; justify-content:center;
+  color:#0f172a;
+  flex: 0 0 auto;
+}
+
+.amtex-catf-control{
+  border:none !important;
+  outline:none !important;
+  box-shadow:none !important;
+  background:transparent !important;
+  font-weight:800;
+  color:#0f172a;
+  padding: 0 !important;
+  height: auto !important;
+}
+
+.amtex-catf-control.is-invalid{
+  border:none !important;
+}
+
+.amtex-catf-mini{
+  border:none;
+  background: rgba(15,23,42,.06);
+  color:#0f172a;
+  width:34px; height:34px;
+  border-radius:12px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition: transform .15s ease, background .15s ease;
+}
+
+.amtex-catf-mini:hover{
+  background: rgba(15,23,42,.10);
+  transform: rotate(-8deg);
+}
+
+/* Inline hints */
+.amtex-catf-inlinehint{
+  margin-top: 4px;
+  display:flex;
+  gap:8px;
+  align-items:flex-start;
+  color:#64748b;
+  font-weight:700;
+  font-size:.8rem;
+  background: rgba(241,245,249,.9);
+  border: 1px solid rgba(15,23,42,.06);
+  padding: 10px 12px;
+  border-radius: 14px;
+}
+
+/* Dropzone wrapper */
+.amtex-catf-dropwrap{
+  border: 1px dashed rgba(15,23,42,.22);
+  border-radius: 16px;
+  padding: 12px;
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+  position: relative;
+}
+
+.amtex-catf-dropwrap-error{
+  border-color: rgba(239,68,68,.6);
+  background: rgba(254,242,242,.8);
+}
+
+.amtex-catf-dropzone{
+  border: none !important;
+  border-radius: 14px;
+  background: rgba(15,23,42,.03);
+  min-height: 150px;
+}
+
+.amtex-catf-dropnote{
+  margin-top: 10px;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+.amtex-catf-dropnote-title{
+  font-weight: 900;
+  color:#0f172a;
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+.amtex-catf-dropnote-sub{
+  font-weight:700;
+  color:#64748b;
+  font-size:.85rem;
+}
+
+.amtex-catf-error{
+  margin-top: 6px;
+  color:#b91c1c;
+  font-weight: 900;
+}
+
+/* Status hint badges */
+.amtex-catf-statushint{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top: 6px;
+}
+
+.amtex-catf-badge{
+  font-size:.75rem;
+  font-weight:900;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(15,23,42,.10);
+  background: rgba(255,255,255,.85);
+}
+
+.amtex-catf-badge-on{
+  color:#065f46;
+  border-color: rgba(6,95,70,.25);
+  background: rgba(209,250,229,.85);
+}
+
+.amtex-catf-badge-off{
+  color:#9a3412;
+  border-color: rgba(154,52,18,.25);
+  background: rgba(255,237,213,.85);
+}
+
+/* Footer */
+.amtex-catf-footer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding: 4px 2px 2px;
+}
+
+/* Preview */
+.amtex-catf-side{ position: sticky; top: 12px; }
+@media (max-width: 992px){ .amtex-catf-side{ position: static; } }
+
+.amtex-catf-preview{ padding: 14px; }
+
+.amtex-catf-preview-head{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  margin-bottom: 10px;
+}
+
+.amtex-catf-preview-title{
+  display:flex; align-items:center; gap:10px;
+}
+
+.amtex-catf-preview-box{
+  border: 1px solid rgba(15,23,42,.06);
+  background: rgba(241,245,249,.55);
+  border-radius: 16px;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+
+.amtex-catf-preview-label{
+  font-size:.75rem;
+  font-weight:900;
+  color:#64748b;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+
+.amtex-catf-preview-value{
+  margin-top: 4px;
+  font-weight: 900;
+  color:#0f172a;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.amtex-catf-preview-img{
+  border: 1px dashed rgba(15,23,42,.22);
+  border-radius: 16px;
+  overflow:hidden;
+  min-height: 170px;
+  background: rgba(15,23,42,.03);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom: 10px;
+}
+
+.amtex-catf-preview-img img{
+  width:100%;
+  height: 190px;
+  object-fit: cover;
+  display:block;
+}
+
+.amtex-catf-preview-imgtext{
+  color:#64748b;
+  font-weight:900;
+  display:flex;
+  gap:8px;
+  align-items:center;
+  padding: 12px;
+  text-align:center;
+}
+
+.amtex-catf-muted{
+  color:#64748b;
+  font-weight:700;
+  font-size:.85rem;
+  padding: 4px 2px 2px;
+}
+
+/* ==============================
+   AMTEX CATEGORY SHOW (ISOLATED)
+   ============================== */
+
+.amtex-cats-page{ padding: 18px 18px 8px; }
+
+.amtex-cats-header{
+  display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
+  padding:16px;
+  background:#fff;
+  border:1px solid rgba(15,23,42,.08);
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(15,23,42,.05);
+  margin-bottom:14px;
+}
+
+.amtex-cats-kicker{
+  display:inline-flex; align-items:center; gap:10px;
+  font-size:.78rem; letter-spacing:.12em; text-transform:uppercase;
+  color:#64748b;
+}
+
+.amtex-cats-kdot{
+  width:10px; height:10px; border-radius:999px;
+  background:#0f172a;
+  box-shadow: 0 0 0 5px rgba(15,23,42,.08);
+}
+
+.amtex-cats-title{
+  margin: 6px 0 4px;
+  font-weight: 900;
+  color:#0f172a;
+  font-size: 1.45rem;
+}
+
+.amtex-cats-subtitle{ margin:0; color:#64748b; font-size:.95rem; }
+
+.amtex-cats-actions{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+
+.amtex-cats-btn{
+  border-radius: 12px !important;
+  padding: 10px 14px !important;
+  font-weight: 800 !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:8px;
+}
+
+.amtex-cats-btn-primary{
+  background:#0f172a !important;
+  border:1px solid #0f172a !important;
+  color:#fff !important;
+}
+.amtex-cats-btn-primary:hover{ background:#111c35 !important; border-color:#111c35 !important; }
+
+.amtex-cats-btn-light{
+  background:#fff !important;
+  border:1px solid rgba(15,23,42,.12) !important;
+  color:#0f172a !important;
+}
+.amtex-cats-btn-light:hover{ background:#f8fafc !important; }
+
+/* Layout */
+.amtex-cats-wrap{
+  display:grid;
+  grid-template-columns: 1.6fr .9fr;
+  gap: 14px;
+  align-items:start;
+}
+
+@media (max-width: 992px){
+  .amtex-cats-wrap{ grid-template-columns: 1fr; }
+}
+
+.amtex-cats-card{
+  background:#fff;
+  border:1px solid rgba(15,23,42,.08);
+  border-radius:18px;
+  box-shadow:0 16px 38px rgba(15,23,42,.06);
+  overflow:hidden;
+}
+
+.amtex-cats-card-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  padding: 14px;
+  border-bottom: 1px solid rgba(15,23,42,.06);
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+}
+
+.amtex-cats-card-title{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+}
+
+.amtex-cats-ico{
+  width:40px; height:40px; border-radius:14px;
+  background: rgba(15,23,42,.06);
+  color:#0f172a;
+  display:flex; align-items:center; justify-content:center;
+  flex: 0 0 auto;
+}
+
+.amtex-cats-h4{
+  margin:0;
+  font-size:1.05rem;
+  font-weight: 900;
+  color:#0f172a;
+}
+
+.amtex-cats-hint{
+  margin-top: 2px;
+  font-size:.85rem;
+  color:#64748b;
+  font-weight:700;
+}
+
+.amtex-cats-badges{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+.amtex-cats-badge{
+  font-size:.75rem;
+  font-weight:900;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(15,23,42,.10);
+  background: rgba(255,255,255,.85);
+}
+
+.amtex-cats-badge-soft{ color:#0f172a; background: rgba(241,245,249,.9); }
+
+.amtex-cats-badge-on{
+  color:#065f46;
+  border-color: rgba(6,95,70,.25);
+  background: rgba(209,250,229,.85);
+}
+
+.amtex-cats-badge-off{
+  color:#9a3412;
+  border-color: rgba(154,52,18,.25);
+  background: rgba(255,237,213,.85);
+}
+
+/* Details table */
+.amtex-cats-table{ padding: 14px; }
+
+.amtex-cats-row{
+  display:grid;
+  grid-template-columns: 180px 1fr;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid rgba(15,23,42,.06);
+  background: rgba(241,245,249,.55);
+  border-radius: 16px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 576px){
+  .amtex-cats-row{ grid-template-columns: 1fr; }
+}
+
+.amtex-cats-label{
+  font-size:.78rem;
+  font-weight:900;
+  color:#64748b;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+
+.amtex-cats-value{
+  font-weight:900;
+  color:#0f172a;
+  overflow:hidden;
+}
+
+.amtex-cats-strong{ font-weight: 900; }
+
+.amtex-cats-code{
+  display:inline-block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  background: rgba(15,23,42,.06);
+  border: 1px solid rgba(15,23,42,.08);
+  padding: 6px 10px;
+  border-radius: 12px;
+  font-weight: 900;
+  color:#0f172a;
+}
+
+/* Card footer */
+.amtex-cats-footer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding: 12px 14px 14px;
+  border-top: 1px solid rgba(15,23,42,.06);
+  background:#fbfdff;
+}
+
+/* Image card */
+.amtex-cats-imagecard .amtex-cats-card-head{ border-bottom: none; }
+
+.amtex-cats-imagebox{
+  padding: 14px;
+}
+
+.amtex-cats-imagelink{
+  display:block;
+  border-radius: 16px;
+  overflow:hidden;
+  border:1px solid rgba(15,23,42,.08);
+  background: rgba(15,23,42,.03);
+}
+
+.amtex-cats-imagelink img{
+  width:100%;
+  height: 260px;
+  object-fit: cover;
+  display:block;
+}
+
+.amtex-cats-imagemeta{
+  margin-top: 10px;
+  display:flex;
+  justify-content:flex-start;
+}
+
+.amtex-cats-chip{
+  font-size:.78rem;
+  font-weight:900;
+  padding:8px 10px;
+  border-radius: 14px;
+  border:1px solid rgba(15,23,42,.08);
+  background: rgba(241,245,249,.85);
+  color:#0f172a;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+
+/* No image */
+.amtex-cats-nophoto{
+  border:1px dashed rgba(15,23,42,.22);
+  border-radius: 16px;
+  min-height: 260px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  color:#64748b;
+  background: rgba(15,23,42,.02);
+  text-align:center;
+  padding: 16px;
+}
+
+.amtex-cats-nophoto-ico{
+  width:54px; height:54px;
+  border-radius: 18px;
+  background: rgba(15,23,42,.06);
+  color:#0f172a;
+  display:flex; align-items:center; justify-content:center;
+  font-size: 18px;
+}
+
+.amtex-cats-nophoto-title{
+  font-weight: 900;
+  color:#0f172a;
+}
+
+.amtex-cats-nophoto-sub{
+  font-weight: 800;
+  color:#64748b;
+  font-size: .9rem;
+}
+
+.amtex-cats-imageactions{
+  padding: 0 14px 14px;
+}
+
+/* ==============================
+   AMTEX PRODUCTS INDEX (ISOLATED)
+   ============================== */
+
+.amtex-prod-page{ padding: 18px 18px 8px; }
+
+.amtex-prod-top{
+  display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
+  padding:16px;
+  background:#fff;
+  border:1px solid rgba(15,23,42,.08);
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(15,23,42,.05);
+  margin-bottom:14px;
+}
+
+.amtex-prod-kicker{
+  display:inline-flex; align-items:center; gap:10px;
+  font-size:.78rem; letter-spacing:.12em; text-transform:uppercase;
+  color:#64748b;
+}
+
+.amtex-prod-kdot{
+  width:10px; height:10px; border-radius:999px;
+  background:#0f172a;
+  box-shadow: 0 0 0 5px rgba(15,23,42,.08);
+}
+
+.amtex-prod-title{
+  margin: 6px 0 4px;
+  font-weight: 900;
+  color:#0f172a;
+  font-size: 1.5rem;
+}
+
+.amtex-prod-subtitle{ margin:0; color:#64748b; font-size:.95rem; }
+
+.amtex-prod-top-right{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+
+.amtex-prod-btn{
+  border-radius: 12px !important;
+  padding: 10px 14px !important;
+  font-weight: 800 !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:8px;
+}
+
+.amtex-prod-btn-primary{
+  background:#0f172a !important;
+  border:1px solid #0f172a !important;
+  color:#fff !important;
+}
+.amtex-prod-btn-primary:hover{ background:#111c35 !important; border-color:#111c35 !important; }
+
+.amtex-prod-btn-ghost{
+  background:#fff !important;
+  border:1px solid rgba(15,23,42,.12) !important;
+  color:#0f172a !important;
+}
+.amtex-prod-btn-ghost:hover{ background:#f8fafc !important; }
+
+/* Toolbar */
+.amtex-prod-toolbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px;
+  border-radius: 16px;
+  background:#fff;
+  border: 1px solid rgba(15, 23, 42, .08);
+  margin-bottom: 12px;
+}
+
+.amtex-prod-searchbox{
+  flex: 1;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid rgba(15,23,42,.10);
+  border-radius: 14px;
+  padding: 10px 12px;
+  background: #fbfdff;
+  min-width: 260px;
+}
+
+.amtex-prod-searchicon{ color:#64748b; }
+
+.amtex-prod-searchinput{
+  width:100%;
+  border:none !important;
+  outline:none !important;
+  background:transparent !important;
+  color:#0f172a;
+  font-weight:700;
+}
+
+.amtex-prod-searchinput::placeholder{ color:#94a3b8; font-weight:700; }
+
+.amtex-prod-filters{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.amtex-prod-select{
+  border:1px solid rgba(15,23,42,.10);
+  border-radius: 14px;
+  padding: 10px 12px;
+  background:#fff;
+  color:#0f172a;
+  font-weight:800;
+  min-width: 160px;
+}
+
+@media (max-width: 992px){
+  .amtex-prod-toolbar{ flex-direction: column; align-items: stretch; }
+}
+
+/* KPI bar */
+.amtex-prod-kpis{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.amtex-prod-kpi{
+  background:#fff;
+  border: 1px solid rgba(15,23,42,.08);
+  border-radius: 16px;
+  padding: 12px 14px;
+  box-shadow: 0 10px 24px rgba(15,23,42,.04);
+}
+
+.amtex-prod-kpi-label{
+  font-size:.78rem;
+  color:#64748b;
+  font-weight:800;
+  letter-spacing:.02em;
+}
+
+.amtex-prod-kpi-value{
+  font-size:1.1rem;
+  font-weight:900;
+  color:#0f172a;
+  margin-top: 2px;
+}
+
+/* Grid */
+.amtex-prod-grid{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 1400px){ .amtex-prod-grid{ grid-template-columns: repeat(3, minmax(0,1fr)); } }
+@media (max-width: 992px){ .amtex-prod-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 576px){
+  .amtex-prod-grid{ grid-template-columns: 1fr; }
+  .amtex-prod-kpis{ grid-template-columns: 1fr; }
+}
+
+/* Card */
+.amtex-prod-card{
+  background:#fff;
+  border: 1px solid rgba(15,23,42,.08);
+  border-radius: 18px;
+  overflow:hidden;
+  box-shadow: 0 16px 38px rgba(15,23,42,.06);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+.amtex-prod-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 22px 54px rgba(15,23,42,.10);
+  border-color: rgba(15,23,42,.14);
+}
+
+.amtex-prod-card-top{ position:relative; padding: 12px; }
+
+.amtex-prod-img{
+  height: 160px;
+  border-radius: 14px;
+  overflow:hidden;
+  background: linear-gradient(135deg, #f1f5f9, #ffffff);
+  border: 1px solid rgba(15,23,42,.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.amtex-prod-img img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  display:block;
+}
+
+.amtex-prod-img-fallback{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#64748b;
+  font-weight:900;
+}
+
+.amtex-prod-img-fallback span{
+  background: rgba(255,255,255,.85);
+  border: 1px solid rgba(15,23,42,.08);
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+/* Pills */
+.amtex-prod-pills{
+  position:absolute;
+  top: 18px;
+  left: 18px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.amtex-prod-pill{
+  font-size:.75rem;
+  font-weight:900;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(15,23,42,.10);
+  background: rgba(255,255,255,.88);
+  backdrop-filter: blur(6px);
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+
+.amtex-prod-pill-soft{
+  color:#0f172a;
+  background: rgba(241,245,249,.90);
+}
+
+.amtex-prod-pill-active{
+  color:#065f46;
+  border-color: rgba(6,95,70,.25);
+  background: rgba(209, 250, 229, .88);
+}
+
+.amtex-prod-pill-inactive{
+  color:#9a3412;
+  border-color: rgba(154,52,18,.25);
+  background: rgba(255, 237, 213, .88);
+}
+
+.amtex-prod-pill-featured{
+  color:#1d4ed8;
+  border-color: rgba(29,78,216,.25);
+  background: rgba(219,234,254,.88);
+}
+
+.amtex-prod-pill-badge{
+  color:#0f172a;
+  border-color: rgba(15,23,42,.16);
+  background: rgba(255,255,255,.92);
+}
+
+/* Body */
+.amtex-prod-card-body{ padding: 2px 14px 14px; }
+
+.amtex-prod-name{
+  font-size: 1.05rem;
+  font-weight: 900;
+  color:#0f172a;
+  margin-bottom: 6px;
+  line-height: 1.2;
+  display:-webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow:hidden;
+}
+
+.amtex-prod-cat{
+  color:#64748b;
+  font-weight:800;
+  font-size:.88rem;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom: 10px;
+}
+
+.amtex-prod-price{
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+  margin-bottom: 10px;
+}
+
+.amtex-prod-price-main{
+  font-weight: 950;
+  color:#0f172a;
+  font-size: 1.1rem;
+}
+
+.amtex-prod-price-compare{
+  font-weight: 900;
+  color:#94a3b8;
+  text-decoration: line-through;
+  font-size: .95rem;
+}
+
+.amtex-prod-meta{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.amtex-prod-meta-row{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.amtex-prod-meta-label{
+  font-size:.78rem;
+  color:#64748b;
+  font-weight:900;
+  letter-spacing:.02em;
+}
+
+.amtex-prod-meta-value{
+  font-size:.85rem;
+  color:#0f172a;
+  font-weight:900;
+  max-width: 65%;
+  text-align:right;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+/* Brochure */
+.amtex-prod-brochure{
+  margin-top: 10px;
+  font-weight: 900;
+}
+
+.amtex-prod-brochure a{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding: 8px 10px;
+  border-radius: 14px;
+  border:1px solid rgba(15,23,42,.10);
+  background: rgba(241,245,249,.75);
+  color:#0f172a;
+  text-decoration:none !important;
+}
+
+.amtex-prod-brochure a:hover{ background:#f8fafc; }
+
+.amtex-prod-brochure-muted{
+  color:#94a3b8;
+  font-weight:900;
+}
+
+/* Actions */
+.amtex-prod-card-actions{
+  padding: 12px 14px 14px;
+  border-top: 1px solid rgba(15,23,42,.06);
+  background: #fbfdff;
+}
+
+.amtex-prod-actions-inner{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.amtex-prod-actionbtn{
+  border-radius: 12px !important;
+  padding: 8px 10px !important;
+  font-weight: 800 !important;
+}
+
+/* Pager */
+.amtex-prod-pager{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding: 10px 6px 6px;
+}
+
+.amtex-prod-info{ color:#64748b; font-weight:800; }
+
+.amtex-prod-paginate .pagination{ margin:0 !important; }
+
+.amtex-prod-paginate .page-link{
+  border-radius: 10px !important;
+  margin-left: 6px;
+  border:1px solid rgba(15,23,42,.10) !important;
+  color:#0f172a !important;
+  font-weight:900;
+}
+
+.amtex-prod-paginate .page-item.active .page-link{
+  background:#0f172a !important;
+  border-color:#0f172a !important;
+  color:#fff !important;
+}
+
+/* Empty state */
+.amtex-prod-empty{ padding: 18px 0; }
+
+.amtex-prod-empty-card{
+  background:#fff;
+  border: 1px dashed rgba(15,23,42,.18);
+  border-radius: 18px;
+  padding: 22px;
+  text-align:center;
+  color:#0f172a;
+}
+
+.amtex-prod-empty-ico{
+  width:52px; height:52px;
+  margin: 0 auto 10px;
+  border-radius: 16px;
+  background: rgba(15,23,42,.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#0f172a;
+  font-size: 18px;
+}
+
+/* Hidden datatable */
+.amtex-prod-hidden{
+  position:absolute;
+  left:-99999px;
+  top:-99999px;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+
+
+/* =========================================
+   AMTEX PRODUCT FORM (CREATE/EDIT) - ISOLATED
+   Namespace: .amtex-prodf-*
+   ========================================= */
+
+.amtex-prodf-page{ padding:18px 18px 8px; }
+
+/* Header */
+.amtex-prodf-header{
+  display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
+  padding:16px;
+  background:#fff;
+  border:1px solid rgba(15,23,42,.08);
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(15,23,42,.05);
+  margin-bottom:14px;
+}
+.amtex-prodf-kicker{
+  display:inline-flex; align-items:center; gap:10px;
+  font-size:.78rem; letter-spacing:.12em; text-transform:uppercase;
+  color:#64748b;
+}
+.amtex-prodf-kdot{
+  width:10px; height:10px; border-radius:999px;
+  background:#0f172a;
+  box-shadow:0 0 0 5px rgba(15,23,42,.08);
+}
+.amtex-prodf-title{
+  margin:6px 0 4px;
+  font-weight:900;
+  color:#0f172a;
+  font-size:1.45rem;
+}
+.amtex-prodf-subtitle{ margin:0; color:#64748b; font-size:.95rem; }
+.amtex-prodf-actions{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+
+/* Buttons */
+.amtex-prodf-btn{
+  border-radius:12px !important;
+  padding:10px 14px !important;
+  font-weight:800 !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:8px;
+}
+.amtex-prodf-btn-primary{
+  background:#0f172a !important;
+  border:1px solid #0f172a !important;
+  color:#fff !important;
+}
+.amtex-prodf-btn-primary:hover{ background:#111c35 !important; border-color:#111c35 !important; }
+
+.amtex-prodf-btn-light{
+  background:#fff !important;
+  border:1px solid rgba(15,23,42,.12) !important;
+  color:#0f172a !important;
+}
+.amtex-prodf-btn-light:hover{ background:#f8fafc !important; }
+
+/* Layout */
+.amtex-prodf-wrap{
+  display:grid;
+  grid-template-columns: 1.55fr .85fr;
+  gap:14px;
+  align-items:start;
+}
+@media (max-width: 992px){
+  .amtex-prodf-wrap{ grid-template-columns:1fr; }
+}
+
+/* Cards */
+.amtex-prodf-card{
+  background:#fff;
+  border:1px solid rgba(15,23,42,.08);
+  border-radius:18px;
+  box-shadow:0 16px 38px rgba(15,23,42,.06);
+  overflow:hidden;
+}
+
+/* Sections */
+.amtex-prodf-section{ padding:14px; border-bottom:1px solid rgba(15,23,42,.06); }
+.amtex-prodf-section:last-child{ border-bottom:none; }
+
+.amtex-prodf-section-head{
+  display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+  margin-bottom:12px;
+}
+.amtex-prodf-section-title{
+  display:flex; align-items:flex-start; gap:12px;
+}
+.amtex-prodf-ico{
+  width:40px; height:40px;
+  border-radius:14px;
+  background:rgba(15,23,42,.06);
+  color:#0f172a;
+  display:flex; align-items:center; justify-content:center;
+  flex:0 0 auto;
+}
+.amtex-prodf-ico-mini{ width:34px; height:34px; border-radius:12px; }
+
+.amtex-prodf-h4{
+  margin:0;
+  font-size:1.05rem;
+  font-weight:900;
+  color:#0f172a;
+}
+.amtex-prodf-hint{
+  margin-top:2px;
+  font-size:.85rem;
+  color:#64748b;
+  font-weight:700;
+}
+
+.amtex-prodf-chip{
+  font-size:.75rem;
+  font-weight:900;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(15,23,42,.10);
+  background:rgba(241,245,249,.9);
+  color:#0f172a;
+  white-space:nowrap;
+}
+.amtex-prodf-chip-alt{
+  background:rgba(219,234,254,.85);
+  border-color:rgba(29,78,216,.18);
+  color:#1d4ed8;
+}
+
+/* Grid */
+.amtex-prodf-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap:12px;
+}
+.amtex-prodf-grid-1{ grid-template-columns: 1fr; }
+.amtex-prodf-span2{ grid-column: 1 / -1; }
+
+@media (max-width: 576px){
+  .amtex-prodf-grid{ grid-template-columns:1fr; }
+}
+
+/* Fields */
+.amtex-prodf-field{ position:relative; }
+.amtex-prodf-label{
+  display:block;
+  font-weight:900;
+  color:#0f172a;
+  margin-bottom:6px;
+  font-size:.9rem;
+}
+.amtex-prodf-help{
+  display:block;
+  margin-top:6px;
+  color:#64748b;
+  font-weight:700;
+  font-size:.82rem;
+}
+.amtex-prodf-inlinehint{
+  margin-top:8px;
+  padding:10px 12px;
+  border-radius:14px;
+  border:1px dashed rgba(15,23,42,.16);
+  background:rgba(15,23,42,.02);
+  color:#64748b;
+  font-weight:800;
+  font-size:.84rem;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* Controls */
+.amtex-prodf-control{
+  border-radius:14px !important;
+  border:1px solid rgba(15,23,42,.12) !important;
+  background:#fff !important;
+  font-weight:800 !important;
+  color:#0f172a !important;
+  box-shadow:none !important;
+}
+.amtex-prodf-control:focus{
+  border-color: rgba(15,23,42,.28) !important;
+}
+
+/* Input group with icon + mini button */
+.amtex-prodf-input{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid rgba(15,23,42,.12);
+  background:#fff;
+  border-radius:14px;
+  padding:8px 10px;
+}
+.amtex-prodf-input .amtex-prodf-control{
+  border:none !important;
+  border-radius:10px !important;
+  padding:10px 8px !important;
+  height:auto !important;
+}
+.amtex-prodf-input-ico{
+  width:34px; height:34px;
+  border-radius:12px;
+  background:rgba(15,23,42,.06);
+  color:#0f172a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  flex:0 0 auto;
+}
+.amtex-prodf-mini{
+  border:none;
+  background:rgba(15,23,42,.06);
+  color:#0f172a;
+  width:38px; height:38px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+}
+.amtex-prodf-mini:hover{ background:rgba(15,23,42,.10); }
+
+/* Dropzone wrapper */
+.amtex-prodf-dropwrap{
+  position:relative;
+  border-radius:18px;
+  border:1px solid rgba(15,23,42,.10);
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+  overflow:hidden;
+}
+.amtex-prodf-dropwrap-error{ border-color: rgba(220,38,38,.35); }
+
+.amtex-prodf-dropzone{
+  min-height: 165px;
+  border:none !important;
+  background:transparent !important;
+}
+.amtex-prodf-dropzone-file{ min-height: 120px; }
+
+/* Drop note overlay */
+.amtex-prodf-dropnote{
+  position:absolute;
+  inset:12px;
+  border-radius:16px;
+  border:1px dashed rgba(15,23,42,.18);
+  background:rgba(15,23,42,.02);
+  pointer-events:none;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:14px;
+  gap:6px;
+}
+.amtex-prodf-dropnote-title{
+  font-weight:950;
+  color:#0f172a;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.amtex-prodf-dropnote-sub{
+  color:#64748b;
+  font-weight:800;
+  font-size:.86rem;
+}
+
+/* Dropzone internal styling tweaks */
+.amtex-prodf-page .dropzone .dz-message{ display:none; }
+.amtex-prodf-page .dropzone .dz-preview{
+  margin: 10px !important;
+}
+.amtex-prodf-page .dropzone .dz-preview .dz-image{
+  border-radius: 14px !important;
+}
+.amtex-prodf-page .dropzone .dz-preview .dz-remove{
+  font-weight:900;
+  text-decoration:none !important;
+}
+
+/* Footer */
+.amtex-prodf-footer{
+  padding:14px;
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+  background:#fbfdff;
+  border-top:1px solid rgba(15,23,42,.06);
+}
+
+/* Preview card */
+.amtex-prodf-preview{ padding:0; }
+.amtex-prodf-preview-head{
+  padding:14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  border-bottom:1px solid rgba(15,23,42,.06);
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+}
+.amtex-prodf-preview-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.amtex-prodf-preview-box{
+  padding:12px 14px;
+  border-bottom:1px solid rgba(15,23,42,.06);
+}
+.amtex-prodf-preview-label{
+  font-size:.78rem;
+  font-weight:900;
+  color:#64748b;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.amtex-prodf-preview-value{
+  margin-top:4px;
+  font-weight:900;
+  color:#0f172a;
+  word-break: break-word;
+}
+
+.amtex-prodf-preview-img,
+.amtex-prodf-preview-file{
+  margin: 12px 14px;
+  border-radius: 18px;
+  border:1px solid rgba(15,23,42,.10);
+  background: rgba(15,23,42,.02);
+  overflow:hidden;
+}
+.amtex-prodf-preview-img{ height: 220px; display:flex; align-items:center; justify-content:center; }
+.amtex-prodf-preview-img img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+.amtex-prodf-preview-imgtext,
+.amtex-prodf-preview-filetext{
+  padding:14px;
+  color:#64748b;
+  font-weight:900;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.amtex-prodf-muted{
+  padding: 0 14px 14px;
+  color:#64748b;
+  font-weight:800;
+  font-size:.9rem;
+}
+
+/* CKEditor container cosmetic */
+.amtex-prodf-page .ck-editor__editable{
+  min-height: 140px;
+  border-radius: 14px !important;
+}
+.amtex-prodf-page .ck.ck-toolbar{
+  border-radius: 14px 14px 0 0 !important;
+}
+.amtex-prodf-page .ck.ck-editor__main>.ck-editor__editable{
+  border-radius: 0 0 14px 14px !important;
+}
+
+/* Error text */
+.amtex-prodf-error{
+  margin-top:8px;
+  color:#dc2626;
+  font-weight:900;
+  font-size:.85rem;
+}
+
+/* =========================================
+   AMTEX PRODUCT SHOW - ISOLATED
+   Namespace: .amtex-prods-*
+   ========================================= */
+
+.amtex-prods-page{ padding:18px 18px 8px; }
+
+/* Header */
+.amtex-prods-header{
+  display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
+  padding:16px;
+  background:#fff;
+  border:1px solid rgba(15,23,42,.08);
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(15,23,42,.05);
+  margin-bottom:14px;
+}
+.amtex-prods-kicker{
+  display:inline-flex; align-items:center; gap:10px;
+  font-size:.78rem; letter-spacing:.12em; text-transform:uppercase;
+  color:#64748b;
+}
+.amtex-prods-kdot{
+  width:10px; height:10px; border-radius:999px;
+  background:#0f172a;
+  box-shadow:0 0 0 5px rgba(15,23,42,.08);
+}
+.amtex-prods-title{
+  margin:6px 0 4px;
+  font-weight:950;
+  color:#0f172a;
+  font-size:1.45rem;
+}
+.amtex-prods-subtitle{ margin:0; color:#64748b; font-size:.95rem; }
+.amtex-prods-actions{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+
+/* Buttons */
+.amtex-prods-btn{
+  border-radius:12px !important;
+  padding:10px 14px !important;
+  font-weight:900 !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:8px;
+}
+.amtex-prods-btn-primary{
+  background:#0f172a !important;
+  border:1px solid #0f172a !important;
+  color:#fff !important;
+}
+.amtex-prods-btn-primary:hover{ background:#111c35 !important; border-color:#111c35 !important; }
+
+.amtex-prods-btn-light{
+  background:#fff !important;
+  border:1px solid rgba(15,23,42,.12) !important;
+  color:#0f172a !important;
+}
+.amtex-prods-btn-light:hover{ background:#f8fafc !important; }
+
+/* Layout */
+.amtex-prods-wrap{
+  display:grid;
+  grid-template-columns: 1.55fr .85fr;
+  gap:14px;
+  align-items:start;
+}
+@media (max-width: 992px){
+  .amtex-prods-wrap{ grid-template-columns:1fr; }
+}
+
+/* Cards */
+.amtex-prods-card{
+  background:#fff;
+  border:1px solid rgba(15,23,42,.08);
+  border-radius:18px;
+  box-shadow:0 16px 38px rgba(15,23,42,.06);
+  overflow:hidden;
+}
+
+/* Summary */
+.amtex-prods-summary{
+  display:grid;
+  grid-template-columns: 320px 1fr;
+  gap:14px;
+  padding:14px;
+  margin-bottom:14px;
+}
+@media (max-width: 992px){
+  .amtex-prods-summary{ grid-template-columns: 1fr; }
+}
+.amtex-prods-media{
+  border-radius:18px;
+  border:1px solid rgba(15,23,42,.10);
+  background: rgba(15,23,42,.02);
+  overflow:hidden;
+  height: 300px;
+}
+.amtex-prods-media-link{ display:block; width:100%; height:100%; }
+.amtex-prods-media img{ width:100%; height:100%; object-fit:cover; display:block; }
+.amtex-prods-media-fallback{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  align-items:center;
+  justify-content:center;
+  color:#64748b;
+  font-weight:900;
+}
+.amtex-prods-media-fallback i{ font-size:26px; }
+
+.amtex-prods-topline{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.amtex-prods-id{
+  font-weight:950;
+  color:#0f172a;
+  border:1px solid rgba(15,23,42,.10);
+  background:rgba(241,245,249,.85);
+  padding:6px 10px;
+  border-radius:999px;
+}
+.amtex-prods-name{
+  font-weight:950;
+  color:#0f172a;
+  font-size:1.35rem;
+  margin-top:6px;
+}
+.amtex-prods-cat{
+  margin-top:6px;
+  color:#64748b;
+  font-weight:900;
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.amtex-prods-pills{ display:flex; gap:8px; flex-wrap:wrap; }
+.amtex-prods-pill{
+  border-radius:999px;
+  padding:6px 10px;
+  font-weight:950;
+  font-size:.78rem;
+  border:1px solid rgba(15,23,42,.10);
+  background:rgba(241,245,249,.85);
+  color:#0f172a;
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+}
+.amtex-prods-pill i{ font-size:.6rem; }
+.amtex-prods-pill-active{
+  border-color: rgba(16,185,129,.30);
+  background: rgba(16,185,129,.10);
+  color:#065f46;
+}
+.amtex-prods-pill-inactive{
+  border-color: rgba(239,68,68,.30);
+  background: rgba(239,68,68,.10);
+  color:#7f1d1d;
+}
+.amtex-prods-pill-featured{
+  border-color: rgba(245,158,11,.35);
+  background: rgba(245,158,11,.12);
+  color:#92400e;
+}
+.amtex-prods-pill-badge{
+  border-color: rgba(59,130,246,.30);
+  background: rgba(59,130,246,.10);
+  color:#1d4ed8;
+}
+
+.amtex-prods-price{
+  margin-top:10px;
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.amtex-prods-price-main{
+  font-size:1.35rem;
+  font-weight:950;
+  color:#0f172a;
+}
+.amtex-prods-price-compare{
+  font-weight:950;
+  color:#94a3b8;
+  text-decoration: line-through;
+}
+
+.amtex-prods-mini-grid{
+  margin-top:12px;
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap:10px;
+}
+@media (max-width: 576px){
+  .amtex-prods-mini-grid{ grid-template-columns:1fr; }
+}
+.amtex-prods-mini{
+  border:1px solid rgba(15,23,42,.08);
+  background:rgba(248,250,252,.8);
+  border-radius:16px;
+  padding:10px 12px;
+}
+.amtex-prods-mini-label{
+  font-size:.75rem;
+  font-weight:950;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:#64748b;
+}
+.amtex-prods-mini-value{
+  margin-top:4px;
+  font-weight:950;
+  color:#0f172a;
+  word-break: break-word;
+}
+.amtex-prods-muted{ color:#64748b; font-weight:900; }
+
+/* Brochure strip */
+.amtex-prods-brochure{
+  margin-top:12px;
+  border:1px solid rgba(15,23,42,.08);
+  background: linear-gradient(180deg,#fff,#fbfdff);
+  border-radius:18px;
+  padding:12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.amtex-prods-brochure-left{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.amtex-prods-brochure-ico{
+  width:42px; height:42px;
+  border-radius:16px;
+  background:rgba(220,38,38,.10);
+  color:#b91c1c;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:950;
+}
+.amtex-prods-brochure-title{
+  font-weight:950;
+  color:#0f172a;
+}
+.amtex-prods-brochure-sub{
+  color:#64748b;
+  font-weight:800;
+  font-size:.9rem;
+}
+.amtex-prods-emptyline{
+  color:#64748b;
+  font-weight:900;
+}
+
+/* Content */
+.amtex-prods-content{ margin-bottom:14px; }
+.amtex-prods-card-head{
+  padding:14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  border-bottom:1px solid rgba(15,23,42,.06);
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+}
+.amtex-prods-card-title{
+  font-weight:950;
+  color:#0f172a;
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.amtex-prods-ico{
+  width:38px; height:38px;
+  border-radius:14px;
+  background:rgba(15,23,42,.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.amtex-prods-chip{
+  font-size:.75rem;
+  font-weight:950;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(15,23,42,.10);
+  background:rgba(241,245,249,.9);
+  color:#0f172a;
+}
+.amtex-prods-chip-alt{
+  background:rgba(219,234,254,.85);
+  border-color:rgba(29,78,216,.18);
+  color:#1d4ed8;
+}
+
+.amtex-prods-body{ padding:14px; }
+.amtex-prods-block-title{
+  font-weight:950;
+  color:#0f172a;
+  margin-bottom:8px;
+}
+.amtex-prods-divider{
+  height:1px;
+  background:rgba(15,23,42,.08);
+  margin:14px 0;
+}
+
+/* Rendered HTML */
+.amtex-prods-html{
+  color:#0f172a;
+  font-weight:700;
+  line-height:1.65;
+}
+.amtex-prods-html img{ max-width:100%; height:auto; border-radius:14px; }
+.amtex-prods-html p{ margin-bottom:.7rem; }
+.amtex-prods-html ul, .amtex-prods-html ol{ padding-left:1.2rem; }
+
+/* Side key-values */
+.amtex-prods-kv{ padding:14px; }
+.amtex-prods-kv-row{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  padding:10px 0;
+  border-bottom:1px solid rgba(15,23,42,.06);
+}
+.amtex-prods-kv-row:last-child{ border-bottom:none; }
+.amtex-prods-kv-label{
+  color:#64748b;
+  font-weight:950;
+  font-size:.85rem;
+}
+.amtex-prods-kv-value{
+  color:#0f172a;
+  font-weight:950;
+  text-align:right;
+  word-break: break-word;
+}
+
+/* Side actions */
+.amtex-prods-side-actions{
+  padding:14px;
+  border-top:1px solid rgba(15,23,42,.06);
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* =========================================
+   AMTEX PRODUCT VARIANTS (INDEX) - ISOLATED
+   Namespace: .amtex-pvar-*
+   ========================================= */
+
+.amtex-pvar-page{ padding:18px 18px 8px; }
+
+/* Header */
+.amtex-pvar-header{
+  display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
+  padding:16px;
+  background:#fff;
+  border:1px solid rgba(15,23,42,.08);
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(15,23,42,.05);
+  margin-bottom:14px;
+}
+.amtex-pvar-kicker{
+  display:inline-flex; align-items:center; gap:10px;
+  font-size:.78rem; letter-spacing:.12em; text-transform:uppercase;
+  color:#64748b;
+}
+.amtex-pvar-kdot{
+  width:10px; height:10px; border-radius:999px;
+  background:#0f172a;
+  box-shadow:0 0 0 5px rgba(15,23,42,.08);
+}
+.amtex-pvar-title{
+  margin:6px 0 4px;
+  font-weight:950;
+  color:#0f172a;
+  font-size:1.45rem;
+}
+.amtex-pvar-subtitle{ margin:0; color:#64748b; font-size:.95rem; }
+.amtex-pvar-header-right{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+
+/* Buttons */
+.amtex-pvar-btn{
+  border-radius:12px !important;
+  padding:10px 14px !important;
+  font-weight:900 !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:8px;
+}
+.amtex-pvar-btn-primary{
+  background:#0f172a !important;
+  border:1px solid #0f172a !important;
+  color:#fff !important;
+}
+.amtex-pvar-btn-primary:hover{ background:#111c35 !important; border-color:#111c35 !important; }
+.amtex-pvar-btn-light{
+  background:#fff !important;
+  border:1px solid rgba(15,23,42,.12) !important;
+  color:#0f172a !important;
+}
+.amtex-pvar-btn-light:hover{ background:#f8fafc !important; }
+
+/* Controls */
+.amtex-pvar-controls{
+  display:flex;
+  gap:12px;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  margin-bottom:12px;
+}
+.amtex-pvar-search{
+  flex:1;
+  min-width:260px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:#fff;
+  border:1px solid rgba(15,23,42,.10);
+  border-radius:14px;
+  padding:10px 12px;
+  box-shadow:0 10px 25px rgba(15,23,42,.04);
+}
+.amtex-pvar-search i{ color:#64748b; }
+.amtex-pvar-search-input{
+  border:none !important;
+  outline:none !important;
+  width:100%;
+  background:transparent !important;
+  font-weight:800;
+  color:#0f172a;
+}
+.amtex-pvar-filter{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.amtex-pvar-select{
+  background:#fff;
+  border:1px solid rgba(15,23,42,.10);
+  border-radius:14px;
+  padding:10px 12px;
+  font-weight:900;
+  color:#0f172a;
+  min-width:160px;
+}
+
+/* Grid */
+.amtex-pvar-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap:12px;
+}
+@media (max-width: 1200px){
+  .amtex-pvar-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 768px){
+  .amtex-pvar-grid{ grid-template-columns: 1fr; }
+}
+
+/* Card */
+.amtex-pvar-card{
+  background:#fff;
+  border:1px solid rgba(15,23,42,.08);
+  border-radius:18px;
+  box-shadow:0 16px 38px rgba(15,23,42,.06);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+.amtex-pvar-card-top{
+  padding:14px;
+  border-bottom:1px solid rgba(15,23,42,.06);
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.amtex-pvar-name{
+  font-weight:950;
+  color:#0f172a;
+  font-size:1.05rem;
+  line-height:1.2;
+}
+.amtex-pvar-sub{
+  margin-top:6px;
+  color:#64748b;
+  font-weight:900;
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.amtex-pvar-dot{
+  width:8px; height:8px; border-radius:999px;
+  background:#0f172a;
+  box-shadow:0 0 0 4px rgba(15,23,42,.08);
+}
+
+.amtex-pvar-pills{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+.amtex-pvar-pill{
+  border-radius:999px;
+  padding:6px 10px;
+  font-weight:950;
+  font-size:.78rem;
+  border:1px solid rgba(15,23,42,.10);
+  background:rgba(241,245,249,.85);
+  color:#0f172a;
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+}
+.amtex-pvar-pill-soft{
+  background:rgba(241,245,249,.85);
+}
+.amtex-pvar-pill-in{
+  border-color: rgba(16,185,129,.30);
+  background: rgba(16,185,129,.10);
+  color:#065f46;
+}
+.amtex-pvar-pill-low{
+  border-color: rgba(245,158,11,.35);
+  background: rgba(245,158,11,.12);
+  color:#92400e;
+}
+.amtex-pvar-pill-out{
+  border-color: rgba(239,68,68,.30);
+  background: rgba(239,68,68,.10);
+  color:#7f1d1d;
+}
+.amtex-pvar-pill-default{
+  border-color: rgba(59,130,246,.30);
+  background: rgba(59,130,246,.10);
+  color:#1d4ed8;
+}
+
+/* Body */
+.amtex-pvar-body{ padding:14px; }
+.amtex-pvar-kv{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap:10px;
+}
+@media (max-width: 768px){
+  .amtex-pvar-kv{ grid-template-columns: 1fr; }
+}
+.amtex-pvar-kv-item{
+  border:1px solid rgba(15,23,42,.08);
+  background:rgba(248,250,252,.85);
+  border-radius:16px;
+  padding:10px 12px;
+}
+.amtex-pvar-kv-label{
+  font-size:.75rem;
+  font-weight:950;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:#64748b;
+}
+.amtex-pvar-kv-value{
+  margin-top:4px;
+  font-weight:950;
+  color:#0f172a;
+  word-break: break-word;
+}
+.amtex-pvar-price{
+  font-weight:950;
+  color:#0f172a;
+}
+.amtex-pvar-compare{
+  margin-left:8px;
+  font-weight:950;
+  color:#94a3b8;
+  text-decoration:line-through;
+}
+
+/* Actions */
+.amtex-pvar-actions{
+  padding:12px 14px;
+  border-top:1px solid rgba(15,23,42,.06);
+  display:flex;
+  justify-content:flex-end;
+}
+
+/* Empty + Pager */
+.amtex-pvar-empty{ margin-top:12px; }
+.amtex-pvar-empty-card{
+  background:#fff;
+  border:1px dashed rgba(15,23,42,.20);
+  border-radius:18px;
+  padding:18px;
+  text-align:center;
+  color:#64748b;
+  box-shadow:0 10px 25px rgba(15,23,42,.04);
+}
+.amtex-pvar-empty-card h3{ margin:0 0 6px; color:#0f172a; font-weight:950; }
+
+.amtex-pvar-pager{
+  margin-top:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  padding:10px 2px;
+}
+.amtex-pvar-info{ color:#64748b; font-weight:900; }
+
+/* hide datatable */
+.amtex-pvar-hidden{
+  position:absolute;
+  left:-99999px;
+  top:-99999px;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+
+/* =========================================
+   AMTEX PRODUCT VARIANT FORM (CREATE) - ISOLATED
+   Namespace: .amtex-pvf-*
+   ========================================= */
+
+.amtex-pvf-page{ padding:18px 18px 8px; }
+
+/* Header */
+.amtex-pvf-header{
+  display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
+  padding:16px;
+  background:#fff;
+  border:1px solid rgba(15,23,42,.08);
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(15,23,42,.05);
+  margin-bottom:14px;
+}
+.amtex-pvf-kicker{
+  display:inline-flex; align-items:center; gap:10px;
+  font-size:.78rem; letter-spacing:.12em; text-transform:uppercase;
+  color:#64748b;
+}
+.amtex-pvf-kdot{
+  width:10px; height:10px; border-radius:999px;
+  background:#0f172a;
+  box-shadow:0 0 0 5px rgba(15,23,42,.08);
+}
+.amtex-pvf-title{
+  margin:6px 0 4px;
+  font-weight:950;
+  color:#0f172a;
+  font-size:1.45rem;
+}
+.amtex-pvf-subtitle{ margin:0; color:#64748b; font-size:.95rem; }
+.amtex-pvf-actions{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+
+/* Buttons */
+.amtex-pvf-btn{
+  border-radius:12px !important;
+  padding:10px 14px !important;
+  font-weight:900 !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:8px;
+}
+.amtex-pvf-btn-primary{
+  background:#0f172a !important;
+  border:1px solid #0f172a !important;
+  color:#fff !important;
+}
+.amtex-pvf-btn-primary:hover{ background:#111c35 !important; border-color:#111c35 !important; }
+.amtex-pvf-btn-light{
+  background:#fff !important;
+  border:1px solid rgba(15,23,42,.12) !important;
+  color:#0f172a !important;
+}
+.amtex-pvf-btn-light:hover{ background:#f8fafc !important; }
+
+/* Layout */
+.amtex-pvf-wrap{
+  display:grid;
+  grid-template-columns: 1.55fr .85fr;
+  gap:14px;
+  align-items:start;
+}
+@media (max-width: 992px){
+  .amtex-pvf-wrap{ grid-template-columns:1fr; }
+}
+
+/* Card */
+.amtex-pvf-card{
+  background:#fff;
+  border:1px solid rgba(15,23,42,.08);
+  border-radius:18px;
+  box-shadow:0 16px 38px rgba(15,23,42,.06);
+  overflow:hidden;
+}
+.amtex-pvf-form{ padding:14px; }
+
+/* Sections */
+.amtex-pvf-section{
+  border:1px solid rgba(15,23,42,.08);
+  background:rgba(248,250,252,.75);
+  border-radius:18px;
+  padding:14px;
+  margin-bottom:12px;
+}
+.amtex-pvf-section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:10px;
+}
+.amtex-pvf-section-title{ margin:0; font-weight:950; color:#0f172a; }
+.amtex-pvf-section-sub{ margin:4px 0 0; color:#64748b; font-weight:800; font-size:.92rem; }
+
+/* Chip */
+.amtex-pvf-chip{
+  font-size:.75rem;
+  font-weight:950;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(15,23,42,.10);
+  background:rgba(241,245,249,.9);
+  color:#0f172a;
+}
+.amtex-pvf-chip-alt{
+  background:rgba(219,234,254,.85);
+  border-color:rgba(29,78,216,.18);
+  color:#1d4ed8;
+}
+
+/* Grid */
+.amtex-pvf-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap:12px;
+}
+@media (max-width: 768px){
+  .amtex-pvf-grid{ grid-template-columns:1fr; }
+}
+.amtex-pvf-span2{ grid-column: span 2; }
+@media (max-width: 768px){
+  .amtex-pvf-span2{ grid-column: span 1; }
+}
+
+/* Fields */
+.amtex-pvf-field{ display:flex; flex-direction:column; }
+.amtex-pvf-label{
+  font-weight:950;
+  color:#0f172a;
+  margin-bottom:6px;
+}
+.amtex-pvf-control{
+  border-radius:14px !important;
+  border:1px solid rgba(15,23,42,.12) !important;
+  padding:11px 12px !important;
+  font-weight:800 !important;
+  color:#0f172a !important;
+  background:#fff !important;
+}
+.amtex-pvf-control:focus{
+  box-shadow:0 0 0 .2rem rgba(15,23,42,.10) !important;
+  border-color:rgba(15,23,42,.20) !important;
+}
+.amtex-pvf-help{
+  margin-top:6px;
+  color:#64748b;
+  font-weight:800;
+  font-size:.88rem;
+}
+
+/* Money input */
+.amtex-pvf-money{
+  display:flex;
+  align-items:center;
+  border:1px solid rgba(15,23,42,.12);
+  background:#fff;
+  border-radius:14px;
+  overflow:hidden;
+}
+.amtex-pvf-money-sym{
+  padding:0 12px;
+  font-weight:950;
+  color:#0f172a;
+  background:rgba(241,245,249,.85);
+  border-right:1px solid rgba(15,23,42,.10);
+  height:44px;
+  display:flex;
+  align-items:center;
+}
+.amtex-pvf-control-money{
+  border:none !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+}
+
+/* Inline hint */
+.amtex-pvf-inlinehint{
+  margin-top:10px;
+  border:1px solid rgba(15,23,42,.10);
+  background:rgba(255,255,255,.85);
+  border-radius:14px;
+  padding:10px 12px;
+  color:#64748b;
+  font-weight:850;
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+}
+.amtex-pvf-inlinehint i{ margin-top:2px; color:#0f172a; }
+
+/* Stock hint */
+.amtex-pvf-stockhint{ margin-top:10px; display:flex; gap:8px; flex-wrap:wrap; }
+.amtex-pvf-badge{
+  border-radius:999px;
+  padding:6px 10px;
+  font-weight:950;
+  font-size:.78rem;
+  border:1px solid rgba(15,23,42,.10);
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+}
+.amtex-pvf-badge-in{
+  border-color: rgba(16,185,129,.30);
+  background: rgba(16,185,129,.10);
+  color:#065f46;
+}
+.amtex-pvf-badge-low{
+  border-color: rgba(245,158,11,.35);
+  background: rgba(245,158,11,.12);
+  color:#92400e;
+}
+.amtex-pvf-badge-out{
+  border-color: rgba(239,68,68,.30);
+  background: rgba(239,68,68,.10);
+  color:#7f1d1d;
+}
+
+/* Footer */
+.amtex-pvf-footer{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  flex-wrap:wrap;
+  padding-top:4px;
+}
+
+/* Preview */
+.amtex-pvf-preview{ padding:14px; }
+.amtex-pvf-preview-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+}
+.amtex-pvf-preview-title{ margin:0; font-weight:950; color:#0f172a; }
+
+.amtex-pvf-preview-box{
+  border:1px solid rgba(15,23,42,.08);
+  background:rgba(248,250,252,.85);
+  border-radius:16px;
+  padding:10px 12px;
+  margin-bottom:10px;
+}
+.amtex-pvf-preview-label{
+  font-size:.75rem;
+  font-weight:950;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:#64748b;
+}
+.amtex-pvf-preview-value{
+  margin-top:4px;
+  font-weight:950;
+  color:#0f172a;
+  word-break: break-word;
+}
+.amtex-pvf-preview-prices{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+@media (max-width: 992px){
+  .amtex-pvf-preview-prices{ grid-template-columns:1fr; }
+}
+.amtex-pvf-preview-compare{
+  color:#94a3b8;
+  text-decoration:line-through;
+}
+.amtex-pvf-muted{
+  margin-top:8px;
+  color:#64748b;
+  font-weight:850;
+  font-size:.92rem;
+}
+
+/* ================================
+   AMTEX • Product Variant Show
+   Namespace: amtex-pvs-*
+================================ */
+.amtex-pvs-page{
+  padding: 18px 6px;
+}
+
+.amtex-pvs-header{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:14px;
+}
+
+.amtex-pvs-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:.78rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#6b7280;
+  margin-bottom:6px;
+}
+.amtex-pvs-kdot{
+  width:8px;height:8px;border-radius:999px;
+  background:#7D5DE1;
+  box-shadow:0 0 0 4px rgba(125,93,225,.12);
+}
+
+.amtex-pvs-title{
+  font-size:1.6rem;
+  font-weight:900;
+  color:#0f172a;
+  margin:0;
+}
+.amtex-pvs-subtitle{
+  margin:.35rem 0 0 0;
+  color:#64748b;
+  font-size:.95rem;
+  max-width:56rem;
+}
+
+.amtex-pvs-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.amtex-pvs-btn{
+  border-radius:12px;
+  padding:.55rem .9rem;
+  font-weight:700;
+  border:1px solid #e5e7eb;
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  transition:.15s ease;
+}
+.amtex-pvs-btn i{ font-size:.95rem; }
+
+.amtex-pvs-btn-light{
+  background:#fff;
+  color:#0f172a;
+}
+.amtex-pvs-btn-light:hover{
+  transform:translateY(-1px);
+  box-shadow:0 10px 22px rgba(2,6,23,.08);
+}
+
+.amtex-pvs-btn-primary{
+  background: linear-gradient(135deg, #7D5DE1, #5b3fd6);
+  color:#fff;
+  border-color: transparent;
+}
+.amtex-pvs-btn-primary:hover{
+  transform:translateY(-1px);
+  box-shadow:0 14px 30px rgba(125,93,225,.28);
+}
+
+/* hero */
+.amtex-pvs-top{ margin-bottom:14px; }
+
+.amtex-pvs-card{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  box-shadow:0 10px 26px rgba(2,6,23,.06);
+}
+
+.amtex-pvs-hero{
+  padding:16px;
+  display:flex;
+  gap:16px;
+  align-items:stretch;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+.amtex-pvs-hero-left{ min-width:260px; flex:1; }
+.amtex-pvs-hero-right{ min-width:260px; }
+
+.amtex-pvs-hero-title{
+  font-weight:900;
+  font-size:1.15rem;
+  color:#0f172a;
+}
+.amtex-pvs-hero-sub{
+  margin-top:6px;
+  color:#475569;
+}
+.amtex-pvs-mono{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size:.92rem;
+}
+
+.amtex-pvs-badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:12px;
+}
+.amtex-pvs-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:.35rem .6rem;
+  border-radius:999px;
+  border:1px solid #e5e7eb;
+  font-weight:800;
+  font-size:.8rem;
+  color:#0f172a;
+  background:#fff;
+}
+.amtex-pvs-badge-soft{
+  background:#f8fafc;
+  color:#334155;
+}
+.amtex-pvs-badge-default{
+  background:rgba(125,93,225,.12);
+  border-color:rgba(125,93,225,.35);
+  color:#3b2aa8;
+}
+.amtex-pvs-badge-muted{
+  background:#f8fafc;
+  color:#64748b;
+}
+.amtex-pvs-badge-in{
+  background:rgba(16,185,129,.12);
+  border-color:rgba(16,185,129,.28);
+  color:#065f46;
+}
+.amtex-pvs-badge-low{
+  background:rgba(245,158,11,.14);
+  border-color:rgba(245,158,11,.28);
+  color:#92400e;
+}
+.amtex-pvs-badge-out{
+  background:rgba(239,68,68,.12);
+  border-color:rgba(239,68,68,.28);
+  color:#991b1b;
+}
+
+/* price box */
+.amtex-pvs-pricebox{
+  height:100%;
+  padding:14px 14px;
+  border-radius:14px;
+  border:1px solid #e5e7eb;
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+}
+.amtex-pvs-price-label{
+  font-size:.78rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#64748b;
+}
+.amtex-pvs-price-main{
+  font-size:1.55rem;
+  font-weight:950;
+  color:#0f172a;
+  margin-top:6px;
+}
+.amtex-pvs-price-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:6px;
+}
+.amtex-pvs-price-compare{
+  color:#64748b;
+  font-weight:800;
+}
+.amtex-pvs-price-compare-cut{
+  text-decoration:line-through;
+  opacity:.85;
+}
+.amtex-pvs-off{
+  padding:.25rem .55rem;
+  border-radius:999px;
+  background:rgba(240,2,3,.12);
+  border:1px solid rgba(240,2,3,.22);
+  color:#b91c1c;
+  font-weight:900;
+  font-size:.8rem;
+}
+.amtex-pvs-price-meta{
+  margin-top:10px;
+  color:#475569;
+  font-size:.92rem;
+}
+
+/* details grid */
+.amtex-pvs-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap:14px;
+  margin-top:14px;
+}
+@media (max-width: 1100px){
+  .amtex-pvs-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 700px){
+  .amtex-pvs-grid{ grid-template-columns: 1fr; }
+}
+
+.amtex-pvs-cardhead{
+  padding:14px 14px 0 14px;
+}
+.amtex-pvs-cardhead h4{
+  margin:0;
+  font-size:1.05rem;
+  font-weight:900;
+  color:#0f172a;
+}
+.amtex-pvs-cardhead p{
+  margin:.35rem 0 0 0;
+  color:#64748b;
+  font-size:.92rem;
+}
+
+.amtex-pvs-kv{
+  padding:12px 14px 14px 14px;
+}
+.amtex-pvs-kv-row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 0;
+  border-top:1px dashed #e5e7eb;
+}
+.amtex-pvs-kv-row:first-child{ border-top:none; }
+
+.amtex-pvs-kv-key{
+  color:#64748b;
+  font-weight:800;
+  font-size:.9rem;
+}
+.amtex-pvs-kv-val{
+  color:#0f172a;
+  font-weight:900;
+  text-align:right;
+  max-width:60%;
+  word-break:break-word;
+}
+
+/* pills */
+.amtex-pvs-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:.35rem .6rem;
+  border-radius:999px;
+  border:1px solid #e5e7eb;
+  font-weight:900;
+  font-size:.82rem;
+}
+.amtex-pvs-pill-yes{
+  background:rgba(125,93,225,.12);
+  border-color:rgba(125,93,225,.28);
+  color:#3b2aa8;
+}
+.amtex-pvs-pill-no{
+  background:#f8fafc;
+  color:#64748b;
+}
+
+/* footer */
+.amtex-pvs-footer{
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+
+/* ================================
+   AMTEX • Product Images Index
+   Namespace: amtex-pimg-*
+================================ */
+
+.amtex-pimg-page{
+  padding: 18px 6px;
+}
+
+/* Header */
+.amtex-pimg-header{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:14px;
+  flex-wrap:wrap;
+}
+
+.amtex-pimg-title{
+  font-size:1.65rem;
+  font-weight:950;
+  color:#0f172a;
+  margin:0;
+}
+
+.amtex-pimg-subtitle{
+  margin:.35rem 0 0 0;
+  color:#64748b;
+  font-size:.95rem;
+  max-width:60rem;
+}
+
+.amtex-pimg-header-right{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+/* Buttons */
+.amtex-pimg-btn{
+  border-radius:12px;
+  padding:.55rem .9rem;
+  font-weight:800;
+  border:1px solid #e5e7eb;
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  transition:.15s ease;
+}
+
+.amtex-pimg-btn-light{
+  background:#fff;
+  color:#0f172a;
+}
+.amtex-pimg-btn-light:hover{
+  transform:translateY(-1px);
+  box-shadow:0 10px 22px rgba(2,6,23,.08);
+}
+
+.amtex-pimg-btn-primary{
+  background: linear-gradient(135deg, #7D5DE1, #5b3fd6);
+  color:#fff;
+  border-color: transparent;
+}
+.amtex-pimg-btn-primary:hover{
+  transform:translateY(-1px);
+  box-shadow:0 14px 30px rgba(125,93,225,.28);
+}
+
+/* Controls */
+.amtex-pimg-controls{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:14px;
+}
+
+.amtex-pimg-search{
+  flex:1;
+  min-width:260px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:.65rem .85rem;
+  border:1px solid #e5e7eb;
+  border-radius:14px;
+  background:#fff;
+  box-shadow:0 10px 24px rgba(2,6,23,.05);
+}
+
+.amtex-pimg-search i{
+  color:#64748b;
+}
+
+.amtex-pimg-search-input{
+  border:none;
+  outline:none;
+  width:100%;
+  font-weight:700;
+  color:#0f172a;
+  background:transparent;
+}
+
+.amtex-pimg-filter{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.amtex-pimg-select{
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:.55rem .7rem;
+  background:#fff;
+  color:#0f172a;
+  font-weight:800;
+  min-width:180px;
+  box-shadow:0 10px 24px rgba(2,6,23,.05);
+}
+
+/* Grid */
+.amtex-pimg-grid{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap:14px;
+}
+
+@media (max-width: 1200px){
+  .amtex-pimg-grid{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+}
+@media (max-width: 900px){
+  .amtex-pimg-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 520px){
+  .amtex-pimg-grid{ grid-template-columns: 1fr; }
+}
+
+/* Card */
+.amtex-pimg-card{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 10px 26px rgba(2,6,23,.06);
+  transition:.18s ease;
+  display:flex;
+  flex-direction:column;
+}
+
+.amtex-pimg-card:hover{
+  transform: translateY(-2px);
+  box-shadow:0 18px 44px rgba(2,6,23,.10);
+}
+
+.amtex-pimg-top{
+  position:relative;
+}
+
+.amtex-pimg-cover{
+  display:block;
+  width:100%;
+  height:180px;
+  background:#f8fafc;
+}
+.amtex-pimg-cover img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.amtex-pimg-cover-fallback{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: linear-gradient(180deg, #ffffff, #f1f5f9);
+}
+.amtex-pimg-fallbacktext{
+  color:#64748b;
+  font-weight:900;
+}
+
+/* Badges */
+.amtex-pimg-badges{
+  position:absolute;
+  left:10px;
+  right:10px;
+  bottom:10px;
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+}
+
+.amtex-pimg-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:.35rem .6rem;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.55);
+  background: rgba(15, 23, 42, .65);
+  color:#fff;
+  font-weight:900;
+  font-size:.78rem;
+  backdrop-filter: blur(8px);
+}
+
+.amtex-pimg-badge-soft{
+  background: rgba(2,6,23,.55);
+}
+.amtex-pimg-badge-count{
+  background: rgba(125,93,225,.75);
+}
+
+/* Body */
+.amtex-pimg-body{
+  padding:12px 12px 10px 12px;
+}
+
+.amtex-pimg-prodname{
+  font-weight:950;
+  color:#0f172a;
+  font-size:1rem;
+  line-height:1.2;
+  margin-bottom:10px;
+}
+
+/* Thumbs */
+.amtex-pimg-thumbs{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.amtex-pimg-thumb{
+  width:44px;
+  height:44px;
+  border-radius:10px;
+  overflow:hidden;
+  border:1px solid #e5e7eb;
+  background:#f8fafc;
+  display:inline-block;
+}
+
+.amtex-pimg-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.amtex-pimg-more{
+  padding:.25rem .55rem;
+  border-radius:999px;
+  border:1px solid #e5e7eb;
+  background:#f8fafc;
+  color:#475569;
+  font-weight:900;
+  font-size:.8rem;
+}
+
+/* Actions */
+.amtex-pimg-actions{
+  padding:10px 12px 12px 12px;
+  border-top:1px dashed #e5e7eb;
+}
+
+/* Empty state */
+.amtex-pimg-empty{
+  margin-top:18px;
+}
+.amtex-pimg-empty-card{
+  background:#fff;
+  border:1px dashed #e5e7eb;
+  border-radius:16px;
+  padding:18px;
+  text-align:center;
+  color:#64748b;
+  box-shadow:0 10px 26px rgba(2,6,23,.05);
+}
+.amtex-pimg-empty-card h3{
+  margin:0 0 6px 0;
+  color:#0f172a;
+  font-weight:950;
+}
+
+/* Pager */
+.amtex-pimg-pager{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+
+.amtex-pimg-info{
+  color:#64748b;
+  font-weight:800;
+}
+
+.amtex-pimg-hidden{
+  display:none;
+}
+
+/* ================================
+   AMTEX • Product Images Form
+   Namespace: amtex-pimgf-*
+================================ */
+
+.amtex-pimgf-page{ padding:18px 6px; }
+
+/* Header */
+.amtex-pimgf-header{
+  display:flex; align-items:flex-end; justify-content:space-between;
+  gap:16px; flex-wrap:wrap; margin-bottom:14px;
+}
+.amtex-pimgf-title{
+  font-size:1.65rem; font-weight:950; color:#0f172a; margin:0;
+}
+.amtex-pimgf-subtitle{
+  margin:.35rem 0 0; color:#64748b; font-size:.95rem; max-width:60rem;
+}
+.amtex-pimgf-actions{ display:flex; gap:10px; flex-wrap:wrap; }
+
+/* Layout */
+.amtex-pimgf-wrap{
+  display:grid;
+  grid-template-columns: 1.3fr .7fr;
+  gap:14px;
+}
+@media(max-width: 992px){
+  .amtex-pimgf-wrap{ grid-template-columns: 1fr; }
+}
+
+/* Card */
+.amtex-pimgf-card{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  box-shadow:0 10px 26px rgba(2,6,23,.06);
+  overflow:hidden;
+}
+.amtex-pimgf-form{ padding:14px; }
+
+/* Buttons */
+.amtex-pimgf-btn{
+  border-radius:12px;
+  padding:.55rem .9rem;
+  font-weight:800;
+  border:1px solid #e5e7eb;
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  transition:.15s ease;
+}
+.amtex-pimgf-btn-light{ background:#fff; color:#0f172a; }
+.amtex-pimgf-btn-light:hover{ transform:translateY(-1px); box-shadow:0 10px 22px rgba(2,6,23,.08); }
+
+.amtex-pimgf-btn-primary{
+  background: linear-gradient(135deg, #7D5DE1, #5b3fd6);
+  color:#fff; border-color:transparent;
+}
+.amtex-pimgf-btn-primary:hover{ transform:translateY(-1px); box-shadow:0 14px 30px rgba(125,93,225,.28); }
+
+/* Section */
+.amtex-pimgf-section{ padding:12px; border:1px solid #eef2f7; border-radius:14px; margin-bottom:12px; }
+.amtex-pimgf-section-head{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px; margin-bottom:10px;
+}
+.amtex-pimgf-section-head h4{
+  margin:0; color:#0f172a; font-weight:950; font-size:1.05rem;
+}
+.amtex-pimgf-chip{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:.32rem .6rem; border-radius:999px;
+  border:1px solid #e5e7eb; background:#fff;
+  color:#475569; font-weight:900; font-size:.78rem;
+}
+.amtex-pimgf-chip-alt{ background:#f8fafc; }
+
+/* Grid */
+.amtex-pimgf-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap:12px;
+}
+@media(max-width: 700px){
+  .amtex-pimgf-grid{ grid-template-columns: 1fr; }
+}
+.amtex-pimgf-span2{ grid-column: span 2; }
+@media(max-width: 700px){
+  .amtex-pimgf-span2{ grid-column: span 1; }
+}
+
+/* Fields */
+.amtex-pimgf-field{ display:flex; flex-direction:column; gap:6px; }
+.amtex-pimgf-label{ font-weight:900; color:#0f172a; font-size:.92rem; }
+.amtex-pimgf-help{ color:#64748b; font-weight:700; }
+.amtex-pimgf-inlinehint{
+  margin-top:6px;
+  display:flex; align-items:center; gap:8px;
+  padding:.55rem .65rem;
+  border:1px dashed #e5e7eb;
+  border-radius:12px;
+  color:#475569;
+  font-weight:800;
+  background:#f8fafc;
+}
+.amtex-pimgf-control{
+  border-radius:12px !important;
+  font-weight:800;
+}
+
+/* Dropzone wrapper */
+.amtex-pimgf-dropwrap{
+  position:relative;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 10px 26px rgba(2,6,23,.05);
+}
+.amtex-pimgf-dropwrap-error{ border-color:#dc2626; }
+.amtex-pimgf-dropzone{
+  min-height:220px;
+  border:none !important;
+  border-radius:0 !important;
+}
+.amtex-pimgf-dropnote{
+  position:absolute;
+  left:14px;
+  bottom:14px;
+  right:14px;
+  padding:.75rem .9rem;
+  border-radius:14px;
+  background: rgba(15,23,42,.55);
+  backdrop-filter: blur(10px);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.22);
+}
+.amtex-pimgf-dropnote-title{ font-weight:950; display:flex; align-items:center; gap:10px; }
+.amtex-pimgf-dropnote-sub{ opacity:.9; font-weight:700; margin-top:4px; }
+
+.amtex-pimgf-error{ color:#dc2626; font-weight:900; margin-top:6px; }
+
+/* Tip bar */
+.amtex-pimgf-tipbar{
+  display:flex; justify-content:space-between; align-items:center;
+  gap:10px; flex-wrap:wrap;
+  margin-top:10px;
+}
+.amtex-pimgf-tip{
+  display:flex; align-items:center; gap:8px;
+  color:#475569; font-weight:850;
+}
+.amtex-pimgf-badge{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:.35rem .65rem;
+  border-radius:999px;
+  border:1px solid #e5e7eb;
+  background:#f8fafc;
+  color:#0f172a;
+  font-weight:900;
+}
+
+/* Footer */
+.amtex-pimgf-footer{
+  display:flex; justify-content:flex-end; gap:10px; flex-wrap:wrap;
+  padding:12px 14px 14px;
+  border-top:1px dashed #e5e7eb;
+}
+
+/* Preview side */
+.amtex-pimgf-side{ position:sticky; top:14px; height:fit-content; }
+@media(max-width:992px){ .amtex-pimgf-side{ position:static; } }
+
+.amtex-pimgf-preview{ padding:14px; }
+.amtex-pimgf-preview-head{
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:10px;
+}
+.amtex-pimgf-preview-head h4{ margin:0; font-weight:950; color:#0f172a; }
+
+.amtex-pimgf-preview-box{
+  border:1px solid #eef2f7;
+  border-radius:14px;
+  padding:10px 12px;
+  background:#fff;
+  margin-bottom:10px;
+}
+.amtex-pimgf-preview-label{ color:#64748b; font-weight:850; font-size:.82rem; }
+.amtex-pimgf-preview-value{ color:#0f172a; font-weight:950; margin-top:4px; }
+
+.amtex-pimgf-preview-gallery{
+  border:1px dashed #e5e7eb;
+  border-radius:14px;
+  padding:10px;
+  background:#f8fafc;
+  min-height:140px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:flex-start;
+}
+.amtex-pimgf-preview-muted{
+  color:#64748b; font-weight:850;
+}
+
+.amtex-pimgf-prevthumb{
+  width:66px; height:66px;
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid #e5e7eb;
+  background:#fff;
+  display:inline-block;
+  box-shadow:0 8px 18px rgba(2,6,23,.06);
+}
+.amtex-pimgf-prevthumb img{
+  width:100%; height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.amtex-pimgf-muted{
+  margin-top:10px;
+  color:#64748b;
+  font-weight:800;
+  font-size:.9rem;
+}
+
+/* ===============================
+   AMTEX PRODUCT IMAGES - SHOW (amtex-pimgv-*)
+================================= */
+.amtex-pimgv-page{
+  padding: 18px 18px 10px;
+}
+
+.amtex-pimgv-header{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:14px;
+}
+
+.amtex-pimgv-title{
+  margin:0;
+  font-weight:800;
+  font-size:1.6rem;
+  color:#0f172a;
+}
+
+.amtex-pimgv-subtitle{
+  margin:.35rem 0 0;
+  color:#64748b;
+  font-size:.95rem;
+  max-width:56rem;
+}
+
+.amtex-pimgv-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.amtex-pimgv-btn{
+  border-radius:12px;
+  padding:.55rem .95rem;
+  font-weight:700;
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  border:1px solid transparent;
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+}
+.amtex-pimgv-btn:active{ transform: translateY(1px); }
+
+.amtex-pimgv-btn-light{
+  background:#fff;
+  border-color:#e5e7eb;
+  color:#0f172a;
+}
+.amtex-pimgv-btn-light:hover{
+  box-shadow:0 10px 24px rgba(15,23,42,.08);
+  border-color:#dbe1ea;
+}
+
+.amtex-pimgv-btn-primary{
+  background:linear-gradient(135deg,#111827,#1f2937);
+  color:#fff;
+  box-shadow:0 14px 30px rgba(2,6,23,.20);
+}
+.amtex-pimgv-btn-primary:hover{
+  box-shadow:0 18px 40px rgba(2,6,23,.26);
+}
+
+.amtex-pimgv-wrap{
+  display:grid;
+  grid-template-columns: 420px 1fr;
+  gap:14px;
+}
+
+@media (max-width: 1100px){
+  .amtex-pimgv-wrap{ grid-template-columns: 1fr; }
+}
+
+.amtex-pimgv-card{
+  background:#fff;
+  border:1px solid #eef2f7;
+  border-radius:16px;
+  box-shadow:0 16px 40px rgba(15,23,42,.06);
+  overflow:hidden;
+}
+
+.amtex-pimgv-details{
+  padding:14px;
+}
+
+.amtex-pimgv-gallery{
+  padding:14px;
+}
+
+.amtex-pimgv-section-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding-bottom:10px;
+  border-bottom:1px solid #eef2f7;
+  margin-bottom:12px;
+}
+
+.amtex-pimgv-section-head h4{
+  margin:0;
+  font-weight:800;
+  color:#0f172a;
+  font-size:1.02rem;
+}
+
+.amtex-pimgv-chip{
+  font-size:.72rem;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  padding:.35rem .6rem;
+  border-radius:999px;
+  border:1px solid #e5e7eb;
+  color:#475569;
+  background:#fff;
+}
+.amtex-pimgv-chip-alt{
+  background:rgba(15,23,42,.04);
+}
+
+.amtex-pimgv-kv{
+  display:grid;
+  gap:10px;
+}
+
+.amtex-pimgv-kv-row{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding:10px 12px;
+  background:#f8fafc;
+  border:1px solid #eef2f7;
+  border-radius:12px;
+}
+
+.amtex-pimgv-kv-label{
+  color:#64748b;
+  font-weight:800;
+  font-size:.9rem;
+}
+
+.amtex-pimgv-kv-value{
+  color:#0f172a;
+  font-weight:800;
+  text-align:right;
+}
+
+.amtex-pimgv-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  padding:.35rem .6rem;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid #e5e7eb;
+  font-weight:800;
+  color:#0f172a;
+}
+
+.amtex-pimgv-footer{
+  margin-top:14px;
+  display:flex;
+  justify-content:flex-start;
+  gap:10px;
+}
+
+.amtex-pimgv-grid{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap:10px;
+}
+
+@media (max-width: 1200px){
+  .amtex-pimgv-grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 700px){
+  .amtex-pimgv-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.amtex-pimgv-thumb{
+  display:block;
+  position:relative;
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid #eef2f7;
+  background:#fff;
+  box-shadow:0 10px 22px rgba(15,23,42,.05);
+  transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+
+.amtex-pimgv-thumb:hover{
+  transform: translateY(-2px);
+  box-shadow:0 18px 36px rgba(15,23,42,.10);
+  border-color:#dbe1ea;
+}
+
+.amtex-pimgv-thumb img{
+  width:100%;
+  height:120px;
+  object-fit:cover;
+  display:block;
+}
+
+.amtex-pimgv-thumb-cap{
+  position:absolute;
+  left:10px;
+  bottom:10px;
+  padding:.25rem .5rem;
+  border-radius:999px;
+  font-size:.75rem;
+  font-weight:800;
+  color:#0f172a;
+  background:rgba(255,255,255,.92);
+  border:1px solid rgba(226,232,240,.9);
+}
+
+.amtex-pimgv-hint{
+  margin-top:10px;
+  color:#64748b;
+  font-size:.9rem;
+  display:flex;
+  align-items:center;
+  gap:.45rem;
+}
+
+.amtex-pimgv-empty{
+  padding:18px 0 6px;
+}
+.amtex-pimgv-empty-card{
+  border:1px dashed #dbe1ea;
+  border-radius:16px;
+  padding:18px;
+  background:#f8fafc;
+}
+.amtex-pimgv-empty-card h3{
+  margin:0 0 6px;
+  font-weight:900;
+  color:#0f172a;
+}
+.amtex-pimgv-empty-card p{
+  margin:0 0 12px;
+  color:#64748b;
+}
+
+/* ===============================
+   AMTEX PDP BUILDER (amtex-prodf-*)
+================================= */
+.amtex-prodf-subcard{
+  margin-top:12px;
+  padding:14px;
+  border:1px solid #eef2f7;
+  border-radius:14px;
+  background:#f8fafc;
+}
+
+.amtex-prodf-subhead{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:10px;
+}
+
+.amtex-prodf-h5{
+  margin:0;
+  font-size:1rem;
+  font-weight:900;
+  color:#0f172a;
+}
+
+.amtex-prodf-miniBtn{
+  border:1px solid #e5e7eb;
+  background:#fff;
+  border-radius:12px;
+  padding:.45rem .7rem;
+  font-weight:800;
+  color:#0f172a;
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+}
+
+.amtex-prodf-repeater{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.amtex-prodf-row{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.amtex-prodf-row3{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1.5fr auto;
+  gap:10px;
+  align-items:center;
+}
+
+.amtex-prodf-rowDel{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  border:1px solid #e5e7eb;
+  background:#fff;
+  color:#ef4444;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.amtex-prodf-rowDelSmall{
+  width:40px;
+  height:40px;
+}
+
+.amtex-prodf-tech{
+  border:1px solid #e5e7eb;
+  border-radius:14px;
+  background:#fff;
+  padding:12px;
+}
+
+.amtex-prodf-tech-head{
+  padding-bottom:10px;
+  margin-bottom:10px;
+  border-bottom:1px solid #eef2f7;
+}
+
+.amtex-prodf-tech-label{
+  font-weight:900;
+  color:#0f172a;
+  margin-bottom:8px;
+}
+
+.amtex-prodf-tech-cols{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.amtex-prodf-tech-chip{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:8px;
+  border:1px solid #eef2f7;
+  border-radius:14px;
+  background:#f8fafc;
+}
+
+.amtex-prodf-chipDel{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  border:1px solid #e5e7eb;
+  background:#fff;
+  color:#ef4444;
+}
+
+.amtex-prodf-tech-row{
+  display:grid;
+  grid-template-columns: 220px 1fr 44px;
+  gap:10px;
+  align-items:start;
+  margin-bottom:10px;
+}
+
+.amtex-prodf-tech-values{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(140px, 1fr));
+  gap:10px;
+}
+
+@media (max-width: 1200px){
+  .amtex-prodf-tech-row{ grid-template-columns: 1fr; }
+  .amtex-prodf-tech-values{ grid-template-columns: repeat(2, minmax(140px, 1fr)); }
+}
+
+@media (max-width: 640px){
+  .amtex-prodf-tech-values{ grid-template-columns: 1fr; }
+  .amtex-prodf-row3{ grid-template-columns: 1fr; }
+}
