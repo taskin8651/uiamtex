@@ -138,56 +138,113 @@
                 </div>
 
                 <div class="modal-body qe-modal-body">
-                    <form id="quickEnquiryPopupForm" class="row g-3">
+                   <form method="POST" action="{{ route('frontend.quick-enquiry.store') }}" id="quickEnquiryPopupForm" class="row g-3">
+    @csrf
 
-                        <div class="col-md-6">
-                            <label class="form-label qe-label">Full Name <span class="text-danger">*</span></label>
-                            <input type="text" name="full_name" class="form-control qe-input" placeholder="Enter full name" required />
-                        </div>
+    <div class="col-md-6">
+        <label class="form-label qe-label">Full Name <span class="text-danger">*</span></label>
+        <input
+            type="text"
+            name="full_name"
+            class="form-control qe-input{{ $errors->has('full_name') ? ' is-invalid' : '' }}"
+            placeholder="Enter full name"
+            value="{{ old('full_name') }}"
+            required
+        />
 
-                        <div class="col-md-6">
-                            <label class="form-label qe-label">Email</label>
-                            <input type="email" name="email" class="form-control qe-input" placeholder="Enter email (optional)" />
-                        </div>
+        @if($errors->has('full_name'))
+            <div class="invalid-feedback d-block">
+                {{ $errors->first('full_name') }}
+            </div>
+        @endif
+    </div>
 
-                        <div class="col-md-6">
-                            <label class="form-label qe-label">Phone Number <span class="text-danger">*</span></label>
-                            <input type="tel" name="phone" class="form-control qe-input" placeholder="Enter phone number" required />
-                        </div>
+    <div class="col-md-6">
+        <label class="form-label qe-label">Email</label>
+        <input
+            type="email"
+            name="email"
+            class="form-control qe-input{{ $errors->has('email') ? ' is-invalid' : '' }}"
+            placeholder="Enter email (optional)"
+            value="{{ old('email') }}"
+        />
 
-                        <div class="col-md-6">
-                            <label class="form-label qe-label">City / Premises (Optional)</label>
-                            <input type="text" name="city" class="form-control qe-input" placeholder="e.g. Delhi, Office, Warehouse" />
-                        </div>
+        @if($errors->has('email'))
+            <div class="invalid-feedback d-block">
+                {{ $errors->first('email') }}
+            </div>
+        @endif
+    </div>
 
-                        <div class="col-12">
-                            <label class="form-label qe-label">Message <span class="text-danger">*</span></label>
-                            <textarea
-                                name="message"
-                                class="form-control qe-input qe-textarea"
-                                rows="4"
-                                placeholder="Tell us what you need (products, refilling, AMC, installation, etc.)"
-                                required
-                            ></textarea>
-                        </div>
+    <div class="col-md-6">
+        <label class="form-label qe-label">Phone Number <span class="text-danger">*</span></label>
+        <input
+            type="tel"
+            name="phone"
+            class="form-control qe-input{{ $errors->has('phone') ? ' is-invalid' : '' }}"
+            placeholder="Enter phone number"
+            value="{{ old('phone') }}"
+            required
+        />
 
-                        <div class="col-12 d-flex flex-column flex-md-row gap-2 align-items-md-center justify-content-between mt-1">
-                            <div class="qe-privacy-note">
-                                <i class="bi bi-lock-fill me-1"></i>
-                                Your information will be used only for enquiry assistance.
-                            </div>
+        @if($errors->has('phone'))
+            <div class="invalid-feedback d-block">
+                {{ $errors->first('phone') }}
+            </div>
+        @endif
+    </div>
 
-                            <button type="submit" class="btn btn-amtex px-4 qe-modal-submit">
-                                Submit Enquiry
-                            </button>
-                        </div>
+    <div class="col-md-6">
+        <label class="form-label qe-label">City / Premises (Optional)</label>
+        <input
+            type="text"
+            name="city"
+            class="form-control qe-input"
+            placeholder="e.g. Delhi, Office, Warehouse"
+            value="{{ old('city') }}"
+        />
+    </div>
 
-                        <!-- Success / Error message -->
-                        <div class="col-12">
-                            <div id="qePopupMsg" class="qe-popup-msg d-none"></div>
-                        </div>
+    <div class="col-12">
+        <label class="form-label qe-label">Message <span class="text-danger">*</span></label>
+        <textarea
+            name="message"
+            class="form-control qe-input qe-textarea{{ $errors->has('message') ? ' is-invalid' : '' }}"
+            rows="4"
+            placeholder="Tell us what you need (products, refilling, AMC, installation, etc.)"
+            required
+        >{{ old('message') }}</textarea>
 
-                    </form>
+        @if($errors->has('message'))
+            <div class="invalid-feedback d-block">
+                {{ $errors->first('message') }}
+            </div>
+        @endif
+    </div>
+
+    <input type="hidden" name="enquiry_type" value="Quick Enquiry Popup">
+
+    <div class="col-12 d-flex flex-column flex-md-row gap-2 align-items-md-center justify-content-between mt-1">
+        <div class="qe-privacy-note">
+            <i class="bi bi-lock-fill me-1"></i>
+            Your information will be used only for enquiry assistance.
+        </div>
+
+        <button type="submit" class="btn btn-amtex px-4 qe-modal-submit">
+            Submit Enquiry
+        </button>
+    </div>
+
+    <div class="col-12">
+        @if(session('success'))
+            <div id="qePopupMsg" class="qe-popup-msg">
+                {{ session('success') }}
+            </div>
+        @else
+            <div id="qePopupMsg" class="qe-popup-msg d-none"></div>
+        @endif
+    </div>
+</form>
                 </div>
 
             </div>

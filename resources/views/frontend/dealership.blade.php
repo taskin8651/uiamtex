@@ -302,94 +302,205 @@
             </span>
           </div>
 
-          <form class="row g-2 g-md-3 mt-1">
-            <div class="col-md-6">
-              <label class="dl-label">Full name</label>
-              <input type="text" class="form-control dl-input" placeholder="Enter your full name" />
-            </div>
-            <div class="col-md-6">
-              <label class="dl-label">Mobile number</label>
-              <input type="tel" class="form-control dl-input" placeholder="Enter mobile number" />
-            </div>
+         @if(session('success'))
+  <div class="alert alert-success mb-3">
+    {{ session('success') }}
+  </div>
+@endif
 
-            <div class="col-md-6">
-              <label class="dl-label">Email</label>
-              <input type="email" class="form-control dl-input" placeholder="Enter email address" />
-            </div>
-            <div class="col-md-6">
-              <label class="dl-label">City / State</label>
-              <input type="text" class="form-control dl-input" placeholder="City, State" />
-            </div>
+@if($errors->any())
+  <div class="alert alert-danger mb-3">
+    Please check the required fields and try again.
+  </div>
+@endif
 
-            <div class="col-md-6">
-              <label class="dl-label">Business type</label>
-              <select class="form-select dl-input">
-                <option selected>Select business type</option>
-                <option>Proprietorship</option>
-                <option>Partnership</option>
-                <option>LLP</option>
-                <option>Private Limited</option>
-                <option>Other</option>
-              </select>
-            </div>
+<form method="POST" action="{{ route('frontend.dealership.store') }}" enctype="multipart/form-data" class="row g-2 g-md-3 mt-1">
+  @csrf
 
-            <div class="col-md-6">
-              <label class="dl-label">Primary sales focus</label>
-              <select class="form-select dl-input">
-                <option selected>Select focus</option>
-                <option>Retail / Counter sales</option>
-                <option>Projects / Institutional</option>
-                <option>Industrial / Warehouse</option>
-                <option>Service / AMC</option>
-                <option>Mixed (Retail + Projects)</option>
-              </select>
-            </div>
+  <div class="col-md-6">
+    <label class="dl-label">Full name</label>
+    <input
+      type="text"
+      name="full_name"
+      class="form-control dl-input{{ $errors->has('full_name') ? ' is-invalid' : '' }}"
+      placeholder="Enter your full name"
+      value="{{ old('full_name') }}"
+      required
+    />
 
-            <div class="col-12">
-              <label class="dl-label">Experience / background</label>
-              <textarea
-                class="form-control dl-input dl-textarea"
-                rows="3"
-                placeholder="Tell us your territory, client types, current product categories, and team size (if any)..."
-              ></textarea>
-            </div>
+    @if($errors->has('full_name'))
+      <div class="invalid-feedback d-block">
+        {{ $errors->first('full_name') }}
+      </div>
+    @endif
+  </div>
 
-            <div class="col-12">
-              <div class="dl-upload-grid">
-                <div class="dl-upload">
-                  <div class="dl-upload-title">Upload GST / registration (optional)</div>
-                  <input type="file" class="form-control dl-file" />
-                </div>
-                <div class="dl-upload">
-                  <div class="dl-upload-title">Upload visiting card / profile (optional)</div>
-                  <input type="file" class="form-control dl-file" />
-                </div>
-              </div>
-            </div>
+  <div class="col-md-6">
+    <label class="dl-label">Mobile number</label>
+    <input
+      type="tel"
+      name="mobile"
+      class="form-control dl-input{{ $errors->has('mobile') ? ' is-invalid' : '' }}"
+      placeholder="Enter mobile number"
+      value="{{ old('mobile') }}"
+      required
+    />
 
-            <!-- Captcha placeholder -->
-            <div class="col-12">
-              <div class="dl-captcha">
-                <i class="bi bi-shield-lock"></i>
-                <div>
-                  <div class="dl-captcha-title">Captcha will be added here</div>
-                  <div class="dl-captcha-text">Google reCAPTCHA / custom captcha (to prevent spam)</div>
-                </div>
-              </div>
-            </div>
+    @if($errors->has('mobile'))
+      <div class="invalid-feedback d-block">
+        {{ $errors->first('mobile') }}
+      </div>
+    @endif
+  </div>
 
-            <div class="col-12">
-              <button type="button" class="dl-form-btn w-100">
-                Submit dealership application
-              </button>
+  <div class="col-md-6">
+    <label class="dl-label">Email</label>
+    <input
+      type="email"
+      name="email"
+      class="form-control dl-input{{ $errors->has('email') ? ' is-invalid' : '' }}"
+      placeholder="Enter email address"
+      value="{{ old('email') }}"
+    />
 
-              <div class="dl-form-note">
-                <i class="bi bi-info-circle me-1"></i>
-                After submission, show a success message and send an email acknowledgement from the backend.
-              </div>
-            </div>
+    @if($errors->has('email'))
+      <div class="invalid-feedback d-block">
+        {{ $errors->first('email') }}
+      </div>
+    @endif
+  </div>
 
-          </form>
+  <div class="col-md-6">
+    <label class="dl-label">City / State</label>
+    <input
+      type="text"
+      name="city_state"
+      class="form-control dl-input{{ $errors->has('city_state') ? ' is-invalid' : '' }}"
+      placeholder="City, State"
+      value="{{ old('city_state') }}"
+    />
+
+    @if($errors->has('city_state'))
+      <div class="invalid-feedback d-block">
+        {{ $errors->first('city_state') }}
+      </div>
+    @endif
+  </div>
+
+  <div class="col-md-6">
+    <label class="dl-label">Business type</label>
+    <select
+      name="business_type"
+      class="form-select dl-input{{ $errors->has('business_type') ? ' is-invalid' : '' }}"
+    >
+      <option value="">Select business type</option>
+      <option value="Proprietorship" {{ old('business_type') == 'Proprietorship' ? 'selected' : '' }}>Proprietorship</option>
+      <option value="Partnership" {{ old('business_type') == 'Partnership' ? 'selected' : '' }}>Partnership</option>
+      <option value="LLP" {{ old('business_type') == 'LLP' ? 'selected' : '' }}>LLP</option>
+      <option value="Private Limited" {{ old('business_type') == 'Private Limited' ? 'selected' : '' }}>Private Limited</option>
+      <option value="Other" {{ old('business_type') == 'Other' ? 'selected' : '' }}>Other</option>
+    </select>
+
+    @if($errors->has('business_type'))
+      <div class="invalid-feedback d-block">
+        {{ $errors->first('business_type') }}
+      </div>
+    @endif
+  </div>
+
+  <div class="col-md-6">
+    <label class="dl-label">Primary sales focus</label>
+    <select
+      name="sales_focus"
+      class="form-select dl-input{{ $errors->has('sales_focus') ? ' is-invalid' : '' }}"
+    >
+      <option value="">Select focus</option>
+      <option value="Retail / Counter sales" {{ old('sales_focus') == 'Retail / Counter sales' ? 'selected' : '' }}>Retail / Counter sales</option>
+      <option value="Projects / Institutional" {{ old('sales_focus') == 'Projects / Institutional' ? 'selected' : '' }}>Projects / Institutional</option>
+      <option value="Industrial / Warehouse" {{ old('sales_focus') == 'Industrial / Warehouse' ? 'selected' : '' }}>Industrial / Warehouse</option>
+      <option value="Service / AMC" {{ old('sales_focus') == 'Service / AMC' ? 'selected' : '' }}>Service / AMC</option>
+      <option value="Mixed (Retail + Projects)" {{ old('sales_focus') == 'Mixed (Retail + Projects)' ? 'selected' : '' }}>Mixed (Retail + Projects)</option>
+    </select>
+
+    @if($errors->has('sales_focus'))
+      <div class="invalid-feedback d-block">
+        {{ $errors->first('sales_focus') }}
+      </div>
+    @endif
+  </div>
+
+  <div class="col-12">
+    <label class="dl-label">Experience / background</label>
+    <textarea
+      name="experience"
+      class="form-control dl-input dl-textarea{{ $errors->has('experience') ? ' is-invalid' : '' }}"
+      rows="3"
+      placeholder="Tell us your territory, client types, current product categories, and team size (if any)..."
+    >{{ old('experience') }}</textarea>
+
+    @if($errors->has('experience'))
+      <div class="invalid-feedback d-block">
+        {{ $errors->first('experience') }}
+      </div>
+    @endif
+  </div>
+
+  <div class="col-12">
+    <div class="dl-upload-grid">
+      <div class="dl-upload">
+        <div class="dl-upload-title">Upload GST / registration (optional)</div>
+        <input
+          type="file"
+          name="upload_gst"
+          class="form-control dl-file{{ $errors->has('upload_gst') ? ' is-invalid' : '' }}"
+        />
+
+        @if($errors->has('upload_gst'))
+          <div class="invalid-feedback d-block">
+            {{ $errors->first('upload_gst') }}
+          </div>
+        @endif
+      </div>
+
+      <div class="dl-upload">
+        <div class="dl-upload-title">Upload visiting card / profile (optional)</div>
+        <input
+          type="file"
+          name="upload_compay_profile"
+          class="form-control dl-file{{ $errors->has('upload_compay_profile') ? ' is-invalid' : '' }}"
+        />
+
+        @if($errors->has('upload_compay_profile'))
+          <div class="invalid-feedback d-block">
+            {{ $errors->first('upload_compay_profile') }}
+          </div>
+        @endif
+      </div>
+    </div>
+  </div>
+
+  <!-- Captcha placeholder -->
+  <div class="col-12">
+    <div class="dl-captcha">
+      <i class="bi bi-shield-lock"></i>
+      <div>
+        <div class="dl-captcha-title">Captcha will be added here</div>
+        <div class="dl-captcha-text">Google reCAPTCHA / custom captcha (to prevent spam)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <button type="submit" class="dl-form-btn w-100">
+      Submit dealership application
+    </button>
+
+    <div class="dl-form-note">
+      <i class="bi bi-info-circle me-1"></i>
+      After submission, show a success message and send an email acknowledgement from the backend.
+    </div>
+  </div>
+</form>
         </div>
       </div>
 

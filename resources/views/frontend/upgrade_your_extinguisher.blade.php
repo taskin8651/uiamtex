@@ -95,51 +95,131 @@
               </span>
             </div>
 
-            <form class="row g-2 mt-2">
-              <div class="col-12">
-                <input class="form-control upg-input" type="text" placeholder="Full name" />
-              </div>
-              <div class="col-12">
-                <input class="form-control upg-input" type="tel" placeholder="Mobile number" />
-              </div>
-              <div class="col-12">
-                <select class="form-select upg-input">
-                  <option selected>Current extinguisher type</option>
-                  <option>ABC Dry Powder</option>
-                  <option>CO₂</option>
-                  <option>Water / Foam based</option>
-                  <option>Unsure</option>
-                </select>
-              </div>
-              <div class="col-6">
-                <select class="form-select upg-input">
-                  <option selected>Capacity</option>
-                  <option>2 kg / 2 L</option>
-                  <option>4 kg / 4 L</option>
-                  <option>6 kg / 6 L</option>
-                  <option>9 kg / 9 L</option>
-                </select>
-              </div>
-              <div class="col-6">
-                <select class="form-select upg-input">
-                  <option selected>Premises type</option>
-                  <option>Residential</option>
-                  <option>Office / Commercial</option>
-                  <option>Retail / Kitchen</option>
-                  <option>Industrial / Warehouse</option>
-                </select>
-              </div>
+          @if(session('success'))
+  <div class="alert alert-success mb-3">
+    {{ session('success') }}
+  </div>
+@endif
 
-              <div class="col-12">
-                <button type="button" class="upg-card-btn w-100">
-                  Submit for evaluation
-                </button>
-                <p class="upg-card-note mb-0">
-                  <i class="bi bi-lock-fill me-1"></i>
-                  Your details are used only for upgrade evaluation.
-                </p>
-              </div>
-            </form>
+@if($errors->any())
+  <div class="alert alert-danger mb-3">
+    Please check the required fields and try again.
+  </div>
+@endif
+
+<form method="POST" action="{{ route('frontend.upgrade.store') }}" class="row g-2 mt-2">
+  @csrf
+
+  <div class="col-12">
+    <input
+      name="user"
+      class="form-control upg-input{{ $errors->has('user') ? ' is-invalid' : '' }}"
+      type="text"
+      placeholder="Full name"
+      value="{{ old('user') }}"
+      required
+    />
+
+    @if($errors->has('user'))
+      <div class="invalid-feedback d-block">
+        {{ $errors->first('user') }}
+      </div>
+    @endif
+  </div>
+
+  <div class="col-12">
+    <input
+      name="phone"
+      class="form-control upg-input{{ $errors->has('phone') ? ' is-invalid' : '' }}"
+      type="tel"
+      placeholder="Mobile number"
+      value="{{ old('phone') }}"
+      required
+    />
+
+    @if($errors->has('phone'))
+      <div class="invalid-feedback d-block">
+        {{ $errors->first('phone') }}
+      </div>
+    @endif
+  </div>
+
+  <div class="col-12">
+    <select
+      name="current_extinguisher_type"
+      class="form-select upg-input{{ $errors->has('current_extinguisher_type') ? ' is-invalid' : '' }}"
+    >
+      <option value="">Current extinguisher type</option>
+      <option value="ABC Dry Powder" {{ old('current_extinguisher_type') == 'ABC Dry Powder' ? 'selected' : '' }}>
+        ABC Dry Powder
+      </option>
+      <option value="CO₂" {{ old('current_extinguisher_type') == 'CO₂' ? 'selected' : '' }}>
+        CO₂
+      </option>
+      <option value="Water / Foam based" {{ old('current_extinguisher_type') == 'Water / Foam based' ? 'selected' : '' }}>
+        Water / Foam based
+      </option>
+      <option value="Unsure" {{ old('current_extinguisher_type') == 'Unsure' ? 'selected' : '' }}>
+        Unsure
+      </option>
+    </select>
+
+    @if($errors->has('current_extinguisher_type'))
+      <div class="invalid-feedback d-block">
+        {{ $errors->first('current_extinguisher_type') }}
+      </div>
+    @endif
+  </div>
+
+  <div class="col-6">
+    <select name="capacity" class="form-select upg-input">
+      <option value="">Capacity</option>
+      <option value="2 kg / 2 L" {{ old('capacity') == '2 kg / 2 L' ? 'selected' : '' }}>
+        2 kg / 2 L
+      </option>
+      <option value="4 kg / 4 L" {{ old('capacity') == '4 kg / 4 L' ? 'selected' : '' }}>
+        4 kg / 4 L
+      </option>
+      <option value="6 kg / 6 L" {{ old('capacity') == '6 kg / 6 L' ? 'selected' : '' }}>
+        6 kg / 6 L
+      </option>
+      <option value="9 kg / 9 L" {{ old('capacity') == '9 kg / 9 L' ? 'selected' : '' }}>
+        9 kg / 9 L
+      </option>
+    </select>
+  </div>
+
+  <div class="col-6">
+    <select name="premises_type" class="form-select upg-input">
+      <option value="">Premises type</option>
+      <option value="Residential" {{ old('premises_type') == 'Residential' ? 'selected' : '' }}>
+        Residential
+      </option>
+      <option value="Office / Commercial" {{ old('premises_type') == 'Office / Commercial' ? 'selected' : '' }}>
+        Office / Commercial
+      </option>
+      <option value="Retail / Kitchen" {{ old('premises_type') == 'Retail / Kitchen' ? 'selected' : '' }}>
+        Retail / Kitchen
+      </option>
+      <option value="Industrial / Warehouse" {{ old('premises_type') == 'Industrial / Warehouse' ? 'selected' : '' }}>
+        Industrial / Warehouse
+      </option>
+    </select>
+  </div>
+
+  <input type="hidden" name="qty" value="1">
+
+  <div class="col-12">
+    <button type="submit" class="upg-card-btn w-100">
+      Submit for evaluation
+    </button>
+
+    <p class="upg-card-note mb-0">
+      <i class="bi bi-lock-fill me-1"></i>
+      Your details are used only for upgrade evaluation.
+    </p>
+  </div>
+</form>
 
             <div class="upg-card-strip">
               <div class="upg-strip-item">
@@ -395,91 +475,221 @@
               </span>
             </div>
 
-            <form class="row g-2 g-md-3 mt-1">
-              <div class="col-md-6">
-                <label class="upg-label">Full name</label>
-                <input class="form-control upg-input" type="text" placeholder="Your full name" />
-              </div>
-              <div class="col-md-6">
-                <label class="upg-label">Contact number</label>
-                <input class="form-control upg-input" type="tel" placeholder="Mobile number" />
-              </div>
-              <div class="col-md-6">
-                <label class="upg-label">City</label>
-                <input class="form-control upg-input" type="text" placeholder="City / location" />
-              </div>
-              <div class="col-md-6">
-                <label class="upg-label">Type of premises</label>
-                <select class="form-select upg-input">
-                  <option selected>Select premises type</option>
-                  <option>Home / Apartment</option>
-                  <option>Office / IT Space</option>
-                  <option>Retail / Showroom</option>
-                  <option>Kitchen / Restaurant</option>
-                  <option>Factory / Warehouse</option>
-                  <option>Hospital / Institution</option>
-                </select>
-              </div>
+            @if(session('success'))
+  <div class="alert alert-success mb-3">
+    {{ session('success') }}
+  </div>
+@endif
 
-              <div class="col-md-6">
-                <label class="upg-label">Existing extinguisher type</label>
-                <select class="form-select upg-input">
-                  <option selected>ABC Dry Powder</option>
-                  <option>CO₂ Extinguisher</option>
-                  <option>Foam / Water based</option>
-                  <option>Not sure</option>
-                </select>
-              </div>
-              <div class="col-md-3">
-                <label class="upg-label">Capacity</label>
-                <select class="form-select upg-input">
-                  <option selected>4 KG / 4 L</option>
-                  <option>2 KG / 2 L</option>
-                  <option>6 KG / 6 L</option>
-                  <option>9 KG / 9 L</option>
-                </select>
-              </div>
-              <div class="col-md-3">
-                <label class="upg-label">Quantity</label>
-                <input class="form-control upg-input" type="number" min="1" value="1" />
-              </div>
+@if($errors->any())
+  <div class="alert alert-danger mb-3">
+    Please check the required fields and try again.
+  </div>
+@endif
 
-              <div class="col-12">
-                <label class="upg-label">Additional notes (optional)</label>
-                <textarea
-                  class="form-control upg-input upg-textarea"
-                  rows="3"
-                  placeholder="Installation location, age of extinguisher, any observed issues, expected timeline..."
-                ></textarea>
-              </div>
+<form method="POST" action="{{ route('frontend.upgrade.store') }}" class="row g-2 g-md-3 mt-1">
+  @csrf
 
-              <div class="col-12">
-                <div class="upg-form-actions row g-2">
-                  <div class="col-md-7">
-                    <button type="button" class="upg-form-btn w-100">
-                      Submit eligibility request
-                    </button>
-                  </div>
-                  <div class="col-md-5">
-                    <a href="products.html" class="btn btn-outline-dark w-100 upg-form-btn-outline">
-                      View mist extinguisher range
-                    </a>
-                  </div>
-                </div>
+  <div class="col-md-6">
+    <label class="upg-label">Full name</label>
+    <input
+      name="user"
+      class="form-control upg-input{{ $errors->has('user') ? ' is-invalid' : '' }}"
+      type="text"
+      placeholder="Your full name"
+      value="{{ old('user') }}"
+      required
+    />
 
-                <div class="upg-form-foot">
-                  <div class="upg-form-foot-item">
-                    <i class="bi bi-receipt"></i> Exchange value & quotation
-                  </div>
-                  <div class="upg-form-foot-item">
-                    <i class="bi bi-clipboard-check"></i> Compliance documentation
-                  </div>
-                  <div class="upg-form-foot-item">
-                    <i class="bi bi-truck"></i> Pan-India supply & service
-                  </div>
-                </div>
-              </div>
-            </form>
+    @if($errors->has('user'))
+      <div class="invalid-feedback d-block">
+        {{ $errors->first('user') }}
+      </div>
+    @endif
+  </div>
+
+  <div class="col-md-6">
+    <label class="upg-label">Contact number</label>
+    <input
+      name="phone"
+      class="form-control upg-input{{ $errors->has('phone') ? ' is-invalid' : '' }}"
+      type="tel"
+      placeholder="Mobile number"
+      value="{{ old('phone') }}"
+      required
+    />
+
+    @if($errors->has('phone'))
+      <div class="invalid-feedback d-block">
+        {{ $errors->first('phone') }}
+      </div>
+    @endif
+  </div>
+
+  <div class="col-md-6">
+    <label class="upg-label">Email</label>
+    <input
+      name="email"
+      class="form-control upg-input{{ $errors->has('email') ? ' is-invalid' : '' }}"
+      type="email"
+      placeholder="Email address"
+      value="{{ old('email') }}"
+    />
+
+    @if($errors->has('email'))
+      <div class="invalid-feedback d-block">
+        {{ $errors->first('email') }}
+      </div>
+    @endif
+  </div>
+
+  <div class="col-md-6">
+    <label class="upg-label">City</label>
+    <input
+      name="city"
+      class="form-control upg-input{{ $errors->has('city') ? ' is-invalid' : '' }}"
+      type="text"
+      placeholder="City / location"
+      value="{{ old('city') }}"
+    />
+
+    @if($errors->has('city'))
+      <div class="invalid-feedback d-block">
+        {{ $errors->first('city') }}
+      </div>
+    @endif
+  </div>
+
+  <div class="col-md-6">
+    <label class="upg-label">Type of premises</label>
+    <select name="premises_type" class="form-select upg-input">
+      <option value="">Select premises type</option>
+      <option value="Home / Apartment" {{ old('premises_type') == 'Home / Apartment' ? 'selected' : '' }}>
+        Home / Apartment
+      </option>
+      <option value="Office / IT Space" {{ old('premises_type') == 'Office / IT Space' ? 'selected' : '' }}>
+        Office / IT Space
+      </option>
+      <option value="Retail / Showroom" {{ old('premises_type') == 'Retail / Showroom' ? 'selected' : '' }}>
+        Retail / Showroom
+      </option>
+      <option value="Kitchen / Restaurant" {{ old('premises_type') == 'Kitchen / Restaurant' ? 'selected' : '' }}>
+        Kitchen / Restaurant
+      </option>
+      <option value="Factory / Warehouse" {{ old('premises_type') == 'Factory / Warehouse' ? 'selected' : '' }}>
+        Factory / Warehouse
+      </option>
+      <option value="Hospital / Institution" {{ old('premises_type') == 'Hospital / Institution' ? 'selected' : '' }}>
+        Hospital / Institution
+      </option>
+    </select>
+  </div>
+
+  <div class="col-md-6">
+    <label class="upg-label">Existing extinguisher type</label>
+    <select
+      name="current_extinguisher_type"
+      class="form-select upg-input{{ $errors->has('current_extinguisher_type') ? ' is-invalid' : '' }}"
+    >
+      <option value="ABC Dry Powder" {{ old('current_extinguisher_type') == 'ABC Dry Powder' ? 'selected' : '' }}>
+        ABC Dry Powder
+      </option>
+      <option value="CO₂ Extinguisher" {{ old('current_extinguisher_type') == 'CO₂ Extinguisher' ? 'selected' : '' }}>
+        CO₂ Extinguisher
+      </option>
+      <option value="Foam / Water based" {{ old('current_extinguisher_type') == 'Foam / Water based' ? 'selected' : '' }}>
+        Foam / Water based
+      </option>
+      <option value="Not sure" {{ old('current_extinguisher_type') == 'Not sure' ? 'selected' : '' }}>
+        Not sure
+      </option>
+    </select>
+
+    @if($errors->has('current_extinguisher_type'))
+      <div class="invalid-feedback d-block">
+        {{ $errors->first('current_extinguisher_type') }}
+      </div>
+    @endif
+  </div>
+
+  <div class="col-md-3">
+    <label class="upg-label">Capacity</label>
+    <select name="capacity" class="form-select upg-input">
+      <option value="4 KG / 4 L" {{ old('capacity') == '4 KG / 4 L' ? 'selected' : '' }}>
+        4 KG / 4 L
+      </option>
+      <option value="2 KG / 2 L" {{ old('capacity') == '2 KG / 2 L' ? 'selected' : '' }}>
+        2 KG / 2 L
+      </option>
+      <option value="6 KG / 6 L" {{ old('capacity') == '6 KG / 6 L' ? 'selected' : '' }}>
+        6 KG / 6 L
+      </option>
+      <option value="9 KG / 9 L" {{ old('capacity') == '9 KG / 9 L' ? 'selected' : '' }}>
+        9 KG / 9 L
+      </option>
+    </select>
+  </div>
+
+  <div class="col-md-3">
+    <label class="upg-label">Quantity</label>
+    <input
+      name="qty"
+      class="form-control upg-input{{ $errors->has('qty') ? ' is-invalid' : '' }}"
+      type="number"
+      min="1"
+      value="{{ old('qty', 1) }}"
+    />
+
+    @if($errors->has('qty'))
+      <div class="invalid-feedback d-block">
+        {{ $errors->first('qty') }}
+      </div>
+    @endif
+  </div>
+
+  <div class="col-12">
+    <label class="upg-label">Additional notes (optional)</label>
+    <textarea
+      name="message"
+      class="form-control upg-input upg-textarea{{ $errors->has('message') ? ' is-invalid' : '' }}"
+      rows="3"
+      placeholder="Installation location, age of extinguisher, any observed issues, expected timeline..."
+    >{{ old('message') }}</textarea>
+
+    @if($errors->has('message'))
+      <div class="invalid-feedback d-block">
+        {{ $errors->first('message') }}
+      </div>
+    @endif
+  </div>
+
+  <div class="col-12">
+    <div class="upg-form-actions row g-2">
+      <div class="col-md-7">
+        <button type="submit" class="upg-form-btn w-100">
+          Submit eligibility request
+        </button>
+      </div>
+      <div class="col-md-5">
+        <a href="{{ url('/products') }}" class="btn btn-outline-dark w-100 upg-form-btn-outline">
+          View mist extinguisher range
+        </a>
+      </div>
+    </div>
+
+    <div class="upg-form-foot">
+      <div class="upg-form-foot-item">
+        <i class="bi bi-receipt"></i> Exchange value & quotation
+      </div>
+      <div class="upg-form-foot-item">
+        <i class="bi bi-clipboard-check"></i> Compliance documentation
+      </div>
+      <div class="upg-form-foot-item">
+        <i class="bi bi-truck"></i> Pan-India supply & service
+      </div>
+    </div>
+  </div>
+</form>
 
           </div>
         </div>

@@ -1260,62 +1260,125 @@
             </div>
 
             <!-- RIGHT FORM -->
-            <div class="col-lg-7">
-                <form class="row g-2 g-md-3 qe-form">
+           <div class="col-lg-7">
 
-                <!-- small tagline above form -->
-                <div class="col-12">
-                    <div class="qe-form-tagline">
-                    <span>
-                        <i class="bi bi-info-circle-fill me-1"></i>
-                        Share basic details for better assistance
-                    </span>
-                    </div>
-                </div>
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    @endif
 
-                <div class="col-md-4">
-                    <input type="text" class="form-control qe-input" placeholder="Name *" />
-                </div>
-                <div class="col-md-4">
-                    <input type="tel" class="form-control qe-input" placeholder="Mobile *" />
-                </div>
-                <div class="col-md-4">
-                    <input type="email" class="form-control qe-input" placeholder="Email" />
-                </div>
+    <form 
+        action="{{ route('frontend.bulk-enquiry.store') }}" 
+        method="POST" 
+        class="row g-2 g-md-3 qe-form"
+    >
+        @csrf
 
-                <div class="col-12">
-                    <input type="text" class="form-control qe-input" placeholder="City / Type of premises" />
-                </div>
-
-                <div class="col-12">
-                    <textarea
-                    class="form-control qe-input qe-textarea"
-                    rows="2"
-                    placeholder="Brief requirement (e.g. office, warehouse, electrical room, kitchen)…"
-                    ></textarea>
-                </div>
-
-                <!-- CAPTCHA & BUTTON -->
-                <div class="col-md-6">
-                    <div class="qe-captcha">
-                    <span class="qe-captcha-label">Security Check</span>
-                    <div class="qe-captcha-box">
-                        CAPTCHA Placeholder
-                    </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 d-flex flex-column align-items-md-end justify-content-between">
-                    <button type="submit" class="btn btn-amtex qe-submit mt-2 mt-md-0">
-                    Submit Enquiry
-                    </button>
-                    <span class="qe-privacy mt-2">
-                    <i class="bi bi-lock-fill me-1"></i>
-                    Your information will be used only for enquiry assistance.
-                    </span>
-                </div>
-                </form>
+        <!-- small tagline above form -->
+        <div class="col-12">
+            <div class="qe-form-tagline">
+                <span>
+                    <i class="bi bi-info-circle-fill me-1"></i>
+                    Share basic details for better assistance
+                </span>
             </div>
+        </div>
+
+        <div class="col-md-4">
+            <input 
+                type="text" 
+                name="company_name"
+                value="{{ old('company_name') }}"
+                class="form-control qe-input @error('company_name') is-invalid @enderror" 
+                placeholder="Name *" 
+                required
+            />
+
+            @error('company_name')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="col-md-4">
+            <input 
+                type="tel" 
+                name="phone"
+                value="{{ old('phone') }}"
+                class="form-control qe-input @error('phone') is-invalid @enderror" 
+                placeholder="Mobile *" 
+                required
+            />
+
+            @error('phone')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="col-md-4">
+            <input 
+                type="email" 
+                name="email"
+                value="{{ old('email') }}"
+                class="form-control qe-input @error('email') is-invalid @enderror" 
+                placeholder="Email" 
+            />
+
+            @error('email')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="col-12">
+            <input 
+                type="text" 
+                name="city"
+                value="{{ old('city') }}"
+                class="form-control qe-input @error('city') is-invalid @enderror" 
+                placeholder="City / Type of premises" 
+            />
+
+            @error('city')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="col-12">
+            <textarea
+                name="notes"
+                class="form-control qe-input qe-textarea @error('notes') is-invalid @enderror"
+                rows="2"
+                placeholder="Brief requirement (e.g. office, warehouse, electrical room, kitchen)…"
+            >{{ old('notes') }}</textarea>
+
+            @error('notes')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <!-- CAPTCHA & BUTTON -->
+        <div class="col-md-6">
+            <div class="qe-captcha">
+                <span class="qe-captcha-label">Security Check</span>
+                <div class="qe-captcha-box">
+                    CAPTCHA Placeholder
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 d-flex flex-column align-items-md-end justify-content-between">
+            <button type="submit" class="btn btn-amtex qe-submit mt-2 mt-md-0">
+                Submit Enquiry
+            </button>
+
+            <span class="qe-privacy mt-2">
+                <i class="bi bi-lock-fill me-1"></i>
+                Your information will be used only for enquiry assistance.
+            </span>
+        </div>
+    </form>
+</div>
 
             </div>
         </div>

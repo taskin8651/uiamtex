@@ -13,6 +13,7 @@ use App\Http\Controllers\Frontend\FaqPageController;
 use App\Http\Controllers\Frontend\ProductsController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
+use App\Http\Controllers\Frontend\AmcController;
 
 Route::get('/home', function () {
     if (session('status')) {
@@ -283,6 +284,8 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact-enquiry', [ContactController::class, 'store'])->name('frontend.contact.store');
+Route::post('/quick-enquiry', [ContactController::class, 'quickStore'])->name('frontend.quick-enquiry.store');
+Route::post('/bulk-enquiry', [ContactController::class, 'bulkstore'])->name('frontend.bulk-enquiry.store');
 Route::get('/pages/{slug}', [PageController::class, 'show'])->name('frontend.pages.show');
 Route::get('/certificates-clients', [CertificatesClientsController::class, 'index'])->name('frontend.certificates-clients');
 Route::post('/downloads/unlock', [DownloadRequestController::class, 'unlock'])->name('frontend.downloads.unlock');
@@ -290,7 +293,9 @@ Route::get('/about', [AboutController::class, 'index'])->name('frontend.about');
 Route::get('/services', [ServicesController::class, 'index'])->name('frontend.services');
 Route::post('/services/enquiry', [ServicesController::class, 'storeEnquiry'])->name('frontend.services.enquiry.store');
 Route::get('/upgrade-your-extinguisher', [UpgradeExtinguisherController::class, 'index'])->name('frontend.upgrade.your.extinguisher');
+Route::post('/upgrade-request', [UpgradeExtinguisherController::class, 'store'])->name('frontend.upgrade.store');
 Route::get('/dealership', [DealershipController::class, 'index'])->name('frontend.dealership');
+Route::post('/dealership-application', [DealershipController::class, 'store'])->name('frontend.dealership.store');
 Route::get('/blog', [BlogController::class, 'index'])->name('frontend.blog');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('frontend.blog.show');
 Route::get('/faq', [FaqPageController::class, 'index'])->name('faq');
@@ -315,3 +320,6 @@ Route::post('/checkout/place-order', [CheckoutController::class, 'placeOrder'])-
 Route::get('/checkout/success/{order_no}', function ($order_no) {
     return view('frontend.checkout_success', compact('order_no'));
 })->name('checkout.success');
+
+Route::get('/support-amc', [AmcController::class, 'index'])->name('frontend.amc');
+Route::post('/amc-enquiry', [AmcController::class, 'store'])->name('frontend.amc.store');
