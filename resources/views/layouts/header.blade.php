@@ -29,28 +29,43 @@
           <div class="d-flex justify-content-end align-items-center gap-2 header-actions">
 
             <!-- Desktop Login / Register -->
-            <a href="/login" class="btn btn-sm btn-outline-light d-none d-md-inline-flex">
-              Login
+            <a href="{{ auth()->check() ? (auth()->user()->is_admin ? route('admin.home') : route('frontend.dashboard')) : route('login') }}" class="btn btn-sm btn-outline-light d-none d-md-inline-flex">
+              {{ auth()->check() ? 'Dashboard' : 'Login' }}
             </a>
-            <a href="/register" class="btn btn-sm btn-light text-dark fw-semibold d-none d-md-inline-flex">
-              Register
-            </a>
+            @auth
+              <a href="{{ route('logout') }}" class="btn btn-sm btn-light text-dark fw-semibold d-none d-md-inline-flex" onclick="event.preventDefault(); document.getElementById('header-logoutform').submit();">
+                Logout
+              </a>
+              <form id="header-logoutform" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+              </form>
+            @else
+              <a href="{{ route('register') }}" class="btn btn-sm btn-light text-dark fw-semibold d-none d-md-inline-flex">
+                Register
+              </a>
+            @endauth
 
             <!-- Cart -->
-            <a href="cart.html" class="cart-icon position-relative ms-1">
+            <a href="{{ route('cart.index') }}" class="cart-icon position-relative ms-1">
               <i class="bi bi-cart3"></i>
               <span class="cart-count">0</span>
             </a>
 
             <!-- Mobile Login Icon -->
-            <a href="/login" class="mobile-auth-icon d-inline-flex d-md-none">
+            <a href="{{ auth()->check() ? (auth()->user()->is_admin ? route('admin.home') : route('frontend.dashboard')) : route('login') }}" class="mobile-auth-icon d-inline-flex d-md-none">
               <i class="bi bi-person"></i>
             </a>
 
             <!-- Mobile Register Icon -->
-            <a href="/register" class="mobile-auth-icon d-inline-flex d-md-none">
-              <i class="bi bi-person-plus"></i>
-            </a>
+            @auth
+              <a href="{{ route('logout') }}" class="mobile-auth-icon d-inline-flex d-md-none" onclick="event.preventDefault(); document.getElementById('header-logoutform').submit();">
+                <i class="bi bi-box-arrow-right"></i>
+              </a>
+            @else
+              <a href="{{ route('register') }}" class="mobile-auth-icon d-inline-flex d-md-none">
+                <i class="bi bi-person-plus"></i>
+              </a>
+            @endauth
 
           </div>
         </div>

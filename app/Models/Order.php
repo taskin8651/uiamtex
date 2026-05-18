@@ -54,4 +54,9 @@ class Order extends Model
     {
         return $this->belongsTo(EndUser::class, 'user_id');
     }
+
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class, 'order_id');
+    }
 }

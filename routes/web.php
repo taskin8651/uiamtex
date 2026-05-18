@@ -14,10 +14,15 @@ use App\Http\Controllers\Frontend\ProductsController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\AmcController;
+use App\Http\Controllers\Frontend\DashboardController;
 
 Route::get('/home', function () {
     if (session('status')) {
         return redirect()->route('admin.home')->with('status', session('status'));
+    }
+
+    if (auth()->check() && ! auth()->user()->is_admin) {
+        return redirect()->route('frontend.dashboard');
     }
 
     return redirect()->route('admin.home');
@@ -323,3 +328,6 @@ Route::get('/checkout/success/{order_no}', function ($order_no) {
 
 Route::get('/support-amc', [AmcController::class, 'index'])->name('frontend.amc');
 Route::post('/amc-enquiry', [AmcController::class, 'store'])->name('frontend.amc.store');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware('auth')
+    ->name('frontend.dashboard');
